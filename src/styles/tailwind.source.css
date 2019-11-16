@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+
+.navButton {
+  @apply cursor-pointer block text-center pb-2 border-b transition-colors transition-500;
+}
+.navButtonLeft {
+  @apply border-gray-900;
+}
+.navButtonLeft.active,
+.navButtonLeft:hover {
+  @apply text-white border-red-500 transition-colors transition-500;
+}
+.navButtonMobile {
+  @apply border-gray-100;
+}
+.navButtonMobile.active,
+.navButtonMobile:hover {
+  @apply text-gray-900 border-red-500 transition-colors transition-500;
+}
+.active {
+  color: yellow;
+}
+.footerButton {
+  @apply text-gray-400 transition-color transition-1000;
+}
+.footerButton:hover {
+  @apply text-white transition-color transition-1000;
+}
+.desktop-card {
+  @apply w-full border rounded border-gray-400 bg-gray-100 text-left cursor-pointer relative transition-colors transition-500;
+}
+.desktop-card:hover {
+  @apply border-gray-600 bg-white transition-colors transition-500;
+}
+
+@tailwind utilities;
+
+#root {
+  font-family: "Lato", sans-serif;
+}
+
+/* Used in form inputs */
+.width50 {
+  width: 50vw;
+}
+/* Remove outline for all buttons */
+button:focus {
+  outline: 0;
+}
+/*Banner open/load animation*/
+.alert-banner {
+  animation: slide-in-top 400ms both;
+}
+/*Banner close animation*/
+.alert-banner input:checked ~ * {
+  animation: slide-out-top 400ms both;
+}
+@keyframes slide-in-top {
+  0% {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    height: 2.5rem;
+    font-size: 1rem;
+    opacity: 1;
+  }
+}
+@keyframes slide-out-top {
+  0% {
+    height: 2.5rem;
+    font-size: 1rem;
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+}
+
+/* Modal overlay */
+.mobile-menu-overlay {
+  background-color: rgb(26, 32, 44, 0.5);
+}
+.mobile-menu-content {
+  max-height: 90%;
+}
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 600ms ease-in-out;
+}
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}

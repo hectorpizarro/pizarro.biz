@@ -1,0 +1,6 @@
+- Add disabled UI to form, buttons
+- Add toast message (error, success)
+- load section selected by default onload
+- fix modal on close, phantom border
+- apply modernizr
+- add IE10 version

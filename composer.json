@@ -1,0 +1,7 @@
+{
+  "name": "Hector Pizarro site",
+  "description": "Personal website",
+  "require": {
+    "nette/mail": "^3.1"
+  }
+}
