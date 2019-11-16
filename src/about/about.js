@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import Section from "../components/section";
+import Section from "../shared/section/section";
 import { PAGE_ABOUT } from "../constants";
 
 const fadeInAnimation = keyframes`${fadeIn}`;

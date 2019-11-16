@@ -1,0 +1,32 @@
+/*Toast open/load animation*/
+.toast {
+  top: 0;
+  right: 0px;
+  animation: animShowToastAlert 600ms ease-in both;
+}
+
+/*Toast close animation*/
+.toast.fadeMe {
+  animation: animHideToastAlert 600ms ease-in both;
+}
+
+@keyframes animShowToastAlert {
+  from {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes animHideToastAlert {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+}

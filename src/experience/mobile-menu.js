@@ -41,9 +41,7 @@ MobileMenu.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  experiences: state.experiences,
-  screenWidth: state.screenWidth,
-  screenHeight: state.screenHeight
+  experiences: state.misc.experiences
 });
 
 export default connect(mapStateToProps)(MobileMenu);

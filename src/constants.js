@@ -7,3 +7,5 @@ export const PAGE_CONTACT = "PAGE_CONTACT";
 export const MODAL_CLOSE_TIME = 600;
 export const MODAL_HEADER_MENU = "MODAL_HEADER_MENU";
 export const MODAL_EXPERIENCE = "MODAL_EXPERIENCE";
+
+export const TOAST_EXP_TIME = "3000";

@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
-import { hideModal } from "../redux/actions";
+import { hideModal } from "../../redux/modal.actions";
 import {
   MODAL_HEADER_MENU,
   MODAL_CLOSE_TIME,
   MODAL_EXPERIENCE
-} from "../constants";
+} from "../../constants";
 import HeaderMenu from "./header-menu";
-import Card from "../experience/card";
+import Card from "../../experience/card";
 
 Modal.setAppElement("#root"); // Required by react-modal library
 
@@ -64,9 +64,9 @@ const AppModal = props => {
 };
 
 const mapStateToProps = state => ({
-  modalId: state.modalId,
-  modalData: state.modalData,
-  experiences: state.experiences
+  modalId: state.modal.modalId,
+  modalData: state.modal.modalData,
+  experiences: state.misc.experiences
 });
 
 export default connect(mapStateToProps)(AppModal);

@@ -6,21 +6,21 @@ import styled, { css, keyframes } from "styled-components";
 import { slideInLeft } from "react-animations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
-import PHOTO from "./images/photo.jpg";
-import AppService from "../app-service";
-import { hideModal } from "../redux/actions";
 import { connect } from "react-redux";
+import PHOTO from "../shared/images/photo_small.jpg";
+import AppService from "../app-service";
+import { hideModal } from "../redux/modal.actions";
 
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 const animation = props =>
   css`
     2s ${slideInLeftAnimation};
   `;
-const LeftBarContent = styled.section`
+const NavBarContent = styled.section`
   ${props => (props.isLeft ? `animation: 2s ${animation};` : "")}
 `;
 
-const LeftBar = props => {
+const NavBar = props => {
   const handleClick = event => {
     if (!props.isLeft) {
       hideModal();
@@ -51,7 +51,7 @@ const LeftBar = props => {
   };
 
   return (
-    <LeftBarContent isLeft={props.isLeft} className={classes.section}>
+    <NavBarContent isLeft={props.isLeft} className={classes.section}>
       <figure className={classes.figure}>
         <img
           src={PHOTO}
@@ -92,17 +92,17 @@ const LeftBar = props => {
           </a>
         </div>
       </nav>
-    </LeftBarContent>
+    </NavBarContent>
   );
 };
 
-LeftBar.propTypes = {
+NavBar.propTypes = {
   isLeft: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired // Provided automatically by withRouter
 };
 
 const mapStateToProps = state => ({
-  isInitRoute: state.initRoute
+  isInitRoute: state.misc.initRoute
 });
 
-export default connect(mapStateToProps)(withRouter(LeftBar));
+export default connect(mapStateToProps)(withRouter(NavBar));

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Element } from "react-scroll";
 import SectionTitle from "./section-title";
-import Footer from "../contact/footer";
+import Footer from "../../app/footer";
 
 const Section = props => {
   return (

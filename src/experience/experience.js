@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import { loadExperiences } from "../redux/async-actions";
-import Section from "../components/section";
+import Section from "../shared/section/section";
 import { PAGE_EXPERIENCE } from "../constants";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,7 +41,7 @@ const Experience = props => {
 };
 
 const mapStateToProps = state => ({
-  experiences: state.experiences
+  experiences: state.misc.experiences
 });
 
 export default connect(mapStateToProps)(Experience);

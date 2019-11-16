@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
-import Section from "../components/section";
+import Section from "../shared/section/section";
 import { PAGE_SKILLS } from "../constants";
 import "react-slidedown/lib/slidedown.css";
 import AppService from "../app-service";

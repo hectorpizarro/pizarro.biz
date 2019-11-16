@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import ReactResizeDetector from "react-resize-detector";
 import Axios from "axios";
-import { MODAL_HEADER_MENU } from "./constants";
-import { hideModal, setScreenSize } from "./redux/actions";
-import AppRoutes from "./app-routes";
+import { MODAL_HEADER_MENU } from "../constants";
+import { hideModal } from "../redux/modal.actions";
+import Routes from "./routes";
 
 Axios.defaults.transformRequest = obj => {
   if (obj) {
@@ -20,7 +20,6 @@ Axios.defaults.headers.post["Content-Type"] =
 
 const App = props => {
   const handleCloseOnResize = (width, height) => {
-    setScreenSize({ width, height });
     if (props.modalId === MODAL_HEADER_MENU) {
       hideModal();
     }
@@ -33,13 +32,13 @@ const App = props => {
         handleHeight
         onResize={handleCloseOnResize}
       />
-      <AppRoutes />
+      <Routes />
     </BrowserRouter>
   );
 };
 
 const mapStateToProps = state => ({
-  modalId: state.modalId
+  modalId: state.modal.modalId
 });
 
 export default connect(mapStateToProps)(App);

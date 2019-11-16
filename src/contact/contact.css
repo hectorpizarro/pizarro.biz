@@ -14,7 +14,6 @@
     "label_message"
     "field_message"
     "error_message"
-    "status"
     "buttonbar";
 }
 .container-grid .label {
@@ -68,7 +67,6 @@
       ". error_email"
       "label_message field_message"
       ". error_message"
-      "status status"
       "buttonbar buttonbar";
   }
   .container-grid .label {

@@ -1,48 +1,27 @@
-import { createStore } from "redux";
-import { assignAll, createReducer } from "redux-act";
+import { assignAll } from "redux-act";
+import { createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/logOnlyInProduction";
-import * as actions from "./actions";
 
-const initState = {
-  modalId: null,
-  modalData: null,
-  experiences: null,
-  initRoute: false,
-  screenWidth: 0,
-  screenHeight: 0
-};
+// All actions
+import * as miscActions from "./misc.actions";
+import * as modalActions from "./modal.actions";
+import * as toastActions from "./toast.actions";
 
-const appReducer = createReducer(
-  {
-    [actions.showModal]: (state, payload) => ({
-      ...state,
-      modalId: payload.modalId,
-      modalData: payload.modalData || null
-    }),
-    [actions.hideModal]: (state, payload) => ({
-      ...state,
-      modalId: null,
-      modalData: null
-    }),
-    [actions.setExperiences]: (state, payload) => ({
-      ...state,
-      experiences: payload
-    }),
-    [actions.setFlagInitRoute]: (state, payload) => ({
-      ...state,
-      initRoute: true
-    }),
-    [actions.setScreenSize]: (state, payload) => ({
-      ...state,
-      screenWidth: payload.width,
-      screenHeight: payload.height
-    })
-  },
-  initState
-);
+// All reducers
+import misc from "./misc.reducer";
+import modal from "./modal.reducer";
+import toast from "./toast.reducer";
 
-const store = createStore(appReducer, composeWithDevTools());
+const rootReducer = combineReducers({
+  misc,
+  modal,
+  toast
+});
 
-assignAll(actions, store);
+const store = createStore(rootReducer, composeWithDevTools());
+
+assignAll(miscActions, store);
+assignAll(modalActions, store);
+assignAll(toastActions, store);
 
 export default store;

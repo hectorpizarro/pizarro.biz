@@ -1,4 +1,4 @@
-import { setExperiences } from "./actions";
+import { setExperiences } from "./misc.actions";
 import Axios from "axios";
 
 export const loadExperiences = async () => {

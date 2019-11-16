@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import AppService from "../app-service";
-import { showModal } from "../redux/actions";
+import { showModal } from "../redux/modal.actions";
 import { MODAL_EXPERIENCE } from "../constants";
 
 const Desktop = props => {
@@ -75,7 +75,7 @@ const Desktop = props => {
 };
 
 const mapStateToProps = state => ({
-  experiences: state.experiences
+  experiences: state.misc.experiences
 });
 
 export default connect(mapStateToProps)(Desktop);

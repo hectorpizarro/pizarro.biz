@@ -37,7 +37,7 @@ const Mobile = props => {
 };
 
 const mapStateToProps = state => ({
-  experiences: state.experiences
+  experiences: state.misc.experiences
 });
 
 export default connect(mapStateToProps)(Mobile);

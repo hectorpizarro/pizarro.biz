@@ -4,11 +4,12 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import Axios from "axios";
-import Section from "../components/section";
-import Button from "../components/button";
+import Section from "../shared/section/section";
+import Button from "../shared/button";
 
 import "./contact.css";
 import { PAGE_CONTACT } from "../constants";
+import { showToast } from "../redux/toast.actions";
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 
@@ -41,14 +42,13 @@ const onSubmit = async (values, actions) => {
   try {
     await Axios.post("/mail.php", values);
     actions.resetForm();
-    actions.setStatus({ msg: "Your message was delivered." });
+    showToast("Your message was delivered.", true);
   } catch (error) {
-    actions.setStatus({
-      msg: "There was an error sending your message, please try again."
-    });
+    showToast(
+      "There was an error sending your message, please try again.",
+      false
+    );
   }
-  // Delete message after 3 sec
-  setTimeout(() => actions.setStatus({ msg: "" }), 3000);
 };
 
 const renderForm = ({ errors, status, touched, isSubmitting }) => (
@@ -80,13 +80,13 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
         errors.email && touched.email ? "text-red-500" : ""
       }`}
     >
-      Email:
+      Email *:
     </label>
     <Field
       type="email"
       name="email"
       id="email"
-      className={`field-email rounded border self-stretch ${
+      className={`field-email p-2 rounded border self-stretch ${
         errors.email && touched.email ? "border-red-500" : "border-gray-500"
       }`}
     />
@@ -107,7 +107,7 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
       component="textarea"
       name="message"
       id="message"
-      className={`field-message rounded border self-stretch ${
+      className={`field-message p-2 rounded border self-stretch ${
         errors.message && touched.message ? "border-red-500" : "border-gray-500"
       }`}
     />
@@ -116,7 +116,6 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => (
       component="div"
       className="error-message font-bold text-xs text-red-500 leading-none"
     />
-    <div className="status-message">{status && status.msg}</div>
     <div className="buttonbar">
       <Button type="reset" inverse disabled={isSubmitting} label="Reset" />
       <Button type="submit" disabled={isSubmitting} label="Submit" />

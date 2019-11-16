@@ -1,21 +1,22 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import LeftBar from "./components/left-bar";
-import Home from "./home/home";
-import About from "./about/about";
-import Skills from "./skills/skills";
-import Experience from "./experience/experience";
-import Contact from "./contact/contact";
-import AppModal from "./modal/modal";
-import MobileMenuButton from "./components/mobile-menu-button";
-import AppService from "./app-service";
-import { setFlagInitRoute } from "./redux/actions";
+import NavBar from "./nav-bar";
+import Home from "../home/home";
+import About from "../about/about";
+import Skills from "../skills/skills";
+import Experience from "../experience/experience";
+import Contact from "../contact/contact";
+import AppModal from "../shared/modal/modal";
+import MobileMenuButton from "./mobile-menu-button";
+import AppService from "../app-service";
+import { setFlagInitRoute } from "../redux/misc.actions";
+import Toast from "../shared/toast/toast";
 
 // Build route strings array. Remove '/' as tihs is the default, added manually
 const routes = AppService.pages.map(page => page.route);
 
-const AppRoutes = props => {
+const Routes = props => {
   // Move scroll to defined route once, when component is mounted
   useEffect(() => {
     const pageId = AppService.getIdFromRoute(props.location.pathname);
@@ -27,7 +28,8 @@ const AppRoutes = props => {
 
   return (
     <div className="flex h-screen antialiased text-base">
-      <LeftBar isLeft={true} />
+      <Toast />
+      <NavBar isLeft={true} />
       <main className="inline-block w-full h-full sm:ml-24 md:ml-32 lg:ml-40">
         <Home />
         <About />
@@ -48,7 +50,7 @@ const AppRoutes = props => {
 };
 
 const mapStateToProps = state => ({
-  isInitRoute: state.initRoute
+  isInitRoute: state.misc.initRoute
 });
 
-export default connect(mapStateToProps)(withRouter(AppRoutes));
+export default connect(mapStateToProps)(withRouter(Routes));

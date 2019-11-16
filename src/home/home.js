@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import styled, { keyframes } from "styled-components";
 import { fadeIn, slideInLeft, slideInRight, zoomIn } from "react-animations";
-import Section from "../components/section";
+import Section from "../shared/section/section";
 import { PAGE_HOME } from "../constants";
-import BG_HOME from "../components/images/home.png";
-import Loader from "../components/loader/loader";
+import BG_HOME from "../shared/images/home.png";
+import Loader from "../shared/loader/loader";
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 const slideInLeftAnimation = keyframes`${slideInLeft}`;

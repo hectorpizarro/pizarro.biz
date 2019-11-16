@@ -1,13 +1,13 @@
 import React from "react";
-import LeftBar from "../components/left-bar";
-import { hideModal } from "../redux/actions";
+import NavBar from "../../app/nav-bar";
+import { hideModal } from "../../redux/modal.actions";
 
 const HeaderMenu = () => {
   return (
     <div className="py-2 px-2">
       <nav className="container">
         <ul className="list-none">
-          <LeftBar isLeft={false} closeModal={hideModal} />
+          <NavBar isLeft={false} closeModal={hideModal} />
         </ul>
       </nav>
     </div>

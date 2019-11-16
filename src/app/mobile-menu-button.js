@@ -4,7 +4,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal";
 import styled from "styled-components";
 
-import { showModal } from "../redux/actions";
+import { showModal } from "../redux/modal.actions";
 import { MODAL_HEADER_MENU } from "../constants";
 
 Modal.setAppElement("#root");

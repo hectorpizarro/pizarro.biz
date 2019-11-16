@@ -2,10 +2,10 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Loader from "./components/loader/loader";
+import Loader from "./shared/loader/loader";
 import "./css/index.css";
 
-const App = React.lazy(() => import("./App"));
+const App = React.lazy(() => import("./app/app"));
 
 ReactDOM.render(
   <Provider store={store}>
