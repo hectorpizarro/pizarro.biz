@@ -1,6 +1,6 @@
 {
-  "name": "Hector Pizarro site",
-  "description": "Personal website",
+  "name": "pizarro.biz/site",
+  "description": "Hector Pizarro Personal website",
   "require": {
     "nette/mail": "^3.1"
   }

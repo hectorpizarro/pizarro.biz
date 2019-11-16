@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "994c0801b22f6ed1eaec0978a090ceb5",
+    "content-hash": "4f9abb9a78f8f887441a460720c83477",
     "packages": [
         {
             "name": "nette/mail",
