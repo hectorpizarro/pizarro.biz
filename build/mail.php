@@ -8,6 +8,7 @@
  * @license  http://opensource.org/licenses/gpl-license.php GNU Public License
  * @link     http://hpizarro.biz
  */
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 use Nette\Mail\Message;
 use Nette\Mail\SendmailMailer;
