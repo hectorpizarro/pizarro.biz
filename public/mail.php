@@ -19,14 +19,19 @@ header("Access-Control-Allow-Methods: POST, OPTIONS");
 
 $name = trim($_REQUEST["name"]);
 $subject = "Mail from Hector site - " . $name;
-$from = new SendGrid\Email($name, $_REQUEST["email"]);
-$to = new SendGrid\Email(null, "hpizarro@gmail.com");
-$content = new SendGrid\Content("text/plain", trim($_REQUEST["message"]));
-$mail = new SendGrid\Mail($from, $subject, $to, $content);
-$apiKey = getenv('SENDGRID_API_KEY');
-$sg = new \SendGrid($apiKey);
+$to = "hpizarro@gmail.com";
 
-$response = $sg->client->mail()->send()->post($mail);
-echo $response->statusCode();
-echo $response->headers();
-echo $response->body();
+$email = new \SendGrid\Mail\Mail();
+$email->setFrom($_REQUEST["email"], $name);
+$email->setSubject($subject);
+$email->addTo($to, "Hector Pizarro");
+$email->addContent("text/plain", $_REQUEST["message"]);
+$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+    print $response->statusCode() . "\n";
+    print_r($response->headers());
+    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: ', $e->getMessage(), "\n";
+}
