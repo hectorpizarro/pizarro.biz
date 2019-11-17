@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Content-Type: text
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Headers: content-type
+Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD, OPTIONS
+Response-Delay: 0
+
+{"status":"200","message":"DELETE #78"}

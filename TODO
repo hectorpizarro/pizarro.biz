@@ -1,5 +1,3 @@
-- Add disabled UI to form, buttons
-- Add toast message (error, success)
 - apply modernizr
 - add IE10 version
 - add tests

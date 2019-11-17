@@ -9,3 +9,7 @@ export const MODAL_HEADER_MENU = "MODAL_HEADER_MENU";
 export const MODAL_EXPERIENCE = "MODAL_EXPERIENCE";
 
 export const TOAST_EXP_TIME = "3000";
+export const MAIL_URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8081/mail.php"
+    : "/mail.php";

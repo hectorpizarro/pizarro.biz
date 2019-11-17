@@ -31,6 +31,7 @@
   "devDependencies": {
     "@svgr/cli": "^4.3.3",
     "autoprefixer": "^9.7.1",
+    "mockserver": "^3.1.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.1.3",
     "purgecss": "^1.4.1",
@@ -49,7 +50,9 @@
     "build:style": "tailwind build src/tailwind.source.css -o src/css/index.css -c tailwind.config.js",
     "build:svg": "npx @svgr/cli --icon --replace-attr-values \"#fff=currentColor\" -d src/components/images src/components/images",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mockserver": "mockserver -p 8081 -m mockserver",
+    "start:mock": "npm-run-all -p start:css start:js mockserver"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -24,6 +24,7 @@ const Routes = props => {
       AppService.setScroll(pageId);
     }
     setFlagInitRoute();
+    // eslint-disable-next-line
   }, []);
 
   return (
