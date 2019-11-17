@@ -3,16 +3,14 @@ import { string as yupString, object as yupObject } from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import Section from "../shared/section/section";
 import Button from "../shared/button";
 
 import "./contact.css";
-import { PAGE_CONTACT } from "../constants";
 import { sendMail } from "../redux/async-actions";
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 
-const ContactContent = styled(Section)`
+const Content = styled.div`
   animation: 2s ${fadeInAnimation};
 `;
 
@@ -127,21 +125,19 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => {
 
 const Contact = () => {
   return (
-    <ContactContent name={PAGE_CONTACT} title="Contact" withFooter>
-      <div>
-        <p>
-          Let's work together! You can always reach me at my mail or sending me
-          a message here:
-        </p>
-        <Formik
-          initialValues={{ ...initState }}
-          validationSchema={schema}
-          onSubmit={onSubmit}
-        >
-          {renderForm}
-        </Formik>
-      </div>
-    </ContactContent>
+    <Content>
+      <p>
+        Let's work together! You can always reach me at my mail or sending me a
+        message here:
+      </p>
+      <Formik
+        initialValues={{ ...initState }}
+        validationSchema={schema}
+        onSubmit={onSubmit}
+      >
+        {renderForm}
+      </Formik>
+    </Content>
   );
 };
 

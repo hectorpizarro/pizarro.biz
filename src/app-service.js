@@ -40,9 +40,9 @@ const getRouteFromId = id => {
   return foundPage ? foundPage.route : null;
 };
 
-const setScroll = pageId => {
+const setScroll = (pageId, duration = 1000) => {
   scroller.scrollTo(pageId, {
-    duration: 1000,
+    duration,
     smooth: "easeInOutQuad"
   });
 };
