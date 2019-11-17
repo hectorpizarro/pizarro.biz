@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
-import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
 import AppService from "../app-service";
 import "react-slidedown/lib/slidedown.css";
 
 const sectionIds = ["advanced", "intermediate", "novice"];
-const fadeInAnimation = keyframes`${fadeIn}`;
-const Content = styled.div`
-  animation: 2s ${fadeInAnimation};
-`;
 
 const Skills = () => {
   const [closed, setClosed] = useState({
@@ -28,7 +22,7 @@ const Skills = () => {
   };
 
   return (
-    <Content className="text-xs sm:text-sm md:text-base">
+    <div className="text-xs sm:text-sm md:text-base">
       <button
         className="font-bold border border-gray-500 bg-gray-300 text-left w-full p-2 hover:border-gray-800 hover:bg-white transition-colors transition-500 cursor-pointer"
         data-id="advanced"
@@ -191,7 +185,7 @@ const Skills = () => {
           </li>
         </ul>
       </SlideDown>
-    </Content>
+    </div>
   );
 };
 

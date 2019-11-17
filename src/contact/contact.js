@@ -1,18 +1,10 @@
 import React from "react";
 import { string as yupString, object as yupObject } from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
 import Button from "../shared/button";
 
 import "./contact.css";
 import { sendMail } from "../redux/async-actions";
-
-const fadeInAnimation = keyframes`${fadeIn}`;
-
-const Content = styled.div`
-  animation: 2s ${fadeInAnimation};
-`;
 
 const initState = {
   name: "",
@@ -125,7 +117,7 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => {
 
 const Contact = () => {
   return (
-    <Content>
+    <div>
       <p>
         Let's work together! You can always reach me at my mail or sending me a
         message here:
@@ -137,7 +129,7 @@ const Contact = () => {
       >
         {renderForm}
       </Formik>
-    </Content>
+    </div>
   );
 };
 

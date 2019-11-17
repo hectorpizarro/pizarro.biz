@@ -7,10 +7,17 @@ import {
   faFacebook,
   faInstagram
 } from "@fortawesome/free-brands-svg-icons";
+import styled, { keyframes } from "styled-components";
+import { slideInUp } from "react-animations";
+
+const slideInUpAnimation = keyframes`${slideInUp}`;
+const Content = styled.footer`
+  animation: 2s ${slideInUpAnimation};
+`;
 
 const Footer = () => {
   return (
-    <footer className="flex items-center justify-between h-20 bg-gray-900 px-5">
+    <Content className="flex items-center justify-between h-20 bg-gray-900 px-5">
       <div>
         <span className="footerButton">
           <FontAwesomeIcon
@@ -58,7 +65,7 @@ const Footer = () => {
           <FontAwesomeIcon icon={faFacebook} />
         </a>
       </div>
-    </footer>
+    </Content>
   );
 };
 

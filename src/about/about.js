@@ -1,15 +1,8 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
-
-const fadeInAnimation = keyframes`${fadeIn}`;
-const Content = styled.div`
-  animation: 2s ${fadeInAnimation};
-`;
 
 const About = () => {
   return (
-    <Content className="text-xs sm:text-lg lg:text-xl">
+    <div className="text-xs sm:text-lg lg:text-xl">
       <p className="mb-3 sm:mb-4 md:mb-8 lg:mb-8 text-justify">
         Hello, my name is <span className="font-bold">Hector Pizarro</span>, I
         have been a web developer for two decades and technical leader for the
@@ -45,7 +38,7 @@ const About = () => {
       <div className="font-bold text-right text-base sm:text-xl lg:text-2xl">
         Hector
       </div>
-    </Content>
+    </div>
   );
 };
 

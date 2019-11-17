@@ -8,7 +8,6 @@ import "slick-carousel/slick/slick-theme.css";
 import "./experience.css";
 import Mobile from "./mobile";
 import Desktop from "./desktop";
-import Loader from "../shared/loader/loader";
 import "../css/background.css";
 
 const fadeInAnimation = keyframes`${fadeIn}`;
@@ -33,7 +32,7 @@ const Experience = props => {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <Loader className="text-gray-500 h-16 w-16" />
+      <p className="text-gray-500">Loading experiences...</p>
     </div>
   );
 };

@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 import { Element } from "react-scroll";
-import { PAGE_HOME } from "../constants";
 import BG_HOME from "../shared/images/home.png";
-import Loader from "../shared/loader/loader";
+import PageLoader from "../shared/loader/page-loader";
 import HomeContent from "./home-content";
+import { PAGE_HOME } from "../constants";
+
+const fadeInAnimation = keyframes`${fadeIn}`;
+
+const ElementHome = styled(Element)`
+  background-image: url(${BG_HOME});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+  animation: 2s ${fadeInAnimation};
+`;
 
 const Home = () => {
   const [bgImage, setBgImage] = useState("");
@@ -17,15 +29,18 @@ const Home = () => {
   }, []);
 
   if (bgImage) {
-    return <HomeContent />;
+    return (
+      <ElementHome
+        name={PAGE_HOME}
+        className="flex flex-col h-screen w-full items-center justify-center"
+      >
+        <HomeContent />
+      </ElementHome>
+    );
   }
-
   return (
-    <Element
-      name={PAGE_HOME}
-      className="flex flex-col h-screen w-full  items-center justify-center"
-    >
-      <Loader className="text-gray-500 h-16 w-16" />
+    <Element name={PAGE_HOME} className="flex flex-col h-screen w-full">
+      <PageLoader />
     </Element>
   );
 };
