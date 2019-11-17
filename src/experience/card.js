@@ -105,4 +105,4 @@ Card.propTypes = {
   experience: PropTypes.object.isRequired
 };
 
-export default Card;
+export default React.memo(Card);

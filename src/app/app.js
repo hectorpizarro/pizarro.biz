@@ -41,4 +41,4 @@ const mapStateToProps = state => ({
   modalId: state.modal.modalId
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(React.memo(App));

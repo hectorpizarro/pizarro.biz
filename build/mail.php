@@ -10,10 +10,6 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-// use Nette\Mail\Message;
-// use Nette\Mail\SendmailMailer;
-
-// header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: content-type");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 

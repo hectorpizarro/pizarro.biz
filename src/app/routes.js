@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
   isInitRoute: state.misc.initRoute
 });
 
-export default connect(mapStateToProps)(withRouter(Routes));
+export default connect(mapStateToProps)(withRouter(React.memo(Routes)));

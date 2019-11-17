@@ -8,7 +8,7 @@ import {
   faInstagram
 } from "@fortawesome/free-brands-svg-icons";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="flex items-center justify-between h-20 bg-gray-900 px-5">
       <div>
@@ -60,4 +60,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default React.memo(Footer);

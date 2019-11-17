@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-scroll";
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { slideInLeft } from "react-animations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
@@ -12,12 +12,8 @@ import AppService from "../app-service";
 import { hideModal } from "../redux/modal.actions";
 
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
-const animation = props =>
-  css`
-    2s ${slideInLeftAnimation};
-  `;
 const NavBarContent = styled.section`
-  ${props => (props.isLeft ? `animation: 2s ${animation};` : "")}
+  animation: ${props => (props.isLeft ? "2s" : "0s")} ${slideInLeftAnimation};
 `;
 
 const NavBar = props => {

@@ -1,6 +1,6 @@
+- add lazy load
 - apply modernizr
 - add IE10 version
 - add tests
 - add docs
 - improve resume pdf
-- add React.memo()
