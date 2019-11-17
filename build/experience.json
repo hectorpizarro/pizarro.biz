@@ -13,17 +13,16 @@
     "time": "3Y+9m",
     "timeDescription": "3 years 9 months",
     "descriptionShort": [
-      "Technical leader and senior javascript developer in a five members team for 'Engage'",
-      "the Hyp3r enterprise web app."
+      "Technical leader and senior javascript developer in a five members team for 'Engage', the Hyp3r enterprise web app."
     ],
     "description": [
-      "As the web technical lead for the 'Engage' web app I was in charge of a five members team that built and maintained the enterprise SPA web/mobile app. 'Engage' allowed enterprise customers like Marriott or Norwegian Cruise Line to engage with their customers on close to real time using Instagram, Twitter or Weibo (for the chinese market).",
-      "The team worked remotely for years across multiple timezones, with main headquarters in San Francisco and developers in Costa Rica, USA, Puerto Rico, Argentina and Colombia.",
-      "As a senior frontend developer I created code from the Proof of Concept phase until it reached enterprise audience. The web app was developed using a mix of AngularJs, React and pure JS, and was built using gulp + browserify. I also developed a private web browser extension available for customers that ran on the last versions of Chrome, Firefox and MS Edge."
+      "As the web technical lead for the 'Engage' web app I was in charge of a five members team that built and maintained the enterprise SPA web/mobile app. 'Engage' allowed enterprise customers like Marriott or Norwegian Cruise Line to engage with their customers on near real time using Instagram, Twitter or Weibo (in the chinese market).",
+      "The team worked remotely across multiple timezones, with main headquarters in San Francisco and developers from Costa Rica, USA, Puerto Rico, Argentina and Colombia.",
+      "As a senior frontend developer I created code from the Proof of Concept phase until it reached enterprise audiences. The web app was developed using a mix of AngularJs, React and pure JS, and was built using Gulp + browserify. We developed a private web browser extension available for customers that ran on Chrome, Firefox and MS Edge."
     ],
-    "tech_dev": "HTML5, CSS3, less, AngularJS, React, Redux, styled-components, masonry, bootstrap, axios, google maps, mapbox.",
-    "tech_build": "gulp, browserify, babel, circleCI, storybook.",
-    "tech_test": "jest, enzyme."
+    "tech_dev": "HTML5, CSS3, Less, AngularJS, React, Redux, Styled-Components, Masonry, Bootstrap, Axios, Google maps, Mapbox.",
+    "tech_build": "Gulp, Browserify, Babel, CircleCI, Storybook.",
+    "tech_test": "Jest, Enzyme."
   },
   {
     "id": "2",
@@ -39,15 +38,15 @@
     "time": "2Y",
     "timeDescription": "2 years",
     "descriptionShort": [
-      "Senior PHP/JavaScript developer for the Gforge Advanced Server SaaS web app team."
+      "Senior PHP/JavaScript developer in the Gforge Advanced Server SaaS web app team."
     ],
     "description": [
-      "Senior PHP developer in a five members team build new features and providing maintenance for the company enterprise web app.",
-      "GForge AS is a SaaS application that provides project management, team chat, continuous integration, git code reviews, git pull requests, etc. I developed PHP code and built functionality on Angular JS for chat."
+      "Senior PHP developer in a five members team, building new features and providing maintenance for the company enterprise web app.",
+      "GForge AS is a SaaS application that provides project management, team chat, continuous integration, git code reviews, git pull requests, etc. I developed PHP code and built functionality on Angular JS for the chat module."
     ],
-    "tech_dev": "HTML5, CSS3, PHP, AngularJS, vanilla JavaScript.",
+    "tech_dev": "HTML5, CSS3, PHP, AngularJS, pure JavaScript.",
     "tech_build": "Jenkins.",
-    "tech_test": "PHPUnit, jazmine."
+    "tech_test": "PHPUnit, Jazmine."
   },
   {
     "id": "3",
@@ -64,13 +63,13 @@
     "time": "9m",
     "timeDescription": "9 months",
     "descriptionShort": [
-      "Technical leader and senior PHP developer in a three members team for 'Criminal Empire' Facebook game."
+      "Technical leader, Sr. PHP developer in a three members team for the 'Criminal Empire' Facebook game."
     ],
     "description": [
-      "Lead team developing and maintaining the 'Criminal Empire' Facebook game. Game customers required high availability, the aa had web and mobile heavy traffic. Senior developer on confidential mobile projects.",
+      "Lead a team developing and maintaining the 'Criminal Empire' Facebook game. Game customers required high availability on heavy traffic for the web and mobile apps. Senior developer on confidential mobile projects.",
       "Playdom Argentina offices closed in September 2013, and the whole company closed on 2014."
     ],
-    "tech_dev": "OO PHP, MongoDB, Backbone, Google Apps Scripts, Jenkins, Jira, github, git, Maven, Spring.",
+    "tech_dev": "OOP PHP, MongoDB, Backbone, Google Apps Scripts, Jenkins, Jira, Github, Git, Maven, Spring.",
     "tech_build": "",
     "tech_test": "PHPUnit."
   },
@@ -91,11 +90,11 @@
       "Lead the dev team in charge of LiveOps customer online service. Backend Perl module development, UI development with HTML/CSS/Javascript."
     ],
     "description": [
-      "Hired by GlobalLogic Argentina as Tech lead for a 10 member team in La Plata and Buenos Aires, working for Silicon Valley SaaS company LiveOps.",
+      "Hired by GlobalLogic Argentina as Tech lead for a 10 member team in La Plata city and Buenos Aires, our team was assigned full time to the Silicon Valley SaaS company LiveOps.",
       "Received a 6 weeks training course in San Jose, California. In charge of development and maintenance of the web module, RTM (Real Time Monitoring) area and security for the LiveOps SaaS callcenter application.",
-      "Development of Perl web modules, JavaScript integration with SalesForce service, Linux maintenance, QA scripting automation."
+      "Developed Perl web modules, JavaScript integration with SalesForce service, Linux maintenance, QA scripting automation."
     ],
-    "tech_dev": "Perl (mod_perl, Mason perl framework, scripts), MySQL, Rally, CVS, SVN, git, JavaScript, JQuery, Coffeescript, Backbone JS, Rally, Bugzilla, Linux, Ruby, HTML, CSS, Redis.",
+    "tech_dev": "Perl (mod_perl, Mason perl framework, scripts), MySQL, Rally, CVS, SVN, Git, JavaScript, JQuery, Coffeescript, Backbone JS, Rally, Bugzilla, Linux, Ruby, HTML, CSS, Redis.",
     "tech_build": "",
     "tech_test": "Custom Perl unit test modules."
   },
@@ -116,12 +115,12 @@
       "Tech Lead on traffic report intranet portal for EA online games. Lead a remote team in India."
     ],
     "description": [
-      "Developed of a real time web report system using LAMP.",
-      "The system provided statistics for all the EA online games on all of their platforms (PS2, PS3, XBOX 360, Wii, etc.). "
+      "Hired by Globant to develop of a real time web report system using LAMP for their customer Electonic Arts (EA).",
+      "The system provided statistics for EA online games on all their platforms (PS2, PS3, XBOX 360, Wii, etc.). "
     ],
     "tech_dev": "PHP Symfony, MySQL, Linux, JavaScript, JQuery.",
     "tech_build": "",
-    "tech_test": ""
+    "tech_test": "PHPUnit."
   },
   {
     "id": "6",
@@ -140,7 +139,7 @@
       "Tech Lead for the WSOP game on Facebook, Hi5, MySpace."
     ],
     "description": [
-      "Tech lead for the Playdom - Poker Palace / WSOP poker game provided on Facebook, Hi5 and MySpace."
+      "Hired by Globant to lead the team in charge of the Poker Palace / WSOP poker game for the US Playdom company. The web app ran on Facebook, Hi5 and MySpace."
     ],
     "tech_dev": "ActionScript, Java, PHP, JavaScript.",
     "tech_build": "",
@@ -167,7 +166,7 @@
       "Lead multiple teams for diverse projects, from FaceBook applications to online games. Team members had different seniority levels and were proficient on multiple technologies such as Java devs, ActionScript devs, QA engineers, PHP developers, etc.",
       "Support to sales area creating tech documentation for Globant customer proposals."
     ],
-    "tech_dev": "Facebook API, REST APIs, jQuery, CakePHP, Doctrine ORM, ActionScript 3, java, Zend framework, CSS, javascript, MySQL, Code Igniter, PHP Symfony, Open Social, Jira, Confluence, Perforce.",
+    "tech_dev": "Facebook API, REST APIs, JQuery, CakePHP, PHP Doctrine ORM, ActionScript 3, Java, PHP Zend framework, CSS, Javascript, MySQL, PHP Code Igniter, PHP Symfony, Open Social, Jira, Confluence, Perforce.",
     "tech_build": "Ant, Hudson.",
     "tech_test": ""
   },
@@ -186,14 +185,14 @@
     "time": "7Y+6m",
     "timeDescription": "7 years 6 months",
     "descriptionShort": [
-      "Lead the dev team building static and dynamic web sites. All developers worked remotely from Peru, Argentina and Los Angeles."
+      "Lead the dev team building customers web sites. All developers worked remotely from Peru, Argentina and USA."
     ],
     "description": [
-      "Lead a team of developers to build and maintain websites, frontend and backend modules for amautalab customers on Los Angeles and New York.",
-      "In 2002 developed panaka, an online web drive service using mod_perl installed on customer dedicated servers.",
-      "Projects:Toyota Scion site, Toyota Mundo Yaris site, isuma.tv canadian portal, Sanrio online licensing approval system, La Agencia de Orci site, Casanova Pendrill site, AIM V site, aiwaworld.com dynamic content, Art Center College of Design site facelift, panaka.com Perl backend engine."
+      "Lead a developers team building and providing support for websites, frontend and backend modules for Amautalab customers on Los Angeles and New York.",
+      "In 2002 developed Panaka, an online web drive service using mod_perl installed on customer dedicated servers.",
+      "Projects: Toyota Scion site, Toyota Mundo Yaris site, isuma.tv (canadian portal), Sanrio online licensing approval system, La Agencia de Orci site, Casanova Pendrill site, AIM V site, aiwaworld.com dynamic content, Art Center College of Design site facelift, panaka.com Perl backend engine, etc."
     ],
-    "tech_dev": "Perl scripting, mod_perl, OO PHP, Zend framework, Ajax, Prototype, jQuery, Dojo, Scriptaculous, LAMP, Cocoa, ActionScript 3, HTML, CSS, Javascript, SVN, Regular Expressions, Pluck API.",
+    "tech_dev": "Perl scripting, mod_perl, OOP PHP, PHP Zend Framework, Ajax, Prototype, JQuery, Dojo, Scriptaculous, LAMP, Cocoa, ActionScript 3, HTML, CSS, Javascript, SVN, Regular Expressions, Pluck API.",
     "tech_build": "",
     "tech_test": ""
   },
@@ -215,9 +214,9 @@
       "Learn open source web technologies, focused on LAMP. Build the web team."
     ],
     "description": [
-      "First IT employee on the company. Lead the dev team in charge of creating and maintaining web sites for the company customers like Telefonica Peru projects, BellSouth Peru projects, Presidential elections 2001, etc."
+      "First IT employee on the company. Lead the development team in charge of creating and maintaining web sites for the company customers like Telefonica Peru, BellSouth Peru, the Presidential elections in 2001, etc."
     ],
-    "tech_dev": "LAMP, java, HTML, CSS, Javascript, Linux servers administrator, Macromedia Dreamweaver, Macromedia Fireworks.",
+    "tech_dev": "LAMP, Java, HTML, CSS, Javascript, Linux servers administrator, Macromedia Dreamweaver, Macromedia Fireworks, MS Frontpage.",
     "tech_build": "",
     "tech_test": ""
   },
