@@ -2,6 +2,6 @@
   "name": "pizarro.biz/site",
   "description": "Hector Pizarro Personal website",
   "require": {
-    "nette/mail": "^3.1"
+    "sendgrid/sendgrid": "^7.3"
   }
 }

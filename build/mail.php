@@ -10,25 +10,23 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Nette\Mail\Message;
-use Nette\Mail\SendmailMailer;
+// use Nette\Mail\Message;
+// use Nette\Mail\SendmailMailer;
 
 // header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: content-type");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 
-$to = "hpizarro@gmail.com";
-$name = htmlentities(trim($_REQUEST["name"]));
+$name = trim($_REQUEST["name"]);
 $subject = "Mail from Hector site - " . $name;
-$from = <<<EOT
-{$_REQUEST["name"]} <{$_REQUEST["email"]}>
-EOT;
-$message = htmlentities(trim($_REQUEST["message"]));
+$from = new SendGrid\Email($name, $_REQUEST["email"]);
+$to = new SendGrid\Email(null, "hpizarro@gmail.com");
+$content = new SendGrid\Content("text/plain", trim($_REQUEST["message"]));
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+$apiKey = getenv('SENDGRID_API_KEY');
+$sg = new \SendGrid($apiKey);
 
-$mail = new Message;
-$mail->setFrom($from)
-    ->addTo($to)
-    ->setSubject($subject)
-    ->setBody($message);
-$mailer = new SendmailMailer;
-$mailer->send($mail);
+$response = $sg->client->mail()->send()->post($mail);
+echo $response->statusCode();
+echo $response->headers();
+echo $response->body();
