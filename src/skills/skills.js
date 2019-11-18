@@ -22,7 +22,7 @@ const Skills = () => {
    * Update state, set clicked section open. If already open no change applied.
    * @param {Object} event - Click event
    */
-  const handleCLick = event => {
+  const handleClick = event => {
     const sectionId = AppService.getClickId(event);
     const newState = {};
     SKILLS_SECTIONS.forEach(el => {
@@ -36,7 +36,7 @@ const Skills = () => {
       <button
         className="font-bold border border-gray-500 bg-gray-300 text-left w-full p-2 hover:border-gray-800 hover:bg-white transition-colors transition-500 cursor-pointer"
         data-id="advanced"
-        onClick={handleCLick}
+        onClick={handleClick}
       >
         Advanced
       </button>
@@ -124,7 +124,7 @@ const Skills = () => {
       <div
         className="font-bold border border-gray-500 bg-gray-300 text-left w-full p-2 hover:border-gray-800 hover:bg-white transition-colors transition-500 cursor-pointer"
         data-id="intermediate"
-        onClick={handleCLick}
+        onClick={handleClick}
       >
         Intermediate
       </div>
@@ -158,7 +158,7 @@ const Skills = () => {
       <div
         className="font-bold border border-gray-500 bg-gray-300 text-left w-full p-2 hover:border-gray-800 hover:bg-white transition-colors transition-500 cursor-pointer"
         data-id="novice"
-        onClick={handleCLick}
+        onClick={handleClick}
       >
         Novice
       </div>
