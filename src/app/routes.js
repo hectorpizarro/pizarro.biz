@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Element } from "react-scroll";
+import PropTypes from "prop-types";
 import PageLoader from "../shared/loader/page-loader";
 import NavBar from "./nav-bar";
 import AppModal from "../shared/modal/modal";
@@ -14,26 +15,36 @@ import {
   PAGE_SKILLS,
   PAGE_EXPERIENCE,
   PAGE_CONTACT,
-  PAGE_HOME
+  PAGE_HOME,
+  PAGES
 } from "../constants";
 import PageWrapper from "../shared/page-wrapper";
 
-// Build route strings array. Remove '/' as tihs is the default, added manually
-const routes = AppService.pages.map(page => page.route);
-
+/**
+ * Component to load Home page component lazily.
+ */
 const HomeLazyLoader = React.lazy(() => import("../home/home"));
+/**
+ * Component to load Experience page component lazily.
+ */
 const ExperienceLazyLoader = React.lazy(() =>
   import("../experience/experience")
 );
 
+/**
+ * Routes to load inside App component. This was extracted from App because we want to scroll to the route defined in the url once this component is mounted.
+ * @param {Object} props - Props object, expected 'isInitRoute' flag to scroll only once and 'location' provided by withRouter.
+ * @returns {Object} - DIV DOM node with defined routes and all pages loaded lazily.
+ */
 const Routes = props => {
-  // Move scroll to defined route once, when component is mounted
+  //Execute when component is mounted.
   useEffect(() => {
     const pageId = AppService.getIdFromRoute(props.location.pathname);
+    // Url has a valid route defined, scroll to page
     if (pageId) {
       AppService.setScroll(pageId, 0);
     }
-    setFlagInitRoute();
+    setFlagInitRoute(); // set flag so scroll is executed only once
     // eslint-disable-next-line
   }, []);
 
@@ -87,16 +98,23 @@ const Routes = props => {
       <Switch>
         {/* Default route is home */}
         <Redirect exact from="/" to="/home" />
-        {routes.map((myRoute, idx) => (
-          <Route key={idx} path={myRoute} children={() => null} />
+        {PAGES.map((page, idx) => (
+          <Route key={idx} path={page.route} children={() => null} />
         ))}
       </Switch>
     </div>
   );
 };
 
+Routes.propTypes = {
+  // Provided by withRouter, contains current url path
+  location: PropTypes.object.isRequired,
+  // Provided by Redux, flag to load url route on component first mount
+  isInitRoute: PropTypes.bool.isRequired
+};
+
 const mapStateToProps = state => ({
-  isInitRoute: state.misc.initRoute
+  isInitRoute: state.misc.initRoute // Flag to scroll content to initial url page
 });
 
 export default connect(mapStateToProps)(withRouter(React.memo(Routes)));

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
+import PropTypes from "prop-types";
 import { hideModal } from "../../redux/modal.actions";
 import {
   MODAL_HEADER_MENU,
@@ -61,6 +62,12 @@ const AppModal = props => {
       {getContent(props.modalId, props.modalData)}
     </Modal>
   );
+};
+
+AppModal.propTypes = {
+  modalId: PropTypes.string, // Modal id, if null no modal visible
+  modalData: PropTypes.any, // Modal data, optional
+  experiences: PropTypes.array // Experiences array
 };
 
 const mapStateToProps = state => ({

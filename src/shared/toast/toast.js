@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./toast.css";
 import { fadeToast } from "../../redux/toast.actions";
 
@@ -25,6 +26,13 @@ const Toast = props => {
       </button>
     </div>
   );
+};
+
+Toast.propTypes = {
+  message: PropTypes.string.isRequired, // Message to show. Hide toast if ""
+  // Toggles background color: Blue if TRUE, otherwise red.
+  isSuccess: PropTypes.bool.isRequired,
+  fade: PropTypes.bool.isRequired // Flag to fade toast before hiding it
 };
 
 const mapStateToProps = state => ({

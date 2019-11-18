@@ -8,6 +8,10 @@ import {
   faCogs
 } from "@fortawesome/free-solid-svg-icons";
 
+/**
+ * Single experience detailed card component. On mobile it's shown in a single slide. On desktop is shown inside a modal.
+ * @param {Object} props - Props
+ */
 const Card = props => {
   return (
     <div className="border rounded bg-white text-xs sm:text-base">
@@ -102,7 +106,7 @@ const Card = props => {
 };
 
 Card.propTypes = {
-  experience: PropTypes.object.isRequired
+  experience: PropTypes.object.isRequired // Single experience object from JSON
 };
 
 export default React.memo(Card);

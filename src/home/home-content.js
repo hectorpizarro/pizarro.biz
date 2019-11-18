@@ -4,20 +4,36 @@ import { slideInLeft, slideInRight, zoomIn } from "react-animations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 
+// Name row animation ketframes
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
+// Titles row animation keyframes
 const slideInRightAnimation = keyframes`${slideInRight}`;
+// Download buttons row animation keyframes
 const zoomInAnimation = keyframes`${zoomIn}`;
 
+/**
+ * Animation for Name row
+ */
 const Name = styled.div`
   animation: 1s ${slideInLeftAnimation};
 `;
+/**
+ * Animation for Titles row
+ */
 const Title = styled.div`
   animation: 1s ${slideInRightAnimation};
 `;
+/**
+ * Animation for download buttons row
+ */
 const Downloads = styled.div`
   animation: 1s ${zoomInAnimation};
 `;
 
+/**
+ * Home page content component.
+ * @returns {Object} DIV HTML node.
+ */
 const HomeContent = () => {
   return (
     <div>

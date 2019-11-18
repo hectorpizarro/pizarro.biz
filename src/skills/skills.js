@@ -2,20 +2,30 @@ import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
 import AppService from "../app-service";
 import "react-slidedown/lib/slidedown.css";
+import { SKILLS_SECTIONS } from "../constants";
 
-const sectionIds = ["advanced", "intermediate", "novice"];
-
+/**
+ * Skills page
+ * @returns {Object} DIV DOM node
+ */
 const Skills = () => {
+  /**
+   * Keep state of the three sections. Only one can be open at any time.
+   */
   const [closed, setClosed] = useState({
     advanced: false,
     intermediate: true,
     novice: true
   });
 
+  /**
+   * Update state, set clicked section open. If already open no change applied.
+   * @param {Object} event - Click event
+   */
   const handleCLick = event => {
     const sectionId = AppService.getClickId(event);
     const newState = {};
-    sectionIds.forEach(el => {
+    SKILLS_SECTIONS.forEach(el => {
       newState[el] = sectionId !== el;
     });
     setClosed(newState);

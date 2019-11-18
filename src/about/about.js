@@ -1,5 +1,12 @@
+/**
+ * About page
+ */
 import React from "react";
 
+/**
+ * About page component.
+ * @returns {Object} DIV HTML node
+ */
 const About = () => {
   return (
     <div className="text-xs sm:text-lg lg:text-xl">

@@ -2,6 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+/**
+ * Slides component, shown only on mobile (under 640px browser width)
+ * @param {Object} props - Props
+ * @returns {Object} UL DOM node
+ */
 const MobileMenu = props => {
   return (
     <ul className="text-xs">
@@ -37,11 +42,13 @@ const MobileMenu = props => {
 };
 
 MobileMenu.propTypes = {
-  goToSlide: PropTypes.func.isRequired
+  // Function moves slide to selected section
+  goToSlide: PropTypes.func.isRequired,
+  experiences: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
-  experiences: state.misc.experiences
+  experiences: state.misc.experiences // Experiences list, loaded from JSON
 });
 
 export default connect(mapStateToProps)(MobileMenu);

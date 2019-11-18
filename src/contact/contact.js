@@ -5,13 +5,12 @@ import Button from "../shared/button";
 
 import "./contact.css";
 import { sendMail } from "../redux/async-actions";
+import { CONTACT_INIT_STATE } from "../constants";
 
-const initState = {
-  name: "",
-  email: "",
-  message: ""
-};
-
+/**
+ * Configuration object for Yup schema validator. See:
+ * https://github.com/jquense/yup
+ */
 const schema = yupObject().shape({
   name: yupString()
     .min(3, "Too Short!")
@@ -26,16 +25,28 @@ const schema = yupObject().shape({
     .required("Required")
 });
 
-// Defined actions: resetForm, setStatus
+/**
+ * Callback executed on Form submit. For details on 'actions' parameter see:
+ * https://jaredpalmer.com/formik/docs/api/formik#onsubmit-values-values-formikbag-formikbag-gt-void
+ * @param {Object} values - Form field values.
+ * @param {Object} actions - Form onSubmit 'FormikBag' {resetForm, setStatus, ...}
+ */
 const onSubmit = async (values, actions) => {
-  const isSuccess = await sendMail(values);
+  const isSuccess = await sendMail(values); // wait async method to send mail
   if (isSuccess) {
-    actions.resetForm();
+    actions.resetForm(); // mail sent, reset form
   } else {
-    actions.setSubmitting(false);
+    actions.setSubmitting(false); // mail failed, turn off Form flag
   }
 };
 
+/**
+ * Formik Form component to render inside HTML form. Receives Formik props,
+ * see https://jaredpalmer.com/formik/docs/api/formik
+ * DOM node is rendered in a CSS grid.
+ * @param {Object} param - Params object received from Formik.
+ * @returns {Object} - Form formik object.
+ */
 const renderForm = ({ errors, status, touched, isSubmitting }) => {
   return (
     <Form className="container-grid w-full pt-10 sm:px-5 md:px-10">
@@ -115,6 +126,10 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => {
   );
 };
 
+/**
+ * Contact page
+ * @returns {Object} - DIV DOM node.
+ */
 const Contact = () => {
   return (
     <div>
@@ -123,7 +138,7 @@ const Contact = () => {
         message here:
       </p>
       <Formik
-        initialValues={{ ...initState }}
+        initialValues={{ ...CONTACT_INIT_STATE }}
         validationSchema={schema}
         onSubmit={onSubmit}
       >

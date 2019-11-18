@@ -8,21 +8,40 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PHOTO from "../shared/images/photo_small.jpg";
-import AppService from "../app-service";
 import { hideModal } from "../redux/modal.actions";
+import { PAGES } from "../constants";
 
+/**
+ * Firt load animation keyframes
+ */
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
+/**
+ * Page animation. Applied on component mount only for left column navbar,
+ * Mobile menu has no animation.
+ */
 const NavBarContent = styled.section`
   animation: ${props => (props.isLeft ? "2s" : "0s")} ${slideInLeftAnimation};
 `;
 
+/**
+ * Navigation bar shown on left side. Mobile shows it as a modal menu at top right.
+ * @param {Object} props - Props
+ * @returns {Object} HTML DOM section node.
+ */
 const NavBar = props => {
+  /**
+   * Clicking on any button bar hides modal. Used on mobile menu.
+   * @param {Object} event - Click event
+   */
   const handleClick = event => {
     if (!props.isLeft) {
       hideModal();
     }
   };
 
+  /**
+   * CSS classes to apply for left bar or mobile menu.
+   */
   const classes = props.isLeft
     ? {
         section:
@@ -39,9 +58,13 @@ const NavBar = props => {
         li: "border-8 border-gray-100"
       };
 
+  /**
+   * Applied only after App is first mounted, updates url based on current active page.
+   * @param {String} to - Page id
+   */
   const handleSetActive = to => {
     if (props.isInitRoute) {
-      const myPage = AppService.pages.find(page => page.id === to);
+      const myPage = PAGES.find(page => page.id === to);
       props.history.push(myPage.route);
     }
   };
@@ -58,7 +81,7 @@ const NavBar = props => {
       </figure>
       <nav className="container">
         <ul className="list-none">
-          {AppService.pages.map(page => (
+          {PAGES.map(page => (
             <li key={page.id} className={classes.li}>
               <Link
                 className={`navButton ${
@@ -93,8 +116,11 @@ const NavBar = props => {
 };
 
 NavBar.propTypes = {
+  // Flag, show on left column if TRUE, otherwise show as a modal for mobile
   isLeft: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired // Provided automatically by withRouter
+  history: PropTypes.object.isRequired, // Provided automatically by withRouter
+  // From Redux, flag to update url to current selected page
+  isInitRoute: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({

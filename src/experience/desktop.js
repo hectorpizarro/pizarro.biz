@@ -2,20 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 import AppService from "../app-service";
 import { showModal } from "../redux/modal.actions";
 import { MODAL_EXPERIENCE } from "../constants";
 
+/**
+ * Content to show if browser is over 640px width.
+ * @param {Object} props - Props
+ * @returns {Object} DIV DOM node.
+ */
 const Desktop = props => {
+  /**
+   * Set experience id to Redux and show modal with experience detail.
+   * @param {Object} event - Click event
+   */
   const showExperienceDetail = event => {
     const expId = AppService.getClickId(event);
     showModal(MODAL_EXPERIENCE, `${expId}`);
-  };
-
-  const noop = event => {
-    event.preventDefault();
-    event.stopPropagation();
-    return false;
   };
 
   return (
@@ -62,7 +66,7 @@ const Desktop = props => {
             </div>
             <a
               href="/#"
-              onClick={noop}
+              onClick={AppService.noop}
               className="absolute right-0 bottom-0 mr-1 mb-1 text-xs text-red-500"
             >
               more
@@ -74,8 +78,12 @@ const Desktop = props => {
   );
 };
 
+Desktop.propTypes = {
+  experiences: PropTypes.array.isRequired // Experiences array from JSON
+};
+
 const mapStateToProps = state => ({
-  experiences: state.misc.experiences
+  experiences: state.misc.experiences // Experiences array stored in Redux
 });
 
 export default connect(mapStateToProps)(Desktop);

@@ -10,11 +10,21 @@ import {
 import styled, { keyframes } from "styled-components";
 import { slideInUp } from "react-animations";
 
+/**
+ * CSS keyframes for load animation
+ */
 const slideInUpAnimation = keyframes`${slideInUp}`;
+/**
+ * Styled 'footer' HTML5 element. Shows slide up animation on component first load.
+ */
 const Content = styled.footer`
   animation: 2s ${slideInUpAnimation};
 `;
 
+/**
+ * Footer component, shown at Contact page bottom.
+ * @returns {Object} HTML DOM footer node
+ */
 const Footer = () => {
   return (
     <Content className="flex items-center justify-between h-20 bg-gray-900 px-5">
