@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Loader from "./loader/loader";
 
+/**
+ * Button component.
+ * @param {Object} props - Props
+ * @returns {Object} button DOM node.
+ */
 const Button = props => {
   const getMyClasses = () => {
     const classes = ["py-2 border rounded px-8"];
@@ -32,17 +38,17 @@ const Button = props => {
       disabled={props.disabled}
       className={getMyClasses()}
     >
-      {props.label}
+      {props.disabled ? <Loader forButton /> : props.label}
     </button>
   );
 };
 
 Button.propTypes = {
-  type: PropTypes.string,
-  disabled: PropTypes.bool,
-  label: PropTypes.string.isRequired,
-  inverse: PropTypes.bool,
-  onSubmit: PropTypes.func
+  label: PropTypes.string.isRequired, // Label
+  type: PropTypes.string, // 'submit', 'reset', 'button'
+  disabled: PropTypes.bool, // Flag to disable button
+  inverse: PropTypes.bool, // Secondary button colors
+  onSubmit: PropTypes.func // Function executed on button click
 };
 
 Button.defaultProps = {

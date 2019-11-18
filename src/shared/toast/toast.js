@@ -3,8 +3,13 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import "./toast.css";
 import { fadeToast } from "../../redux/toast.actions";
-
+/**
+ * Toast message component. Shown for a small amoun of time at top right.
+ * @param {Object} props - Props
+ * @returns {Object} DIV DOM node
+ */
 const Toast = props => {
+  // Don't render if there is no message
   if (props.message === "") {
     return null;
   }

@@ -1,6 +1,10 @@
 import React from "react";
 import Loader from "./loader";
 
+/**
+ * Loader component shown before loading a page.
+ * @returns {Object} DIV DOM node, uses whole screen.
+ */
 const PageLoader = () => {
   return (
     <div className="flex h-screen w-full items-center justify-center">

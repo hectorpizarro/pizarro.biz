@@ -8,34 +8,34 @@ import {
   MODAL_CLOSE_TIME,
   MODAL_EXPERIENCE
 } from "../../constants";
-import HeaderMenu from "./header-menu";
 import Card from "../../experience/card";
+import NavBar from "../../app/nav-bar";
 
 Modal.setAppElement("#root"); // Required by react-modal library
 
+/**
+ * Reset modal id, this closes modal.
+ * @param {Object} event - Optional, usually click event
+ */
 const closeModal = event => {
-  event.stopPropagation();
+  if (event) {
+    event.stopPropagation();
+  }
   hideModal();
 };
 
+/**
+ * Modal component. Only visible if modal id stored in Redux.
+ * @param {Object} props - Props
+ * @returns {Object} Modal component
+ */
 const AppModal = props => {
-  const getContent = () => {
-    switch (props.modalId) {
-      case MODAL_HEADER_MENU: {
-        return <HeaderMenu />;
-      }
-      case MODAL_EXPERIENCE: {
-        const experience = props.experiences.find(
-          el => el.id === props.modalData
-        );
-        return <Card experience={experience} />;
-      }
-      default:
-        return null;
-    }
-  };
-
+  // Executed once on modal mount
   useEffect(() => {
+    /**
+     * If modal visible, hide modal if ESC keyboard pressed.
+     * @param {Object} event - Key event
+     */
     const handleKeyDown = event => {
       if (props.modalId && event.keyCode === 27) {
         hideModal();
@@ -44,8 +44,37 @@ const AppModal = props => {
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [props.modalId]);
+    // eslint-disable-next-line
+  }, []);
 
+  /**
+   * Returns content to show in modal, forwards the dark overlay.
+   * @returns {Object} DIV for mobile menu, Card component for experiences
+   */
+  const getContent = () => {
+    switch (props.modalId) {
+      // Modal menu at top right
+      case MODAL_HEADER_MENU: {
+        return (
+          <div className="py-2 px-2">
+            <NavBar isLeft={false} closeModal={hideModal} />
+          </div>
+        );
+      }
+      // Experience detail card
+      case MODAL_EXPERIENCE: {
+        const experience = props.experiences.find(
+          el => el.id === props.modalData
+        );
+        return <Card experience={experience} />;
+      }
+      // Unknown, modal is empty
+      default:
+        return null;
+    }
+  };
+
+  // Modal shown top right for mobile menu only.
   const isCentered = props.modalId !== MODAL_HEADER_MENU;
 
   return (

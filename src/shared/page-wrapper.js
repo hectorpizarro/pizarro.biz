@@ -7,11 +7,20 @@ import PageLoader from "./loader/page-loader";
 import Footer from "../app/footer";
 import { PAGE_ABOUT, PAGE_SKILLS, PAGE_CONTACT } from "../constants";
 
+// Initial animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;
+// Styled to animate at component initial mount
 const Content = styled.section`
   animation: 2s ${fadeInAnimation};
 `;
+
+/**
+ * Wrapper to load the following pages: About, Skills, Contact.
+ * Wrapper provides title, lazy loads page component and animates loading.
+ * @param {Object} props - Props
+ */
 const PageWrapper = props => {
+  // Component to load page content lazily.
   let LazyComponent = null;
   switch (props.name) {
     case PAGE_ABOUT:
@@ -24,6 +33,7 @@ const PageWrapper = props => {
       LazyComponent = React.lazy(() => import("../contact/contact"));
       break;
     default:
+      // If page unknown return null to avoid rendering
       return null;
   }
 
@@ -48,10 +58,10 @@ const PageWrapper = props => {
 };
 
 PageWrapper.propTypes = {
-  name: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  title: PropTypes.string,
-  withFooter: PropTypes.bool
+  name: PropTypes.string.isRequired, // Element name, required for react-scroll
+  className: PropTypes.string, // Optional, additional CSS class names
+  title: PropTypes.string, // Optional, shows title at page top
+  withFooter: PropTypes.bool // Optional, show footer at page bottom
 };
 
 PageWrapper.defaultProps = {
