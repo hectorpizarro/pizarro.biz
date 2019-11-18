@@ -9,7 +9,7 @@ import React from "react";
  */
 const About = () => {
   return (
-    <div className="text-xs sm:text-lg lg:text-xl">
+    <div className="text-xs sm:text-base">
       <p className="mb-3 sm:mb-4 md:mb-8 lg:mb-8 text-justify">
         Hello, my name is <span className="font-bold">Hector Pizarro</span>, I
         have been a web developer for two decades and technical leader for the

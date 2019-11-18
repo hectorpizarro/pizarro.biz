@@ -43,7 +43,7 @@ const HomeContent = () => {
           Web Developer - Tech Lead
         </Title>
       </div>
-      <Downloads className="mt-20">
+      <Downloads className="mt-20 text-center">
         <a
           href={`${process.env.PUBLIC_URL}/hector-pizarro-hyp3r-recommendation-letter.pdf`}
           download
