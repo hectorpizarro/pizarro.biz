@@ -30,6 +30,8 @@ export const MAIL_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8081/mail.php"
     : "/mail.php";
+export const GOOGLE_ANALYTICS_KEY =
+  process.env.NODE_ENV === "development" ? "" : "UA-152898995-1";
 // Contact page form initial field values
 export const CONTACT_INIT_STATE = {
   name: "",

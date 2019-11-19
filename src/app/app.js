@@ -4,7 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import ReactResizeDetector from "react-resize-detector";
 import Axios from "axios";
 import PropTypes from "prop-types";
-import { MODAL_HEADER_MENU } from "../constants";
+import Analytics from "react-router-ga";
+import { MODAL_HEADER_MENU, GOOGLE_ANALYTICS_KEY } from "../constants";
 import { hideModal } from "../redux/modal.actions";
 import Routes from "./routes";
 
@@ -49,7 +50,9 @@ const App = props => {
         handleHeight
         onResize={handleCloseOnResize}
       />
-      <Routes />
+      <Analytics id={GOOGLE_ANALYTICS_KEY}>
+        <Routes />
+      </Analytics>
     </BrowserRouter>
   );
 };
