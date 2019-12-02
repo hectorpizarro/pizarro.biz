@@ -1,4 +1,4 @@
-hector-site.herokuapp.com source code
+pizarro.biz source code
 
 Hi, this is the source code for my personal website. These are the reasons why it exists:
 
