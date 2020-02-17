@@ -1,6 +1,30 @@
 [
   {
     "id": "1",
+    "company": "Atomic Reach",
+    "companyUrl": "https://www.atomicreach.com/",
+    "contractorCompany": "Band of Coders",
+    "country": "Canada",
+    "role": "Frontend Developer",
+    "fromMonth": "DEC",
+    "toMonth": "FEB",
+    "fromYear": "2019",
+    "toYear": "2020",
+    "time": "3m",
+    "timeDescription": "3 months",
+    "descriptionShort": [
+      "Frontend developer providing maintenance to the React app and WordPress plugin."
+    ],
+    "description": [
+      "In the frontend developer role I provided bug fixes and code reviews to the React SPA web app and the WordPress plugin. The plugin had two versions, a vanilla JS codebase for the WordPress Classic editor and a React app for the Gutenberg editor.",
+      "I was in charge of frontend duties but had to test the whole flow managing my own linux instance containing the Zend framework PHP API in order to detect bugs."
+    ],
+    "tech_dev": "React, Redux, HTML, vanilla JavaScript, tinyMCE, jQuery.",
+    "tech_build": "WordPress, Linux VM with PHP Zend framework + MySQL.",
+    "tech_test": "Jest."
+  },
+  {
+    "id": "2",
     "company": "Hyp3r",
     "companyUrl": "https://hyp3r.com",
     "contractorCompany": "",
@@ -25,7 +49,7 @@
     "tech_test": "Jest, Enzyme."
   },
   {
-    "id": "2",
+    "id": "3",
     "company": "GForge",
     "companyUrl": "https://gforge.com",
     "contractorCompany": "",
@@ -49,7 +73,7 @@
     "tech_test": "PHPUnit, Jazmine."
   },
   {
-    "id": "3",
+    "id": "4",
     "company": "Playdom - Disney",
     "companyUrl": "https://en.wikipedia.org/wiki/Playdom",
     "contractorCompany": "",
@@ -74,7 +98,7 @@
     "tech_test": "PHPUnit."
   },
   {
-    "id": "4",
+    "id": "5",
     "company": "LiveOps",
     "companyUrl": "http://liveops.com",
     "contractorCompany": "GlobalLogic",
@@ -99,7 +123,7 @@
     "tech_test": "Custom Perl unit test modules."
   },
   {
-    "id": "5",
+    "id": "6",
     "company": "Electronics Arts",
     "companyUrl": "https://www.ea.com",
     "contractorCompany": "Globant",
@@ -123,7 +147,7 @@
     "tech_test": "PHPUnit."
   },
   {
-    "id": "6",
+    "id": "7",
     "company": "Playdom",
     "companyUrl": "https://en.wikipedia.org/wiki/Playdom",
     "contractorCompany": "Globant",
@@ -146,7 +170,7 @@
     "tech_test": ""
   },
   {
-    "id": "7",
+    "id": "8",
     "company": "Globant",
     "companyUrl": "https://www.globant.com",
     "contractorCompany": "",
@@ -171,7 +195,7 @@
     "tech_test": ""
   },
   {
-    "id": "8",
+    "id": "9",
     "company": "Amauta Technologies",
     "companyUrl": "https://vimeo.com/amautalab",
     "contractorCompany": "",
@@ -197,7 +221,7 @@
     "tech_test": ""
   },
   {
-    "id": "9",
+    "id": "10",
     "company": "Phantasia",
     "companyUrl": "http://www.wundermanthompson.pe/",
     "contractorCompany": "",

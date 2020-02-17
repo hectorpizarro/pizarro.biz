@@ -143,7 +143,7 @@ const Skills = () => {
         <ul className="ml-6 list-outside list-disc">
           <li>
             <span className="font-semibold mr-2">Development Languages:</span>
-            <span>PHP Doctrine ORM, Bash scripting, Regular Expressions.</span>
+            <span>PHP Doctrine ORM, Bash scripting, Regular Expressions, WordPress plugin development using custom React libraries.</span>
           </li>
           <li>
             <span className="font-semibold mr-2">Services:</span>
