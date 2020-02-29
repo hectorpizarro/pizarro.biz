@@ -1,39 +1,5 @@
 @tailwind base;
 @tailwind components;
-
-.navButton {
-  @apply cursor-pointer block text-center pb-2 border-b transition-colors transition-500;
-}
-.navButtonLeft {
-  @apply border-gray-900;
-}
-.navButtonLeft.active,
-.navButtonLeft:hover {
-  @apply text-white border-red-500 transition-colors transition-500;
-}
-.navButtonMobile {
-  @apply border-gray-100;
-}
-.navButtonMobile.active,
-.navButtonMobile:hover {
-  @apply text-gray-900 border-red-500 transition-colors transition-500;
-}
-.active {
-  color: yellow;
-}
-.footerButton {
-  @apply text-gray-400 transition-color transition-1000;
-}
-.footerButton:hover {
-  @apply text-white transition-color transition-1000;
-}
-.desktop-card {
-  @apply w-full border rounded border-gray-400 bg-gray-100 text-left cursor-pointer relative transition-colors transition-500;
-}
-.desktop-card:hover {
-  @apply border-gray-600 bg-white transition-colors transition-500;
-}
-
 @tailwind utilities;
 
 #root {
@@ -64,4 +30,8 @@ button:focus {
 }
 .ReactModal__Overlay--before-close {
   opacity: 0;
+}
+
+.active {
+  color: yellow;
 }

@@ -29,7 +29,7 @@ const Footer = () => {
   return (
     <Content className="flex items-center justify-between h-20 bg-gray-900 px-5">
       <div>
-        <span className="footerButton">
+        <span className="text-gray-400 transition-color transition-1000 hover:text-white">
           <FontAwesomeIcon
             icon={faPaperPlane}
             className="text-3xl mr-2 hidden sm:inline"
@@ -42,7 +42,7 @@ const Footer = () => {
           href="https://github.com/hectorpizarro"
           target="_blank"
           rel="noopener noreferrer"
-          className="footerButton ml-4"
+          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Github"
         >
           <FontAwesomeIcon icon={faGithub} />
@@ -51,7 +51,7 @@ const Footer = () => {
           href="https://www.linkedin.com/in/hectorpizarro/"
           target="_blank"
           rel="noopener noreferrer"
-          className="footerButton ml-4"
+          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Linkedin"
         >
           <FontAwesomeIcon icon={faLinkedin} />
@@ -60,7 +60,7 @@ const Footer = () => {
           href="https://www.instagram.com/hectorpizarrom/"
           target="_blank"
           rel="noopener noreferrer"
-          className="footerButton ml-4"
+          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Instagram"
         >
           <FontAwesomeIcon icon={faInstagram} />
@@ -69,7 +69,7 @@ const Footer = () => {
           href="https://www.facebook.com/hectorpizarrom"
           target="_blank"
           rel="noopener noreferrer"
-          className="footerButton ml-4"
+          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Facebook"
         >
           <FontAwesomeIcon icon={faFacebook} />

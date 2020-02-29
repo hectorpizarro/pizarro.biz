@@ -6,7 +6,7 @@ import Axios from "axios";
 import PropTypes from "prop-types";
 import Analytics from "react-router-ga";
 import { MODAL_HEADER_MENU, GOOGLE_ANALYTICS_KEY } from "../constants";
-import { hideModal } from "../redux/modal.actions";
+import { hideModal } from "../shared/modal/ducks";
 import Routes from "./routes";
 
 /**
@@ -39,7 +39,7 @@ const App = props => {
    */
   const handleCloseOnResize = (width, height) => {
     if (props.modalId === MODAL_HEADER_MENU) {
-      hideModal();
+      props.hideModal();
     }
   };
 
@@ -65,4 +65,8 @@ const mapStateToProps = state => ({
   modalId: state.modal.modalId // Id of current opened modal
 });
 
-export default connect(mapStateToProps)(React.memo(App));
+const mapDispatchToProps = {
+  hideModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(App));

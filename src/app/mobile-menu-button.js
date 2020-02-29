@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { showModal } from "../redux/modal.actions";
+import { showModal } from "../shared/modal/ducks";
 import { MODAL_HEADER_MENU } from "../constants";
 
 /**
@@ -17,7 +18,7 @@ const MenuButton = styled.button`
 /**
  * Store modal id on Redux to open mobile menu modal.
  */
-const openModal = () => showModal(MODAL_HEADER_MENU);
+const openModal = () => showModal({ id: MODAL_HEADER_MENU });
 
 /**
  * Floating mobile menu button shown on top right of screen.
@@ -34,4 +35,8 @@ const MobileMenuButton = () => (
   </MenuButton>
 );
 
-export default React.memo(MobileMenuButton);
+const mapDispatchToProps = {
+  showModal
+};
+
+export default connect(null, mapDispatchToProps)(MobileMenuButton);

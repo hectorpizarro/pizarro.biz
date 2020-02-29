@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import AppService from "../app-service";
-import { showModal } from "../redux/modal.actions";
+import { showModal } from "../shared/modal/ducks";
 import { MODAL_EXPERIENCE } from "../constants";
 
 /**
@@ -19,7 +19,7 @@ const Desktop = props => {
    */
   const showExperienceDetail = event => {
     const expId = AppService.getClickId(event);
-    showModal(MODAL_EXPERIENCE, `${expId}`);
+    props.showModal({ id: MODAL_EXPERIENCE, data: `${expId}` });
   };
 
   return (
@@ -28,7 +28,7 @@ const Desktop = props => {
         {props.experiences.map((exp, idx) => (
           <div
             key={idx}
-            className="desktop-card shadow-lg"
+            className="w-full border rounded border-gray-400 bg-gray-100 text-left cursor-pointer relative transition-colors transition-500 shadow-lg hover:border-gray-600 hover:bg-white"
             data-id={exp.id}
             onClick={showExperienceDetail}
           >
@@ -86,4 +86,8 @@ const mapStateToProps = state => ({
   experiences: state.misc.experiences // Experiences array stored in Redux
 });
 
-export default connect(mapStateToProps)(Desktop);
+const mapDispatchToProps = {
+  showModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Desktop);

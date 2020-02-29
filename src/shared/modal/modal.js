@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
-import { hideModal } from "../../redux/modal.actions";
+import { hideModal } from "./ducks";
 import {
   MODAL_HEADER_MENU,
   MODAL_CLOSE_TIME,
@@ -14,22 +14,22 @@ import NavBar from "../../app/nav-bar";
 Modal.setAppElement("#root"); // Required by react-modal library
 
 /**
- * Reset modal id, this closes modal.
- * @param {Object} event - Optional, usually click event
- */
-const closeModal = event => {
-  if (event) {
-    event.stopPropagation();
-  }
-  hideModal();
-};
-
-/**
  * Modal component. Only visible if modal id stored in Redux.
  * @param {Object} props - Props
  * @returns {Object} Modal component
  */
 const AppModal = props => {
+  /**
+   * Reset modal id, this closes modal.
+   * @param {Object} event - Optional, usually click event
+   */
+  const closeModal = event => {
+    if (event) {
+      event.stopPropagation();
+    }
+    props.hideModal();
+  };
+
   // Executed once on modal mount
   useEffect(() => {
     /**
@@ -38,7 +38,7 @@ const AppModal = props => {
      */
     const handleKeyDown = event => {
       if (props.modalId && event.keyCode === 27) {
-        hideModal();
+        props.hideModal();
       }
     };
 
@@ -57,7 +57,7 @@ const AppModal = props => {
       case MODAL_HEADER_MENU: {
         return (
           <div className="py-2 px-2">
-            <NavBar isLeft={false} closeModal={hideModal} />
+            <NavBar isLeft={false} closeModal={props.hideModal} />
           </div>
         );
       }
@@ -105,4 +105,8 @@ const mapStateToProps = state => ({
   experiences: state.misc.experiences
 });
 
-export default connect(mapStateToProps)(AppModal);
+const mapDispatchToProps = {
+  hideModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppModal);

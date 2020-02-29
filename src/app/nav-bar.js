@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PHOTO from "../shared/images/photo_small.jpg";
-import { hideModal } from "../redux/modal.actions";
+import { hideModal } from "../shared/modal/ducks";
 import { PAGES } from "../constants";
 
 /**
@@ -35,7 +35,7 @@ const NavBar = props => {
    */
   const handleClick = event => {
     if (!props.isLeft) {
-      hideModal();
+      props.hideModal();
     }
   };
 
@@ -84,10 +84,12 @@ const NavBar = props => {
           {PAGES.map(page => (
             <li key={page.id} className={classes.li}>
               <Link
-                className={`navButton ${
-                  props.isLeft ? "navButtonLeft" : "navButtonMobile"
+                className={`cursor-pointer block text-center pb-2 border-b transition-colors transition-500 hover:border-red-500 ${
+                  props.isLeft
+                    ? "border-gray-900 hover:text-white"
+                    : "border-gray-100 hover:text-gray-900"
                 }`}
-                activeClass="active"
+                activeClass="active text-white border-red-500"
                 to={page.id}
                 spy={true}
                 onSetActive={handleSetActive}
@@ -127,4 +129,8 @@ const mapStateToProps = state => ({
   isInitRoute: state.misc.initRoute
 });
 
-export default connect(mapStateToProps)(withRouter(NavBar));
+const mapDispatchToProps = {
+  hideModal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar));
