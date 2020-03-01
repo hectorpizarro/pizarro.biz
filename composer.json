@@ -1,7 +1,0 @@
-{
-  "name": "pizarro.biz/site",
-  "description": "Hector Pizarro Personal website",
-  "require": {
-    "sendgrid/sendgrid": "^7.3"
-  }
-}
