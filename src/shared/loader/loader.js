@@ -3,15 +3,14 @@ import PropTypes from "prop-types";
 import "./loader.css";
 /**
  * Loader component. Can also be shown inside buttons.
- * @param {Object} props - Props
  */
-const Loader = props => (
+const Loader = ({ forButton }) => (
   <div
     className={`flex items-center justify-center w-full ${
-      props.forButton ? "" : "h-40"
+      forButton ? "" : "h-40"
     }`}
   >
-    <div className={`lds-ellipsis ${props.forButton ? "forButton" : ""}`}>
+    <div className={`lds-ellipsis ${forButton ? "forButton" : ""}`}>
       <div></div>
       <div></div>
       <div></div>

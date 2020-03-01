@@ -1,14 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import "./toast.css";
-import { fadeToast } from "../../redux/toast.actions";
+import { fadeToast } from "./ducks";
 /**
  * Toast message component. Shown for a small amoun of time at top right.
  * @param {Object} props - Props
  * @returns {Object} DIV DOM node
  */
 const Toast = props => {
+  const dispatch = useDispatch();
+
+  const handleClose = () => dispatch(fadeToast());
+
   // Don't render if there is no message
   if (props.message === "") {
     return null;
@@ -25,7 +29,7 @@ const Toast = props => {
           props.isSuccess ? "bg-blue-500" : "bg-red-500"
         }`}
         title="close"
-        onClick={fadeToast}
+        onClick={handleClose}
       >
         {props.message}
       </button>

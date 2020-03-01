@@ -51,11 +51,9 @@ const AppModal = ({ modalId, modalData, experiences, hideModal }) => {
    * @returns {Object} DIV for mobile menu, Card component for experiences
    */
   const getContent = () => {
-    console.log("modalId", modalId);
     switch (modalId) {
       // Modal menu at top right
       case MODAL_HEADER_MENU: {
-        console.log("AAA");
         return (
           <div className="py-2 px-2">
             <NavBar isLeft={false} closeModal={hideModal} />

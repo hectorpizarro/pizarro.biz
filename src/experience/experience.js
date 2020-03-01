@@ -16,7 +16,7 @@ import {
   STATUS_LOADED,
   endLoading
 } from "./ducks";
-import { showToast } from "../redux/toast.actions";
+import { doShowToast } from "../shared/toast/ducks";
 
 // Mount animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;
@@ -42,7 +42,9 @@ const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
   useEffect(() => {
     if (loadStatus === STATUS_LOADED) {
       if (loadError) {
-        showToast("Error loading experiences data, please reload.", false);
+        dispatch(
+          doShowToast("Error loading experiences data, please reload.", false)
+        );
       }
       endLoading();
     }
