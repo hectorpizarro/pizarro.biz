@@ -12,12 +12,14 @@ import * as toastActions from "./redux/toast.actions";
 // All reducers
 import misc from "./redux/misc.reducer";
 import modal from "./shared/modal/ducks";
+import experiences from "./experience/ducks";
 import toast from "./redux/toast.reducer";
 
 // Combine all storage in a single object
 const rootReducer = combineReducers({
   misc,
   modal,
+  experiences,
   toast
 });
 

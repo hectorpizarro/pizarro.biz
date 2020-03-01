@@ -34,12 +34,17 @@
   "devDependencies": {
     "@svgr/cli": "^5.2.0",
     "autoprefixer": "^9.7.4",
+    "body-parser": "^1.19.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-flowtype": "3.13.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
     "jest-enzyme": "^7.1.2",
     "mockserver": "^3.1.1",
+    "morgan": "^1.9.1",
     "npm-run-all": "^4.1.5",
+    "path": "^0.12.7",
     "postcss-cli": "^7.1.0",
     "purgecss": "^2.1.0",
     "react-scripts": "3.4.0",
@@ -51,18 +56,19 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "npm-run-all -p start:css start:js",
-    "build": "npm-run-all build:css build:js",
-    "start:js": "react-scripts start",
-    "build:js": "react-scripts build",
-    "start:css": "postcss src/tailwind.source.css -o src/css/index.css -w",
+    "build": "run-s build:css build:js",
     "build:css": "postcss src/tailwind.source.css -o src/css/index.css --env production",
+    "build:js": "react-scripts build",
     "build:style": "tailwind build src/tailwind.source.css -o src/css/index.css -c tailwind.config.js",
     "build:svg": "npx @svgr/cli --icon --replace-attr-values \"#fff=currentColor\" -d src/components/images src/components/images",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "mockserver": "mockserver -p 8081 -m mockserver",
-    "start:mock": "npm-run-all -p start:css start:js mockserver"
+    "start": "run-p start:express start:css start:js",
+    "start:css": "postcss src/tailwind.source.css -o src/css/index.css -w",
+    "start:express": "node express-server.js",
+    "start:js": "react-scripts start",
+    "start:mock": "run-p start:css start:js mockserver",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -78,5 +84,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:9000"
 }

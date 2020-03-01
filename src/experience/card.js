@@ -10,9 +10,8 @@ import {
 
 /**
  * Single experience detailed card component. On mobile it's shown in a single slide. On desktop is shown inside a modal.
- * @param {Object} props - Props
  */
-const Card = props => {
+const Card = ({ experience }) => {
   return (
     <div className="border rounded bg-white text-xs sm:text-base">
       {/* Header */}
@@ -21,20 +20,18 @@ const Card = props => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="font-bold text-xs sm:text-xl">
-              {props.experience.company}
+              {experience.company}
             </div>
-            {props.experience.contractorCompany && (
-              <span className="ml-1">
-                (in {props.experience.contractorCompany})
-              </span>
+            {experience.contractorCompany && (
+              <span className="ml-1">(in {experience.contractorCompany})</span>
             )}
           </div>
           <div className="flex items-center">
             <span className="text-xs hidden sm:block">
-              {props.experience.isInsite ? "Insite" : "Remotely"}
+              {experience.isInsite ? "Insite" : "Remotely"}
             </span>
             <span className="mx-2 hidden sm:block">-</span>
-            <span>{props.experience.country}</span>
+            <span>{experience.country}</span>
           </div>
         </div>
         {/* Head Row 2: role, dates */}
@@ -44,19 +41,19 @@ const Card = props => {
               icon={faUserNinja}
               className="text-1xl text-gray-500 mr-2"
             />
-            <span>{props.experience.role}</span>
+            <span>{experience.role}</span>
           </div>
           <div>
             <span className="text-xs mr-3 hidden sm:inline">
-              ({props.experience.timeDescription})
+              ({experience.timeDescription})
             </span>
-            <span>{`${props.experience.fromMonth} ${props.experience.fromYear} - ${props.experience.toMonth} ${props.experience.toYear}`}</span>
+            <span>{`${experience.fromMonth} ${experience.fromYear} - ${experience.toMonth} ${experience.toYear}`}</span>
           </div>
         </div>
       </div>
       {/* Body description */}
       <div className="border-b border-gray-200 px-4 pt-2 sm:pt-4 pb-0 sm:pb-2">
-        {props.experience.description.map((parr, idxParr) => (
+        {experience.description.map((parr, idxParr) => (
           <p key={idxParr} className="pb-2 text-justify">
             {parr}
           </p>
@@ -64,7 +61,7 @@ const Card = props => {
       </div>
       {/* Body Tech */}
       <div className="experience-tech-grid px-4 py-2 sm:py-4">
-        {props.experience.tech_dev && (
+        {experience.tech_dev && (
           <React.Fragment>
             <FontAwesomeIcon
               icon={faLaptopCode}
@@ -73,10 +70,10 @@ const Card = props => {
             <div className="font-bold text-gray-700 text-right hidden sm:block">
               Dev:
             </div>
-            <div>{props.experience.tech_dev}</div>
+            <div>{experience.tech_dev}</div>
           </React.Fragment>
         )}
-        {props.experience.tech_build && (
+        {experience.tech_build && (
           <React.Fragment>
             <FontAwesomeIcon
               icon={faIndustry}
@@ -85,10 +82,10 @@ const Card = props => {
             <div className="font-bold text-gray-700 text-right hidden sm:block">
               Build:
             </div>
-            <div>{props.experience.tech_build}</div>
+            <div>{experience.tech_build}</div>
           </React.Fragment>
         )}
-        {props.experience.tech_test && (
+        {experience.tech_test && (
           <React.Fragment>
             <FontAwesomeIcon
               icon={faCogs}
@@ -97,7 +94,7 @@ const Card = props => {
             <div className="font-bold text-gray-700 text-right hidden sm:block">
               Test:
             </div>
-            <div>{props.experience.tech_test}</div>
+            <div>{experience.tech_test}</div>
           </React.Fragment>
         )}
       </div>

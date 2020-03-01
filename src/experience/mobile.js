@@ -7,7 +7,7 @@ import Card from "./card";
 import AppService from "../app-service";
 import { SLIDER_SETTINGS } from "../constants";
 
-const Mobile = props => {
+const Mobile = ({ experienceIds, experiences }) => {
   let sliderRef = null; // Reference to DOM node
 
   /**
@@ -21,16 +21,17 @@ const Mobile = props => {
    * @param {Object} event - Click event
    */
   const goToSlide = event => {
-    const slideIndex = AppService.getClickId(event);
-    sliderRef.slickGoTo(Number(slideIndex) + 1);
+    const experienceId = AppService.getClickId(event);
+    const idx = experienceIds.findIndex(el => el === experienceId);
+    sliderRef.slickGoTo(idx + 1);
   };
 
   return (
     <div className="block sm:hidden -mt-4">
       <Slider ref={setSliderRef} {...SLIDER_SETTINGS}>
         <MobileMenu goToSlide={goToSlide} />
-        {props.experiences.map((exp, idx) => (
-          <Card key={idx} experience={exp} />
+        {experienceIds.map(experienceId => (
+          <Card key={experienceId} experience={experiences[experienceId]} />
         ))}
       </Slider>
     </div>
@@ -38,11 +39,13 @@ const Mobile = props => {
 };
 
 Mobile.propTypes = {
-  experiences: PropTypes.array.isRequired // Experiences array from JSON
+  experienceIds: PropTypes.array.isRequired,
+  experiences: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  experiences: state.misc.experiences // Experiences array stored in Redux
+  experienceIds: state.experiences.allIds,
+  experiences: state.experiences.byId
 });
 
 export default connect(mapStateToProps)(Mobile);
