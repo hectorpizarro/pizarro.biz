@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
 import { hideModal } from "./ducks";
@@ -17,7 +17,9 @@ Modal.setAppElement("#root"); // Required by react-modal library
  * Modal component. Only visible if modal id stored in Redux.
  * @returns {Object} Modal component
  */
-const AppModal = ({ modalId, modalData, experiences, hideModal }) => {
+const AppModal = ({ modalId, modalData, experiences }) => {
+  const dispatch = useDispatch();
+
   /**
    * Reset modal id, this closes modal.
    * @param {Object} event - Optional, usually click event
@@ -26,7 +28,7 @@ const AppModal = ({ modalId, modalData, experiences, hideModal }) => {
     if (event) {
       event.stopPropagation();
     }
-    hideModal();
+    dispatch(hideModal());
   };
 
   // Executed once on modal mount
@@ -37,7 +39,7 @@ const AppModal = ({ modalId, modalData, experiences, hideModal }) => {
      */
     const handleKeyDown = event => {
       if (modalId && event.keyCode === 27) {
-        hideModal();
+        closeModal();
       }
     };
 
@@ -56,7 +58,7 @@ const AppModal = ({ modalId, modalData, experiences, hideModal }) => {
       case MODAL_HEADER_MENU: {
         return (
           <div className="py-2 px-2">
-            <NavBar isLeft={false} closeModal={hideModal} />
+            <NavBar isLeft={false} closeModal={closeModal} />
           </div>
         );
       }
@@ -101,8 +103,4 @@ const mapStateToProps = state => ({
   experiences: state.experiences.byId
 });
 
-const mapDispatchToProps = {
-  hideModal
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppModal);
+export default connect(mapStateToProps)(AppModal);

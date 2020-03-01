@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Element } from "react-scroll";
 import PropTypes from "prop-types";
 import PageLoader from "../shared/loader/page-loader";
@@ -8,7 +8,6 @@ import NavBar from "./nav-bar";
 import AppModal from "../shared/modal/modal";
 import MobileMenuButton from "./mobile-menu-button";
 import AppService from "../app-service";
-import { setFlagInitRoute } from "../redux/misc.actions";
 import Toast from "../shared/toast/toast";
 import {
   PAGE_ABOUT,
@@ -19,6 +18,7 @@ import {
   PAGES
 } from "../constants";
 import PageWrapper from "../shared/page-wrapper";
+import { setFlagInitRoute } from "../ducks";
 
 /**
  * Component to load Home page component lazily.
@@ -37,6 +37,8 @@ const ExperienceLazyLoader = React.lazy(() =>
  * @returns {Object} - DIV DOM node with defined routes and all pages loaded lazily.
  */
 const Routes = props => {
+  const dispatch = useDispatch();
+
   //Execute when component is mounted.
   useEffect(() => {
     const pageId = AppService.getIdFromRoute(props.location.pathname);
@@ -44,7 +46,7 @@ const Routes = props => {
     if (pageId) {
       AppService.setScroll(pageId, 0);
     }
-    setFlagInitRoute(); // set flag so scroll is executed only once
+    dispatch(setFlagInitRoute()); // set flag so scroll is executed only once
     // eslint-disable-next-line
   }, []);
 
@@ -114,7 +116,7 @@ Routes.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isInitRoute: state.misc.initRoute // Flag to scroll content to initial url page
+  isInitRoute: state.app.initRoute // Flag to scroll content to initial url page
 });
 
 export default connect(mapStateToProps)(withRouter(React.memo(Routes)));

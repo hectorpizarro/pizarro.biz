@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
@@ -20,11 +20,13 @@ const MenuButton = styled.button`
  * Visible only under 640px screen width.
  * @returns {Object} - HTML button
  */
-const MobileMenuButton = ({ showModal }) => {
+const MobileMenuButton = () => {
+  const dispatch = useDispatch();
+
   /**
    * Store modal id on Redux to open mobile menu modal.
    */
-  const openModal = () => showModal({ id: MODAL_HEADER_MENU });
+  const openModal = () => dispatch(showModal({ id: MODAL_HEADER_MENU }));
 
   return (
     <MenuButton
@@ -37,8 +39,4 @@ const MobileMenuButton = ({ showModal }) => {
   );
 };
 
-const mapDispatchToProps = {
-  showModal
-};
-
-export default connect(null, mapDispatchToProps)(MobileMenuButton);
+export default MobileMenuButton;

@@ -126,7 +126,7 @@ NavBar.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isInitRoute: state.misc.initRoute
+  isInitRoute: state.app.initRoute
 });
 
 const mapDispatchToProps = {

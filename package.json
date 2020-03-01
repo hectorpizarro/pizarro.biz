@@ -25,7 +25,6 @@
     "react-slick": "^0.25.2",
     "react-slidedown": "^2.4.5",
     "redux": "^4.0.5",
-    "redux-act": "^1.7.7",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.0.1",
     "tailwindcss-transitions": "^2.2.0",
