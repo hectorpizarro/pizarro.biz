@@ -1,11 +1,13 @@
 import React from "react";
 import { string as yupString, object as yupObject } from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import Button from "../shared/button";
+import { useDispatch } from "react-redux";
 
+import Button from "../shared/button";
 import "./contact.css";
-import { sendMail } from "../redux/async-actions";
 import { CONTACT_INIT_STATE } from "../constants";
+import { sendMail } from "../app-service";
+import { doShowToast } from "../shared/toast/ducks";
 
 /**
  * Configuration object for Yup schema validator. See:
@@ -24,21 +26,6 @@ const schema = yupObject().shape({
     .max(1024, "Too Long!")
     .required("Required")
 });
-
-/**
- * Callback executed on Form submit. For details on 'actions' parameter see:
- * https://jaredpalmer.com/formik/docs/api/formik#onsubmit-values-values-formikbag-formikbag-gt-void
- * @param {Object} values - Form field values.
- * @param {Object} actions - Form onSubmit 'FormikBag' {resetForm, setStatus, ...}
- */
-const onSubmit = async (values, actions) => {
-  const isSuccess = await sendMail(values); // wait async method to send mail
-  if (isSuccess) {
-    actions.resetForm(); // mail sent, reset form
-  } else {
-    actions.setSubmitting(false); // mail failed, turn off Form flag
-  }
-};
 
 /**
  * Formik Form component to render inside HTML form. Receives Formik props,
@@ -131,6 +118,30 @@ const renderForm = ({ errors, status, touched, isSubmitting }) => {
  * @returns {Object} - DIV DOM node.
  */
 const Contact = () => {
+  const dispatch = useDispatch();
+
+  /**
+   * Callback executed on Form submit. For details on 'actions' parameter see:
+   * https://jaredpalmer.com/formik/docs/api/formik#onsubmit-values-values-formikbag-formikbag-gt-void
+   * @param {Object} values - Form field values.
+   * @param {Object} actions - Form onSubmit 'FormikBag' {resetForm, setStatus, ...}
+   */
+  const onSubmit = async (values, actions) => {
+    const isSuccess = await sendMail(values); // wait async method to send mail
+    if (isSuccess) {
+      actions.resetForm(); // mail sent, reset form
+      dispatch(doShowToast("Your message was delivered.", true));
+    } else {
+      actions.setSubmitting(false); // mail failed, turn off Form flag
+      dispatch(
+        doShowToast(
+          "There was an error sending your message, please try again.",
+          false
+        )
+      );
+    }
+  };
+
   return (
     <div>
       <p>

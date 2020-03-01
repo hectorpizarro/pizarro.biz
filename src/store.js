@@ -5,7 +5,7 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 
 // All reducers
-import app from "./ducks";
+import app from "./app/ducks";
 import modal from "./shared/modal/ducks";
 import experiences from "./experience/ducks";
 import toast from "./shared/toast/ducks";

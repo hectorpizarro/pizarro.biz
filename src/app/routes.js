@@ -18,7 +18,7 @@ import {
   PAGES
 } from "../constants";
 import PageWrapper from "../shared/page-wrapper";
-import { setFlagInitRoute } from "../ducks";
+import { setFlagInitRoute } from "./ducks";
 
 /**
  * Component to load Home page component lazily.

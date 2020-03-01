@@ -26,10 +26,7 @@ export const MODAL_EXPERIENCE = "MODAL_EXPERIENCE";
 export const TOAST_EXP_TIME = "3000";
 // Url for mail endpoint. In development environment uses mockserver to fake
 // mail flow.
-export const MAIL_URL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8081/mail.php"
-    : "/mail.php";
+export const MAIL_URL = "/mail";
 export const GOOGLE_ANALYTICS_KEY =
   process.env.NODE_ENV === "development" ? "" : "UA-152898995-1";
 // Contact page form initial field values
