@@ -15,11 +15,6 @@ app.use(express.static(path.join(__dirname, "build")));
 
 // === Route paths
 
-// Default route loads build/index.html
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "build", "index.html"))
-);
-
 // /ping route for testing purposes
 app.get("/ping", (req, res) => res.send("pong")); // Test API
 
@@ -48,15 +43,9 @@ app.post("/mail", async (req, res) => {
   }
 });
 
-// Any other route catched as 404 and forward to error handler
-app.use((req, res, next) => next(createError(404)));
-// error handler
-app.use((err, req, res, next) => {
-  const { status = 500, message = "Error detected" } = err;
-  // set locals, only providing error in development
-  res.locals.message = message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-  res.status(status).json({ status, message });
-});
+// Default route loads build/index.html
+app.use((req, res) =>
+  res.sendFile(path.join(__dirname, "build", "index.html"))
+);
 
 app.listen(process.env.PORT || 9000);
