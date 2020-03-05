@@ -7,8 +7,8 @@ import {
   MODAL_HEADER_MENU,
   MODAL_CLOSE_TIME,
   MODAL_EXPERIENCE
-} from "../../constants";
-import Card from "../../experience/card";
+} from "../constants";
+import Card from "../../pages/experience/card";
 import NavBar from "../../app/nav-bar";
 
 Modal.setAppElement("#root"); // Required by react-modal library

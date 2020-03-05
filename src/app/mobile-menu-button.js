@@ -5,7 +5,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
 import { showModal } from "../shared/modal/ducks";
-import { MODAL_HEADER_MENU } from "../constants";
+import { MODAL_HEADER_MENU } from "../shared/constants";
 
 /**
  * Styled button

@@ -46,3 +46,17 @@ export const SLIDER_SETTINGS = {
   slidesToShow: 1,
   speed: 500
 };
+
+export const THEME = {
+  color: {
+    gray400: "#cbd5e0",
+    gray900: "#1a202c"
+  },
+  size: {
+    d2: "0.5rem",
+    d4: "1rem",
+    d5: "1.25rem",
+    d20: "5rem",
+    d3xl: "1.875rem"
+  }
+};

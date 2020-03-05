@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import AppService from "../app-service";
-import { showModal } from "../shared/modal/ducks";
-import { MODAL_EXPERIENCE } from "../constants";
+import AppService from "../../shared/app-service";
+import { showModal } from "../../shared/modal/ducks";
+import { MODAL_EXPERIENCE } from "../../shared/constants";
 
 /**
  * Content to show if browser is over 640px width.

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TOAST_EXP_TIME } from "../../../constants";
+import { TOAST_EXP_TIME } from "../../constants";
 
 const toastSlice = createSlice({
   name: "toast",

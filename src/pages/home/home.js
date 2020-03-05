@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import { Element } from "react-scroll";
-import BG_HOME from "../shared/images/home.png";
-import PageLoader from "../shared/loader/page-loader";
+import BG_HOME from "../../shared/images/home.png";
+import PageLoader from "../../shared/loader/page-loader";
 import HomeContent from "./home-content";
-import { PAGE_HOME } from "../constants";
+import { PAGE_HOME } from "../../shared/constants";
 
 /**
  * Animation keyframes

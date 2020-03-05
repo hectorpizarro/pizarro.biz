@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import PageLoader from "./loader/page-loader";
 import Footer from "../app/footer";
-import { PAGE_ABOUT, PAGE_SKILLS, PAGE_CONTACT } from "../constants";
+import { PAGE_ABOUT, PAGE_SKILLS, PAGE_CONTACT } from "./constants";
 
 // Initial animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;
@@ -24,13 +24,13 @@ const PageWrapper = props => {
   let LazyComponent = null;
   switch (props.name) {
     case PAGE_ABOUT:
-      LazyComponent = React.lazy(() => import("../about/about"));
+      LazyComponent = React.lazy(() => import("../pages/about/about"));
       break;
     case PAGE_SKILLS:
-      LazyComponent = React.lazy(() => import("../skills/skills"));
+      LazyComponent = React.lazy(() => import("../pages/skills/skills"));
       break;
     case PAGE_CONTACT:
-      LazyComponent = React.lazy(() => import("../contact/contact"));
+      LazyComponent = React.lazy(() => import("../pages/contact/contact"));
       break;
     default:
       // If page unknown return null to avoid rendering

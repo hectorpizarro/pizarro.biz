@@ -3,11 +3,11 @@ import { string as yupString, object as yupObject } from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 
-import Button from "../shared/button";
+import Button from "../../shared/button";
 import "./contact.css";
-import { CONTACT_INIT_STATE } from "../constants";
-import { sendMail } from "../app-service";
-import { doShowToast } from "../shared/toast/ducks";
+import { CONTACT_INIT_STATE } from "../../shared/constants";
+import { sendMail } from "../../shared/app-service";
+import { doShowToast } from "../../shared/toast/ducks";
 
 /**
  * Configuration object for Yup schema validator. See:

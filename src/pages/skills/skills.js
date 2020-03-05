@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
-import AppService from "../app-service";
+
+import AppService from "../../shared/app-service";
+import { SKILLS_SECTIONS } from "../../shared/constants";
+
 import "react-slidedown/lib/slidedown.css";
-import { SKILLS_SECTIONS } from "../constants";
 
 /**
  * Skills page
@@ -143,7 +145,10 @@ const Skills = () => {
         <ul className="ml-6 list-outside list-disc">
           <li>
             <span className="font-semibold mr-2">Development Languages:</span>
-            <span>PHP Doctrine ORM, Bash scripting, Regular Expressions, WordPress plugin development using custom React libraries.</span>
+            <span>
+              PHP Doctrine ORM, Bash scripting, Regular Expressions, WordPress
+              plugin development using custom React libraries.
+            </span>
           </li>
           <li>
             <span className="font-semibold mr-2">Services:</span>

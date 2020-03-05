@@ -9,7 +9,7 @@ import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PHOTO from "../shared/images/photo_small.jpg";
 import { hideModal } from "../shared/modal/ducks";
-import { PAGES } from "../constants";
+import { PAGES } from "../shared/constants";
 
 /**
  * Firt load animation keyframes

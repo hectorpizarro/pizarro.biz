@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./experience.css";
 import Mobile from "./mobile";
 import Desktop from "./desktop";
-import "../css/background.css";
+import "./background.css";
 import {
   fetchExperiences,
   STATUS_LOADING,
@@ -16,7 +16,7 @@ import {
   STATUS_LOADED,
   endLoading
 } from "./ducks";
-import { doShowToast } from "../shared/toast/ducks";
+import { doShowToast } from "../../shared/toast/ducks";
 
 // Mount animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;

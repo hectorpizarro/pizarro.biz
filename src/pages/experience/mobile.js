@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import PropTypes from "prop-types";
 import MobileMenu from "./mobile-menu";
 import Card from "./card";
-import AppService from "../app-service";
-import { SLIDER_SETTINGS } from "../constants";
+import AppService from "../../shared/app-service";
+import { SLIDER_SETTINGS } from "../../shared/constants";
 
 const Mobile = ({ experienceIds, experiences }) => {
   let sliderRef = null; // Reference to DOM node

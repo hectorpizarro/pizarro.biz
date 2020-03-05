@@ -19,6 +19,49 @@ const slideInUpAnimation = keyframes`${slideInUp}`;
  */
 const Content = styled.footer`
   animation: 2s ${slideInUpAnimation};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: ${props => props.theme.size.d20};
+  background-color: ${props => props.theme.color.gray900};
+  padding-left: ${props => props.theme.size.d5};
+  padding-right: ${props => props.theme.size.d5};
+`;
+
+const ColumnLeft = styled.div`
+  color: ${props => props.theme.color.gray400};
+  transition-property: color;
+  transition-duration: 1000ms;
+
+  &:hover {
+    color: #ffffff;
+  }
+`;
+
+const ColumnRight = styled.div`
+  font-size: ${props => props.theme.size.d3xl};
+  white-space: nowrap;
+`;
+
+const PlaneIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.size.d3xl};
+  margin-right: ${props => props.theme.size.d2};
+  display: none;
+
+  @media (min-width: 640px) {
+    display: inline;
+  }
+`;
+
+const SocialLink = styled.a`
+  color: ${props => props.theme.color.gray400};
+  transition-property: color;
+  transition-duration: 1000ms;
+  margin-left: ${props => props.theme.size.d4};
+
+  &:hover {
+    color: #ffffff;
+  }
 `;
 
 /**
@@ -27,56 +70,47 @@ const Content = styled.footer`
  */
 const Footer = () => {
   return (
-    <Content className="flex items-center justify-between h-20 bg-gray-900 px-5">
-      <div>
-        <span className="text-gray-400 transition-color transition-1000 hover:text-white">
-          <FontAwesomeIcon
-            icon={faPaperPlane}
-            className="text-3xl mr-2 hidden sm:inline"
-          />
-          <span>hpizarro@gmail.com</span>
-        </span>
-      </div>
-      <div className="text-3xl whitespace-no-wrap">
-        <a
+    <Content>
+      <ColumnLeft>
+        <PlaneIcon icon={faPaperPlane} />
+        <span>hpizarro@gmail.com</span>
+      </ColumnLeft>
+      <ColumnRight>
+        <SocialLink
           href="https://github.com/hectorpizarro"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Github"
         >
           <FontAwesomeIcon icon={faGithub} />
-        </a>
-        <a
+        </SocialLink>
+        <SocialLink
           href="https://www.linkedin.com/in/hectorpizarro/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Linkedin"
         >
           <FontAwesomeIcon icon={faLinkedin} />
-        </a>
-        <a
+        </SocialLink>
+        <SocialLink
           href="https://www.instagram.com/hectorpizarrom/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Instagram"
         >
           <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a
+        </SocialLink>
+        <SocialLink
           href="https://www.facebook.com/hectorpizarrom"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-400 transition-color transition-1000 hover:text-white ml-4"
           aria-label="Facebook"
         >
           <FontAwesomeIcon icon={faFacebook} />
-        </a>
-      </div>
+        </SocialLink>
+      </ColumnRight>
     </Content>
   );
 };
 
-export default React.memo(Footer);
+export default Footer;

@@ -7,7 +7,7 @@ import { configureStore } from "@reduxjs/toolkit";
 // All reducers
 import app from "./app/ducks";
 import modal from "./shared/modal/ducks";
-import experiences from "./experience/ducks";
+import experiences from "./pages/experience/ducks";
 import toast from "./shared/toast/ducks";
 
 // Combine all storage in a single object

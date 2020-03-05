@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import sinon from "sinon";
 import { SlideDown } from "react-slidedown";
 import Skills from "./skills";
-import AppService from "../app-service";
+import AppService from "../../shared/app-service";
 // import Adapter from "enzyme-adapter-react-16";
 
 // Enzyme.configure({ adapter: new Adapter() });
