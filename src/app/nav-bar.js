@@ -19,7 +19,7 @@ const slideInLeftAnimation = keyframes`${slideInLeft}`;
  * Page animation. Applied on component mount only for left column navbar,
  * Mobile menu has no animation.
  */
-const NavBarContent = styled.section`
+const StyledSection = styled.section`
   animation: ${props => (props.isLeft ? "2s" : "0s")} ${slideInLeftAnimation};
 `;
 
@@ -70,7 +70,7 @@ const NavBar = props => {
   };
 
   return (
-    <NavBarContent isLeft={props.isLeft} className={classes.section}>
+    <StyledSection isLeft={props.isLeft} className={classes.section}>
       <figure className={classes.figure}>
         <img
           src={PHOTO}
@@ -113,7 +113,7 @@ const NavBar = props => {
           </a>
         </div>
       </nav>
-    </NavBarContent>
+    </StyledSection>
   );
 };
 

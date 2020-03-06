@@ -22,7 +22,7 @@ import { doShowToast } from "../../shared/toast/ducks";
 const fadeInAnimation = keyframes`${fadeIn}`;
 
 // Styled to add animation at component mount
-const Content = styled.div`
+const StyledWrap = styled.div`
   animation: 2s ${fadeInAnimation};
 `;
 
@@ -60,10 +60,10 @@ const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
     case STATUS_IDLE: {
       if (experienceIds.length > 0) {
         return (
-          <Content>
+          <StyledWrap>
             <Mobile />
             <Desktop />
-          </Content>
+          </StyledWrap>
         );
       }
       return null;

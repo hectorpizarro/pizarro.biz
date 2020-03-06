@@ -4,7 +4,7 @@ import { Element } from "react-scroll";
 import PageLoader from "../../shared/loader/page-loader";
 import styled from "styled-components";
 
-const ElementWrap = styled(Element)`
+const StyledHomeLoader = styled(Element)`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -13,9 +13,9 @@ const ElementWrap = styled(Element)`
 
 function HomeLoader() {
   return (
-    <ElementWrap name={PAGE_HOME}>
+    <StyledHomeLoader name={PAGE_HOME}>
       <PageLoader />
-    </ElementWrap>
+    </StyledHomeLoader>
   );
 }
 

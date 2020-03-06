@@ -21,7 +21,7 @@ import PageWrapper from "../shared/page-wrapper";
 import { setFlagInitRoute } from "./ducks";
 import HomeLoader from "../pages/home/home-loader";
 
-const MainWrapper = styled.div`
+const StyledMainWrap = styled.div`
   display: flex;
   height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -29,7 +29,7 @@ const MainWrapper = styled.div`
   font-size: ${props => props.theme.size.d4};
 `;
 
-const Main = styled.main`
+const StyledMain = styled.main`
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -45,11 +45,11 @@ const Main = styled.main`
   }
 `;
 
-const SkillsPageWrapper = styled(PageWrapper)`
+const StyledSkills = styled(PageWrapper)`
   background-color: ${props => props.theme.color.gray100};
 `;
 
-const ExperienceWrap = styled(Element)`
+const StyledExperience = styled(Element)`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -87,11 +87,11 @@ const Routes = props => {
   }, []);
 
   return (
-    <MainWrapper>
+    <StyledMainWrap>
       <React.Suspense>
         <NavBar isLeft={true} />
       </React.Suspense>
-      <Main>
+      <StyledMain>
         {/* Page Home */}
         <React.Suspense fallback={<HomeLoader />}>
           <HomeLazyLoader />
@@ -99,9 +99,12 @@ const Routes = props => {
         {/* Page About */}
         <PageWrapper name={PAGE_ABOUT} title="About" />
         {/* Page Skills */}
-        <SkillsPageWrapper name={PAGE_SKILLS} title="Skills" />
+        <StyledSkills name={PAGE_SKILLS} title="Skills" />
         {/* Page Experience */}
-        <ExperienceWrap name={PAGE_EXPERIENCE} className="backgroundPattern01">
+        <StyledExperience
+          name={PAGE_EXPERIENCE}
+          className="backgroundPattern01"
+        >
           <React.Suspense fallback={<PageLoader />}>
             <section className="py-4 px-4 sm:px-8 h-full">
               <div className="mb-4">
@@ -110,10 +113,10 @@ const Routes = props => {
               <ExperienceLazyLoader />
             </section>
           </React.Suspense>
-        </ExperienceWrap>
+        </StyledExperience>
         {/* Page Contact */}
         <PageWrapper name={PAGE_CONTACT} title="Contact" withFooter />
-      </Main>
+      </StyledMain>
       <React.Suspense>
         <Toast />
         <AppModal />
@@ -127,7 +130,7 @@ const Routes = props => {
           <Route key={idx} path={page.route} children={() => null} />
         ))}
       </Switch>
-    </MainWrapper>
+    </StyledMainWrap>
   );
 };
 

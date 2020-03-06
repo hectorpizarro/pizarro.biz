@@ -14,19 +14,19 @@ const zoomInAnimation = keyframes`${zoomIn}`;
 /**
  * Animation for Name row
  */
-const Name = styled.div`
+const StyledName = styled.div`
   animation: 1s ${slideInLeftAnimation};
 `;
 /**
  * Animation for Titles row
  */
-const Title = styled.div`
+const StyledTitle = styled.div`
   animation: 1s ${slideInRightAnimation};
 `;
 /**
  * Animation for download buttons row
  */
-const Downloads = styled.div`
+const StyledDownloads = styled.div`
   animation: 1s ${zoomInAnimation};
 `;
 
@@ -38,12 +38,12 @@ const HomeContent = () => {
   return (
     <div>
       <div className="leading-relaxed tracking-wide text-white font-bold">
-        <Name className="text-4xl">HECTOR PIZARRO</Name>
-        <Title className="text-2xl mt-2 pt-2 border-t border-white">
+        <StyledName className="text-4xl">HECTOR PIZARRO</StyledName>
+        <StyledTitle className="text-2xl mt-2 pt-2 border-t border-white">
           Web Developer - Tech Lead
-        </Title>
+        </StyledTitle>
       </div>
-      <Downloads className="mt-20 text-center">
+      <StyledDownloads className="mt-20 text-center">
         <a
           href={`${process.env.PUBLIC_URL}/hector-pizarro-hyp3r-recommendation-letter.pdf`}
           download
@@ -61,7 +61,7 @@ const HomeContent = () => {
           <FontAwesomeIcon icon={faFileDownload} className="text-1xl mr-2" />
           <span>Resume</span>
         </a>
-      </Downloads>
+      </StyledDownloads>
     </div>
   );
 };

@@ -17,7 +17,7 @@ const slideInUpAnimation = keyframes`${slideInUp}`;
 /**
  * Styled 'footer' HTML5 element. Shows slide up animation on component first load.
  */
-const Content = styled.footer`
+const StyledFooter = styled.footer`
   animation: 2s ${slideInUpAnimation};
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@ const Content = styled.footer`
   padding-right: ${props => props.theme.size.d5};
 `;
 
-const ColumnLeft = styled.a`
+const StyledColumnLeft = styled.a`
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -41,12 +41,12 @@ const ColumnLeft = styled.a`
   }
 `;
 
-const ColumnRight = styled.div`
+const StyledColumnRight = styled.div`
   font-size: ${props => props.theme.size.d3xl};
   white-space: nowrap;
 `;
 
-const PlaneIcon = styled(FontAwesomeIcon)`
+const StyledPlaneIcon = styled(FontAwesomeIcon)`
   font-size: ${props => props.theme.size.d3xl};
   margin-right: ${props => props.theme.size.d2};
   display: none;
@@ -56,7 +56,7 @@ const PlaneIcon = styled(FontAwesomeIcon)`
   }
 `;
 
-const SocialLink = styled.a`
+const StyledSocialLink = styled.a`
   color: ${props => props.theme.color.gray400};
   transition-property: color;
   transition-duration: 1000ms;
@@ -73,46 +73,46 @@ const SocialLink = styled.a`
  */
 const Footer = () => {
   return (
-    <Content>
-      <ColumnLeft href="mailto:hpizarro@gmail.com">
-        <PlaneIcon icon={faPaperPlane} />
+    <StyledFooter>
+      <StyledColumnLeft href="mailto:hpizarro@gmail.com">
+        <StyledPlaneIcon icon={faPaperPlane} />
         <span>hpizarro@gmail.com</span>
-      </ColumnLeft>
-      <ColumnRight>
-        <SocialLink
+      </StyledColumnLeft>
+      <StyledColumnRight>
+        <StyledSocialLink
           href="https://github.com/hectorpizarro"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Github"
         >
           <FontAwesomeIcon icon={faGithub} />
-        </SocialLink>
-        <SocialLink
+        </StyledSocialLink>
+        <StyledSocialLink
           href="https://www.linkedin.com/in/hectorpizarro/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Linkedin"
         >
           <FontAwesomeIcon icon={faLinkedin} />
-        </SocialLink>
-        <SocialLink
+        </StyledSocialLink>
+        <StyledSocialLink
           href="https://www.instagram.com/hectorpizarrom/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
         >
           <FontAwesomeIcon icon={faInstagram} />
-        </SocialLink>
-        <SocialLink
+        </StyledSocialLink>
+        <StyledSocialLink
           href="https://www.facebook.com/hectorpizarrom"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook"
         >
           <FontAwesomeIcon icon={faFacebook} />
-        </SocialLink>
-      </ColumnRight>
-    </Content>
+        </StyledSocialLink>
+      </StyledColumnRight>
+    </StyledFooter>
   );
 };
 

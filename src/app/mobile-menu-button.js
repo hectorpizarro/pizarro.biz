@@ -10,7 +10,7 @@ import { MODAL_HEADER_MENU } from "../shared/constants";
 /**
  * Styled button
  */
-const MenuButton = styled.button`
+const StyledButton = styled.button`
   right: ${props => props.theme.size.d5};
   top: ${props => props.theme.size.d5};
   position: fixed;
@@ -29,7 +29,7 @@ const MenuButton = styled.button`
   }
 `;
 
-const BarsIcon = styled(FontAwesomeIcon)`
+const StyledBarsIcon = styled(FontAwesomeIcon)`
   font-size: ${props => props.theme.size.d4};
 `;
 
@@ -47,9 +47,9 @@ const MobileMenuButton = () => {
   const openModal = () => dispatch(showModal({ id: MODAL_HEADER_MENU }));
 
   return (
-    <MenuButton onClick={openModal} aria-label="Mobile Menu Button">
-      <BarsIcon icon={faBars} />
-    </MenuButton>
+    <StyledButton onClick={openModal} aria-label="Mobile Menu Button">
+      <StyledBarsIcon icon={faBars} />
+    </StyledButton>
   );
 };
 
