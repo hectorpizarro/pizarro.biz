@@ -4,11 +4,11 @@ import { connect, useDispatch } from "react-redux";
 import { Element } from "react-scroll";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import PageLoader from "../shared/loader/page-loader";
-import NavBar from "./nav-bar";
+import PageLoader from "../shared/loader/pageLoader";
+import NavBar from "./navBar";
 import AppModal from "../shared/modal/modal";
-import MobileMenuButton from "./mobile-menu-button";
-import AppService from "../shared/app-service";
+import MobileMenuButton from "./mobileMenuButton";
+import AppService from "../shared/appService";
 import Toast from "../shared/toast/toast";
 import {
   PAGE_ABOUT,
@@ -17,9 +17,9 @@ import {
   PAGE_CONTACT,
   PAGES
 } from "../shared/constants";
-import PageWrapper from "../shared/page-wrapper";
+import PageWrapper from "../shared/pageWrapper";
 import { setFlagInitRoute } from "./ducks";
-import HomeLoader from "../pages/home/home-loader";
+import HomeLoader from "../pages/home/homeLoader";
 
 const StyledMainWrap = styled.div`
   display: flex;

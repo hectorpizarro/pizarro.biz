@@ -3,9 +3,9 @@ import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import { Element } from "react-scroll";
 import BG_HOME from "../../shared/images/home.png";
-import HomeContent from "./home-content";
+import HomeContent from "./homeContent";
 import { PAGE_HOME } from "../../shared/constants";
-import HomeLoader from "./home-loader";
+import HomeLoader from "./homeLoader";
 
 /**
  * Animation keyframes

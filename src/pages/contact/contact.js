@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 
 import Button from "../../shared/button";
 import { CONTACT_INIT_STATE } from "../../shared/constants";
-import { sendMail } from "../../shared/app-service";
+import { sendMail } from "../../shared/appService";
 import { doShowToast } from "../../shared/toast/ducks";
-import { StyledForm } from "./styled-form";
+import { StyledForm } from "./styledForm";
 import FieldRow from "./fieldRow";
 
 /**

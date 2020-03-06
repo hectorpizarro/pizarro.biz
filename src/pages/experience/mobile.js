@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
-import MobileMenu from "./mobile-menu";
+import MobileMenu from "./mobileMenu";
 import Card from "./card";
-import AppService from "../../shared/app-service";
+import AppService from "../../shared/appService";
 import { SLIDER_SETTINGS } from "../../shared/constants";
 
 const Mobile = ({ experienceIds, experiences }) => {

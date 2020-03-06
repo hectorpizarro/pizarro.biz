@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
-import AppService from "../../shared/app-service";
+import AppService from "../../shared/appService";
 import { showModal } from "../../shared/modal/ducks";
 import { MODAL_EXPERIENCE } from "../../shared/constants";
 

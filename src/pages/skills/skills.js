@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SlideDown } from "react-slidedown";
 
-import AppService from "../../shared/app-service";
+import AppService from "../../shared/appService";
 import { SKILLS_SECTIONS } from "../../shared/constants";
 
 import "react-slidedown/lib/slidedown.css";

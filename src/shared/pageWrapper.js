@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Element } from "react-scroll";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import PageLoader from "./loader/page-loader";
+import PageLoader from "./loader/pageLoader";
 import Footer from "../app/footer";
 import { PAGE_ABOUT, PAGE_SKILLS, PAGE_CONTACT } from "./constants";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { PAGE_HOME } from "../../shared/constants";
 import { Element } from "react-scroll";
-import PageLoader from "../../shared/loader/page-loader";
+import PageLoader from "../../shared/loader/pageLoader";
 import styled from "styled-components";
 
 const StyledHomeLoader = styled(Element)`
