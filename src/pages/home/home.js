@@ -3,9 +3,9 @@ import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
 import { Element } from "react-scroll";
 import BG_HOME from "../../shared/images/home.png";
-import PageLoader from "../../shared/loader/page-loader";
 import HomeContent from "./home-content";
 import { PAGE_HOME } from "../../shared/constants";
+import HomeLoader from "./home-loader";
 
 /**
  * Animation keyframes
@@ -55,11 +55,7 @@ const Home = () => {
     );
   }
   // Waiting for background image load, show loader.
-  return (
-    <Element name={PAGE_HOME} className="flex flex-col h-screen w-full">
-      <PageLoader />
-    </Element>
-  );
+  return <HomeLoader />;
 };
 
 export default React.memo(Home);

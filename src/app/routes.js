@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { Element } from "react-scroll";
 import PropTypes from "prop-types";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import PageLoader from "../shared/loader/page-loader";
 import NavBar from "./nav-bar";
 import AppModal from "../shared/modal/modal";
@@ -15,12 +15,47 @@ import {
   PAGE_SKILLS,
   PAGE_EXPERIENCE,
   PAGE_CONTACT,
-  PAGE_HOME,
   PAGES,
   THEME
 } from "../shared/constants";
 import PageWrapper from "../shared/page-wrapper";
 import { setFlagInitRoute } from "./ducks";
+import HomeLoader from "../pages/home/home-loader";
+
+const MainWrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: ${props => props.theme.size.d4};
+`;
+
+const Main = styled.main`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 640px) {
+    margin-left: ${props => props.theme.size.d24};
+  }
+  @media (min-width: 768px) {
+    margin-left: ${props => props.theme.size.d32};
+  }
+  @media (min-width: 1024px) {
+    margin-left: ${props => props.theme.size.d40};
+  }
+`;
+
+const SkillsPageWrapper = styled(PageWrapper)`
+  background-color: ${props => props.theme.color.gray100};
+`;
+
+const ExperienceWrap = styled(Element)`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+`;
 
 /**
  * Component to load Home page component lazily.
@@ -54,36 +89,23 @@ const Routes = props => {
 
   return (
     <ThemeProvider theme={THEME}>
-      <div className="flex h-screen antialiased text-base">
+      <MainWrapper>
         <React.Suspense>
           <NavBar isLeft={true} />
         </React.Suspense>
-        <main className="inline-block w-full h-full sm:ml-24 md:ml-32 lg:ml-40">
+        <Main>
           {/* Page Home */}
-          <React.Suspense
-            fallback={
-              <Element
-                name={PAGE_HOME}
-                className="flex flex-col h-screen w-full"
-              >
-                <PageLoader />
-              </Element>
-            }
-          >
+          <React.Suspense fallback={<HomeLoader />}>
             <HomeLazyLoader />
           </React.Suspense>
           {/* Page About */}
           <PageWrapper name={PAGE_ABOUT} title="About" />
           {/* Page Skills */}
-          <PageWrapper
-            name={PAGE_SKILLS}
-            title="Skills"
-            className="bg-gray-100"
-          />
+          <SkillsPageWrapper name={PAGE_SKILLS} title="Skills" />
           {/* Page Experience */}
-          <Element
+          <ExperienceWrap
             name={PAGE_EXPERIENCE}
-            className="flex flex-col h-screen w-full backgroundPattern01"
+            className="backgroundPattern01"
           >
             <React.Suspense fallback={<PageLoader />}>
               <section className="py-4 px-4 sm:px-8 h-full">
@@ -93,10 +115,10 @@ const Routes = props => {
                 <ExperienceLazyLoader />
               </section>
             </React.Suspense>
-          </Element>
+          </ExperienceWrap>
           {/* Page Contact */}
           <PageWrapper name={PAGE_CONTACT} title="Contact" withFooter />
-        </main>
+        </Main>
         <React.Suspense>
           <Toast />
           <AppModal />
@@ -110,7 +132,7 @@ const Routes = props => {
             <Route key={idx} path={page.route} children={() => null} />
           ))}
         </Switch>
-      </div>
+      </MainWrapper>
     </ThemeProvider>
   );
 };

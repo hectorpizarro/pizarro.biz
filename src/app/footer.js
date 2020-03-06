@@ -28,7 +28,10 @@ const Content = styled.footer`
   padding-right: ${props => props.theme.size.d5};
 `;
 
-const ColumnLeft = styled.div`
+const ColumnLeft = styled.a`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   color: ${props => props.theme.color.gray400};
   transition-property: color;
   transition-duration: 1000ms;
@@ -71,7 +74,7 @@ const SocialLink = styled.a`
 const Footer = () => {
   return (
     <Content>
-      <ColumnLeft>
+      <ColumnLeft href="mailto:hpizarro@gmail.com">
         <PlaneIcon icon={faPaperPlane} />
         <span>hpizarro@gmail.com</span>
       </ColumnLeft>

@@ -1,13 +1,14 @@
 import React from "react";
 import { string as yupString, object as yupObject } from "yup";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
 import Button from "../../shared/button";
-import "./contact.css";
 import { CONTACT_INIT_STATE } from "../../shared/constants";
 import { sendMail } from "../../shared/app-service";
 import { doShowToast } from "../../shared/toast/ducks";
+import { StyledForm } from "./styled-form";
+import FieldRow from "./fieldRow";
 
 /**
  * Configuration object for Yup schema validator. See:
@@ -27,91 +28,7 @@ const schema = yupObject().shape({
     .required("Required")
 });
 
-/**
- * Formik Form component to render inside HTML form. Receives Formik props,
- * see https://jaredpalmer.com/formik/docs/api/formik
- * DOM node is rendered in a CSS grid.
- * @param {Object} param - Params object received from Formik.
- * @returns {Object} - Form formik object.
- */
-const renderForm = ({ errors, status, touched, isSubmitting }) => {
-  return (
-    <Form className="container-grid w-full pt-10 sm:px-5 md:px-10">
-      <label
-        htmlFor="name"
-        className={`label label-name ${
-          errors.name && touched.name ? "text-red-500" : ""
-        }`}
-      >
-        Name *:
-      </label>
-      <Field
-        type="text"
-        name="name"
-        id="name"
-        className={`field-name p-2 rounded border self-stretch ${
-          errors.name && touched.name ? "border-red-500" : "border-gray-500"
-        } ${isSubmitting ? "bg-gray-100 text-gray-500" : ""}`}
-        disabled={isSubmitting}
-      />
-      <ErrorMessage
-        name="name"
-        component="div"
-        className="error-name font-bold text-xs text-red-500 leading-none"
-      />
-      <label
-        htmlFor="email"
-        className={`label label-email ${
-          errors.email && touched.email ? "text-red-500" : ""
-        }`}
-      >
-        Email *:
-      </label>
-      <Field
-        type="email"
-        name="email"
-        id="email"
-        className={`field-email p-2 rounded border self-stretch ${
-          errors.email && touched.email ? "border-red-500" : "border-gray-500"
-        } ${isSubmitting ? "bg-gray-100 text-gray-500" : ""}`}
-        disabled={isSubmitting}
-      />
-      <ErrorMessage
-        name="email"
-        component="div"
-        className="error-email font-bold text-xs text-red-500 leading-none"
-      />
-      <label
-        htmlFor="message"
-        className={`label label-message ${
-          errors.message && touched.message ? "text-red-500" : ""
-        }`}
-      >
-        Message *:
-      </label>
-      <Field
-        component="textarea"
-        name="message"
-        id="message"
-        className={`field-message p-2 rounded border self-stretch ${
-          errors.message && touched.message
-            ? "border-red-500"
-            : "border-gray-500"
-        } ${isSubmitting ? "bg-gray-100 text-gray-500" : ""}`}
-        disabled={isSubmitting}
-      />
-      <ErrorMessage
-        name="message"
-        component="div"
-        className="error-message font-bold text-xs text-red-500 leading-none"
-      />
-      <div className="buttonbar">
-        <Button type="reset" inverse disabled={isSubmitting} label="Reset" />
-        <Button type="submit" disabled={isSubmitting} label="Submit" />
-      </div>
-    </Form>
-  );
-};
+// Form using formik, see: https://jaredpalmer.com/formik/docs/api/formik
 
 /**
  * Contact page
@@ -153,7 +70,43 @@ const Contact = () => {
         validationSchema={schema}
         onSubmit={onSubmit}
       >
-        {renderForm}
+        {({ errors, touched, isSubmitting }) => (
+          <StyledForm>
+            <FieldRow
+              errors={errors}
+              touched={touched}
+              fieldName="name"
+              isSubmitting={isSubmitting}
+              type="text"
+              labelText="Name *:"
+            />
+            <FieldRow
+              errors={errors}
+              touched={touched}
+              fieldName="email"
+              isSubmitting={isSubmitting}
+              type="email"
+              labelText="Email *:"
+            />
+            <FieldRow
+              component="textarea"
+              errors={errors}
+              touched={touched}
+              fieldName="message"
+              isSubmitting={isSubmitting}
+              labelText="Message *:"
+            />
+            <div className="buttonbar">
+              <Button
+                type="reset"
+                inverse
+                disabled={isSubmitting}
+                label="Reset"
+              />
+              <Button type="submit" disabled={isSubmitting} label="Submit" />
+            </div>
+          </StyledForm>
+        )}
       </Formik>
     </div>
   );

@@ -1,4 +1,9 @@
+- replace tailwind with styled-components
+- add title to page wrappper
+- add HTML5 tags
+- add typescript
 - add tests
 - apply modernizr
 - add IE10 version
 - add localization
+- e2e

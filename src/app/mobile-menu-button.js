@@ -11,8 +11,26 @@ import { MODAL_HEADER_MENU } from "../shared/constants";
  * Styled button
  */
 const MenuButton = styled.button`
-  right: 1.25rem;
-  top: 1.25rem;
+  right: ${props => props.theme.size.d5};
+  top: ${props => props.theme.size.d5};
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  display: block;
+  border: 1px solid ${props => props.theme.color.gray400};
+  background-color: ${props => props.theme.color.gray100};
+  border-radius: 9999px;
+  padding-left: ${props => props.theme.size.d2};
+  padding-right: ${props => props.theme.size.d2};
+  box-shadow: ${props => props.theme.boxShadow};
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
+
+const BarsIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.size.d4};
 `;
 
 /**
@@ -29,12 +47,8 @@ const MobileMenuButton = () => {
   const openModal = () => dispatch(showModal({ id: MODAL_HEADER_MENU }));
 
   return (
-    <MenuButton
-      className="menu-button fixed p-0 m-0 block sm:hidden border border-gray-400 bg-gray-100 rounded-full px-2 shadow-lg"
-      onClick={openModal}
-      aria-label="Mobile Menu Button"
-    >
-      <FontAwesomeIcon icon={faBars} className="text-1xl" />
+    <MenuButton onClick={openModal} aria-label="Mobile Menu Button">
+      <BarsIcon icon={faBars} />
     </MenuButton>
   );
 };

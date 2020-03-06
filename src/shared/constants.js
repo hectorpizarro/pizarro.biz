@@ -49,14 +49,28 @@ export const SLIDER_SETTINGS = {
 
 export const THEME = {
   color: {
+    gray100: "#f7fafc",
+    gray300: "#e2e8f0",
     gray400: "#cbd5e0",
-    gray900: "#1a202c"
+    gray500: "#a0aec0",
+    gray700: "#4a5568",
+    gray900: "#1a202c",
+    red500: "#f56565"
   },
   size: {
+    d1: "0.25rem",
     d2: "0.5rem",
+    d3: "0.75rem",
     d4: "1rem",
     d5: "1.25rem",
+    d10: "2.5rem",
     d20: "5rem",
+    d24: "6rem",
+    d32: "8rem",
+    d40: "10rem",
+    d1xl: "1.25rem",
     d3xl: "1.875rem"
-  }
+  },
+  boxShadow:
+    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
 };
