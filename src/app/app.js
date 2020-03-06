@@ -50,9 +50,13 @@ const App = props => {
         handleHeight
         onResize={handleCloseOnResize}
       />
-      <Analytics id={GOOGLE_ANALYTICS_KEY}>
+      {GOOGLE_ANALYTICS_KEY ? (
+        <Analytics id={GOOGLE_ANALYTICS_KEY}>
+          <Routes />
+        </Analytics>
+      ) : (
         <Routes />
-      </Analytics>
+      )}
     </BrowserRouter>
   );
 };

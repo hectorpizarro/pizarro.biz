@@ -1,51 +1,80 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledMobileMenu = styled.ul`
+  font-size: ${props => props.theme.size.d3};
+`;
+
+const StyledLi = styled.li`
+  margin-left: ${props => props.theme.size.d2};
+  margin-right: ${props => props.theme.size.d2};
+`;
+
+const StyledButton = styled.button`
+  width: 100%;
+  text-align: left;
+  padding: ${props => props.theme.size.d2};
+  border: 1px solid ${props => props.theme.color.gray300};
+  background-color: #ffffff;
+  border-radius: ${props => props.theme.size.d1};
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+`;
+
+const StyledRow1 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledRow2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-height: 750px) {
+    display: none;
+  }
+`;
+
+const StyledCompany = styled.span`
+  font-weight: 700;
+  font-size: ${props => props.theme.size.d3b};
+`;
 
 /**
  * Slides component, shown only on mobile (under 640px browser width)
  * @returns {Object} UL DOM node
  */
-const MobileMenu = ({ goToSlide, experienceIds, experiences }) => {
-  const getButton = experienceId => {
-    const exp = experiences[experienceId];
+const MobileMenu = ({ goToSlide, experienceIds, experiences }) => (
+  <StyledMobileMenu>
+    {experienceIds.map(experienceId => {
+      const exp = experiences[experienceId];
 
-    return (
-      <button
-        className="w-full text-left p-2 border rounded border-gray-300 bg-white shadow-sm"
-        data-id={experienceId}
-        onClick={goToSlide}
-      >
-        <div className="flex justify-between">
-          <div>
-            <span className="text-sm font-bold">{exp.company}</span>
-            {exp.contractorCompany && (
-              <span>{` (in ${exp.contractorCompany})`}</span>
-            )}
-          </div>
-          <div>{`${exp.fromMonth} ${exp.fromYear}/${exp.toMonth} ${exp.toYear}`}</div>
-        </div>
+      return (
+        <StyledLi key={experienceId}>
+          <StyledButton data-id={experienceId} onClick={goToSlide}>
+            <StyledRow1>
+              <div>
+                <StyledCompany>{exp.company}</StyledCompany>
+                {exp.contractorCompany && (
+                  <span>{` (in ${exp.contractorCompany})`}</span>
+                )}
+              </div>
+              <div>{`${exp.fromMonth} ${exp.fromYear}/${exp.toMonth} ${exp.toYear}`}</div>
+            </StyledRow1>
 
-        <div className="role-and-country flex justify-between">
-          <div>{exp.role}</div>
-          <div>{`${exp.isInsite ? "Insite" : "Remotely"} - ${
-            exp.country
-          }`}</div>
-        </div>
-      </button>
-    );
-  };
-
-  return (
-    <ul className="text-xs">
-      {experienceIds.map(experienceId => (
-        <li key={experienceId} className="my-2">
-          {getButton(experienceId)}
-        </li>
-      ))}
-    </ul>
-  );
-};
+            <StyledRow2>
+              <div>{exp.role}</div>
+              <div>{`${exp.isInsite ? "Insite" : "Remotely"} - ${
+                exp.country
+              }`}</div>
+            </StyledRow2>
+          </StyledButton>
+        </StyledLi>
+      );
+    })}
+  </StyledMobileMenu>
+);
 
 MobileMenu.propTypes = {
   // Function moves slide to selected section

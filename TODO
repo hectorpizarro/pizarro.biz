@@ -7,3 +7,6 @@
 - add IE10 version
 - add localization
 - e2e
+- verify all key={}
+- styled-components: move font size to its own theme object
+- browser resize hide anyh modal, experience

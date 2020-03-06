@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
-import { Element } from "react-scroll";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import PageLoader from "../shared/loader/pageLoader";
@@ -20,6 +19,7 @@ import {
 import PageWrapper from "../shared/pageWrapper";
 import { setFlagInitRoute } from "./ducks";
 import HomeLoader from "../pages/home/homeLoader";
+import { StyledExperience } from "./styledExperienceRoute";
 
 const StyledMainWrap = styled.div`
   display: flex;
@@ -47,13 +47,6 @@ const StyledMain = styled.main`
 
 const StyledSkills = styled(PageWrapper)`
   background-color: ${props => props.theme.color.gray100};
-`;
-
-const StyledExperience = styled(Element)`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
 `;
 
 /**
@@ -101,10 +94,7 @@ const Routes = props => {
         {/* Page Skills */}
         <StyledSkills name={PAGE_SKILLS} title="Skills" />
         {/* Page Experience */}
-        <StyledExperience
-          name={PAGE_EXPERIENCE}
-          className="backgroundPattern01"
-        >
+        <StyledExperience name={PAGE_EXPERIENCE}>
           <React.Suspense fallback={<PageLoader />}>
             <section className="py-4 px-4 sm:px-8 h-full">
               <div className="mb-4">

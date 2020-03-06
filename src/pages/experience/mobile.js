@@ -6,6 +6,15 @@ import MobileMenu from "./mobileMenu";
 import Card from "./card";
 import AppService from "../../shared/appService";
 import { SLIDER_SETTINGS } from "../../shared/constants";
+import styled from "styled-components";
+
+const StyledSliderWrap = styled.div`
+  display: block;
+  margin-top: -${props => props.theme.size.d4};
+  @media (min-width: 640px) {
+    display: none;
+  }
+`;
 
 const Mobile = ({ experienceIds, experiences }) => {
   let sliderRef = null; // Reference to DOM node
@@ -27,14 +36,14 @@ const Mobile = ({ experienceIds, experiences }) => {
   };
 
   return (
-    <div className="block sm:hidden -mt-4">
+    <StyledSliderWrap>
       <Slider ref={setSliderRef} {...SLIDER_SETTINGS}>
         <MobileMenu goToSlide={goToSlide} />
         {experienceIds.map(experienceId => (
           <Card key={experienceId} experience={experiences[experienceId]} />
         ))}
       </Slider>
-    </div>
+    </StyledSliderWrap>
   );
 };
 

@@ -5,10 +5,8 @@ import { fadeIn } from "react-animations";
 import PropTypes from "prop-types";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./experience.css";
 import Mobile from "./mobile";
 import Desktop from "./desktop";
-import "./background.css";
 import {
   fetchExperiences,
   STATUS_LOADING,
@@ -24,6 +22,17 @@ const fadeInAnimation = keyframes`${fadeIn}`;
 // Styled to add animation at component mount
 const StyledWrap = styled.div`
   animation: 2s ${fadeInAnimation};
+`;
+
+const StyledLoader = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+const StyledP = styled.p`
+  color: ${props => props.theme.color.gray500};
 `;
 
 /**
@@ -53,9 +62,9 @@ const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
   switch (loadStatus) {
     case STATUS_LOADING:
       return (
-        <div className="flex h-full w-full items-center justify-center">
-          <p className="text-gray-500">Loading experiences...</p>
-        </div>
+        <StyledLoader>
+          <StyledP>Loading experiences...</StyledP>
+        </StyledLoader>
       );
     case STATUS_IDLE: {
       if (experienceIds.length > 0) {

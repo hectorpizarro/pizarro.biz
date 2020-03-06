@@ -7,98 +7,212 @@ import {
   faIndustry,
   faCogs
 } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const StyledCard = styled.div`
+  border: 1px solid black;
+  border-radius: ${props => props.theme.size.d1};
+  background-color: #ffffff;
+  font-size: ${props => props.theme.size.d3};
+  @media (min-width: 640px) {
+    font-size: ${props => props.theme.size.d4};
+  }
+`;
+
+const StyledHead = styled.div`
+  border-bottom: 1px solid ${props => props.theme.color.gray200};
+  padding: ${props => {
+    const { d2, d4 } = props.theme.size;
+    return `${d2} ${d4} ${d2} ${d4}`;
+  }};
+  @media (min-width: 640px) {
+    padding-top: ${props => props.theme.size.d4};
+    padding-bottom: ${props => props.theme.size.d4};
+  }
+`;
+
+const StyledDescription = styled.div`
+  border-bottom: 1px solid ${props => props.theme.color.gray200};
+  padding: ${props => {
+    const { d2, d4 } = props.theme.size;
+    return `${d2} ${d4} 0 ${d4}`;
+  }};
+  @media (min-width: 640px) {
+    padding-top: ${props => props.theme.size.d4};
+    padding-bottom: ${props => props.theme.size.d2};
+  }
+`;
+
+const StyledDescriptionP = styled.p`
+  padding-bottom: ${props => props.theme.size.d2};
+  text-align: justify;
+`;
+
+const StyledTech = styled.div`
+  display: grid;
+  column-gap: 0.75rem;
+  grid-template-columns: 0.5rem 1fr;
+  grid-template-rows: repeat(3 2rem);
+  padding: ${props => {
+    const { d2, d4 } = props.theme.size;
+    return `${d2} ${d4} ${d2} ${d4}`;
+  }};
+  @media (min-width: 640px) {
+    column-gap: 0.5rem;
+    grid-template-columns: 0.5rem 3rem 1fr;
+    padding-top: ${props => props.theme.size.d4};
+    padding-bottom: ${props => props.theme.size.d4};
+  }
+`;
+
+const StyledTechIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.size.d5};
+  margin-right: ${props => props.theme.size.d2};
+  margin-top: ${props => props.theme.size.d1};
+  color: ${props => props.theme.color.gray700};
+`;
+
+const StyledTechLabel = styled.div`
+  font-weight: 700;
+  color: ${props => props.theme.color.gray700};
+  text-align: right;
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
+
+const StyledTechDetail = styled.div`
+  margin-left: ${props => props.theme.size.d2};
+  @media (min-width: 640px) {
+    margin-left: 0;
+  }
+`;
+
+const StyledHeadRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledRowCell = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledCompany = styled.div`
+  font-weight: 700;
+  font-size: ${props => props.theme.size.d3};
+  @media (min-width: 640px) {
+    font-size: ${props => props.theme.size.d5};
+  }
+`;
+
+const StyledContractor = styled.div`
+  margin-left: ${props => props.theme.size.d1};
+`;
+
+const StyledExpType = styled.div`
+  font-size: ${props => props.theme.size.d3};
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
+
+const StyledCellSep = styled.div`
+  margin-left: ${props => props.theme.size.d2};
+  margin-right: ${props => props.theme.size.d2};
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
+
+const StyledNinjaIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.size.d5};
+  color: ${props => props.theme.color.gray500};
+  margin-right: ${props => props.theme.size.d2};
+`;
+
+const StyledTime = styled.span`
+  font-size: ${props => props.theme.size.d3};
+  margin-right: ${props => props.theme.size.d3};
+  display: none;
+  @media (min-width: 640px) {
+    display: inline;
+  }
+`;
 
 /**
  * Single experience detailed card component. On mobile it's shown in a single slide. On desktop is shown inside a modal.
  */
 const Card = ({ experience }) => {
   return (
-    <div className="border rounded bg-white text-xs sm:text-base">
-      {/* Header */}
-      <div className="border-b border-gray-200 px-4 py-2 sm:py-4">
+    <StyledCard>
+      {/* Head */}
+      <StyledHead>
         {/* Head Row 1: company, country */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <div className="font-bold text-xs sm:text-xl">
-              {experience.company}
-            </div>
+        <StyledHeadRow>
+          <StyledRowCell>
+            <StyledCompany>{experience.company}</StyledCompany>
             {experience.contractorCompany && (
-              <span className="ml-1">(in {experience.contractorCompany})</span>
+              <StyledContractor>
+                (in {experience.contractorCompany})
+              </StyledContractor>
             )}
-          </div>
-          <div className="flex items-center">
-            <span className="text-xs hidden sm:block">
+          </StyledRowCell>
+          <StyledRowCell>
+            <StyledExpType>
               {experience.isInsite ? "Insite" : "Remotely"}
-            </span>
-            <span className="mx-2 hidden sm:block">-</span>
-            <span>{experience.country}</span>
-          </div>
-        </div>
+            </StyledExpType>
+            <StyledCellSep>-</StyledCellSep>
+            <div>{experience.country}</div>
+          </StyledRowCell>
+        </StyledHeadRow>
         {/* Head Row 2: role, dates */}
-        <div className="flex items-center justify-between">
+        <StyledHeadRow>
           <div>
-            <FontAwesomeIcon
-              icon={faUserNinja}
-              className="text-1xl text-gray-500 mr-2"
-            />
+            <StyledNinjaIcon icon={faUserNinja} />
             <span>{experience.role}</span>
           </div>
           <div>
-            <span className="text-xs mr-3 hidden sm:inline">
-              ({experience.timeDescription})
-            </span>
+            <StyledTime>({experience.timeDescription})</StyledTime>
             <span>{`${experience.fromMonth} ${experience.fromYear} - ${experience.toMonth} ${experience.toYear}`}</span>
           </div>
-        </div>
-      </div>
+        </StyledHeadRow>
+      </StyledHead>
       {/* Body description */}
-      <div className="border-b border-gray-200 px-4 pt-2 sm:pt-4 pb-0 sm:pb-2">
+      <StyledDescription>
         {experience.description.map((parr, idxParr) => (
-          <p key={idxParr} className="pb-2 text-justify">
-            {parr}
-          </p>
+          <StyledDescriptionP key={idxParr}>{parr}</StyledDescriptionP>
         ))}
-      </div>
+      </StyledDescription>
       {/* Body Tech */}
-      <div className="experience-tech-grid px-4 py-2 sm:py-4">
+      <StyledTech>
         {experience.tech_dev && (
-          <React.Fragment>
-            <FontAwesomeIcon
-              icon={faLaptopCode}
-              className="text-1xl mr-2 mt-1 text-gray-700"
-            />
-            <div className="font-bold text-gray-700 text-right hidden sm:block">
-              Dev:
-            </div>
-            <div>{experience.tech_dev}</div>
-          </React.Fragment>
+          <>
+            <StyledTechIcon icon={faLaptopCode} />
+            <StyledTechLabel>Dev:</StyledTechLabel>
+            <StyledTechDetail>{experience.tech_dev}</StyledTechDetail>
+          </>
         )}
         {experience.tech_build && (
-          <React.Fragment>
-            <FontAwesomeIcon
-              icon={faIndustry}
-              className="text-1xl mr-2 mt-1 text-gray-700"
-            />
-            <div className="font-bold text-gray-700 text-right hidden sm:block">
-              Build:
-            </div>
-            <div>{experience.tech_build}</div>
-          </React.Fragment>
+          <>
+            <StyledTechIcon icon={faIndustry} />
+            <StyledTechLabel>Build:</StyledTechLabel>
+            <StyledTechDetail>{experience.tech_build}</StyledTechDetail>
+          </>
         )}
         {experience.tech_test && (
-          <React.Fragment>
-            <FontAwesomeIcon
-              icon={faCogs}
-              className="text-1xl mr-2 mt-1 text-gray-700"
-            />
-            <div className="font-bold text-gray-700 text-right hidden sm:block">
-              Test:
-            </div>
-            <div>{experience.tech_test}</div>
-          </React.Fragment>
+          <>
+            <StyledTechIcon icon={faCogs} />
+            <StyledTechLabel>Test:</StyledTechLabel>
+            <StyledTechDetail>{experience.tech_test}</StyledTechDetail>
+          </>
         )}
-      </div>
-    </div>
+      </StyledTech>
+    </StyledCard>
   );
 };
 

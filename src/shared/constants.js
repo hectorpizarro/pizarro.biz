@@ -50,6 +50,7 @@ export const SLIDER_SETTINGS = {
 export const THEME = {
   color: {
     gray100: "#f7fafc",
+    gray200: "#edf2f7",
     gray300: "#e2e8f0",
     gray400: "#cbd5e0",
     gray500: "#a0aec0",
@@ -61,6 +62,7 @@ export const THEME = {
     d1: "0.25rem",
     d2: "0.5rem",
     d3: "0.75rem",
+    d3b: "0.875rem",
     d4: "1rem",
     d5: "1.25rem",
     d6: "1.5rem",

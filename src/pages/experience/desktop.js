@@ -3,9 +3,137 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import AppService from "../../shared/appService";
 import { showModal } from "../../shared/modal/ducks";
 import { MODAL_EXPERIENCE } from "../../shared/constants";
+
+const StyledDesktop = styled.div`
+  display: none;
+  @media (min-width: 640px) {
+    display: block;
+  }
+`;
+
+const StyledGrid = styled.div`
+  display: grid;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  max-height: 90vh;
+  font-size: ${props => props.theme.size.d3};
+
+  @media (min-width: 730px) {
+    font-size: ${props => props.theme.size.d3b};
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  @media (min-width: 1024px) {
+    font-size: ${props => props.theme.size.d4};
+  }
+`;
+
+const StyledCard = styled.div`
+  width: 100%;
+  border-radius: ${props => props.theme.size.d1};
+  border: 1px solid ${props => props.theme.color.gray400};
+  background-color: ${props => props.theme.color.gray100};
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  transition-property: background-color, border-color;
+  transition-duration: 500ms;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    border: 1px solid ${props => props.theme.color.gray600};
+    background-color: #ffffff;
+  }
+`;
+
+const StyledRow1 = styled.div`
+  padding: ${props => {
+    const { d2 } = props.theme.size;
+    return `${d2} ${d2} 0 ${d2}`;
+  }};
+`;
+const StyledRow2 = styled.div`
+  border-top: 1px solid ${props => props.theme.color.gray300};
+  margin-top: ${props => props.theme.size.d1};
+  padding: ${props => {
+    const { d1, d2 } = props.theme.size;
+    return `${d1} ${d2} ${d1} ${d2}`;
+  }};
+`;
+const StyledRow3 = styled.div`
+  border-top: 1px solid ${props => props.theme.color.gray300};
+  text-align: justify;
+  padding: ${props => {
+    const { d1, d2, d4 } = props.theme.size;
+    return `${d1} ${d2} ${d4} ${d2}`;
+  }};
+
+  @media (max-height: 850px) {
+    display: none;
+  }
+`;
+
+const StyledRow1Cell = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledCompany = styled.span`
+  font-weight: 700;
+  font-size: ${props => props.theme.size.d3b};
+  @media (min-width: 1024px) {
+    font-size: ${props => props.theme.size.d4};
+  }
+`;
+
+const StyledCountryLong = styled.div`
+  display: none;
+  @media (min-width: 960px) {
+    display: block;
+  }
+`;
+
+const StyledCountryShort = styled.div`
+  display: block;
+  @media (min-width: 960px) {
+    display: none;
+  }
+`;
+
+const StyledContractor = styled.div`
+  font-size: ${props => props.theme.size.d3b};
+  display: none;
+  @media (min-width: 960px) {
+    display: block;
+  }
+`;
+
+const StyledDates = styled.div`
+  font-size: ${props => props.theme.size.d3b};
+`;
+
+const StyledNinjaIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.size.d5};
+  color: ${props => props.theme.color.gray500};
+  margin-right: ${props => props.theme.size.d2};
+`;
+
+const StyledMore = styled.a`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: ${props => props.theme.size.d1};
+  margin-bottom: ${props => props.theme.size.d1};
+  font-size: ${props => props.theme.size.d3};
+  color: ${props => props.theme.color.red500};
+`;
 
 /**
  * Content to show if browser is over 640px width.
@@ -21,66 +149,54 @@ const Desktop = ({ showModal, experiences, experienceIds }) => {
     showModal({ id: MODAL_EXPERIENCE, data: `${expId}` });
   };
 
-  const getExperienceCard = experienceId => {
-    const exp = experiences[experienceId];
-
-    return (
-      <div
-        key={exp.id}
-        className="w-full border rounded border-gray-400 bg-gray-100 text-left cursor-pointer relative transition-colors transition-500 shadow-lg hover:border-gray-600 hover:bg-white"
-        data-id={exp.id}
-        onClick={showExperienceDetail}
-      >
-        <div className="px-2 pt-2">
-          <div className="flex justify-between">
-            <div>
-              <span className="text-sm md:text-md lg:text-base font-bold">
-                {exp.company}
-              </span>
-            </div>
-            <div className="hidden screen960:block">{`${
-              exp.isInsite ? "Insite" : "Remotely"
-            } - ${exp.country}`}</div>
-            <div className="block screen960:hidden">{exp.country}</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="block screen960:hidden"></div>
-            <div className="hidden screen960:block text-sm">
-              {exp.contractorCompany && (
-                <span>{` (in ${exp.contractorCompany})`}</span>
-              )}
-            </div>
-            <div className="text-sm">{`${exp.fromMonth} ${exp.fromYear}/${exp.toMonth} ${exp.toYear}`}</div>
-          </div>
-        </div>
-        <div className="border-t border-gray-300 px-2 py-1 mt-1">
-          <FontAwesomeIcon
-            icon={faUserNinja}
-            className="text-1xl text-gray-500 mr-2"
-          />
-          <span>{exp.role}</span>
-        </div>
-        <div className="row-description-short border-t border-gray-300 text-justify px-2 pt-1 pb-4">
-          {exp.descriptionShort}
-        </div>
-        <a
-          href="/#"
-          data-id={exp.id}
-          onClick={showExperienceDetail}
-          className="absolute right-0 bottom-0 mr-1 mb-1 text-xs text-red-500"
-        >
-          more
-        </a>
-      </div>
-    );
-  };
-
   return (
-    <div className="hidden sm:block">
-      <div className="experience-desktop-grid text-xs screen730:text-sm lg:text-base">
-        {experienceIds.map(experienceId => getExperienceCard(experienceId))}
-      </div>
-    </div>
+    <StyledDesktop>
+      <StyledGrid>
+        {experienceIds.map(experienceId => {
+          const exp = experiences[experienceId];
+
+          return (
+            <StyledCard
+              key={exp.id}
+              data-id={exp.id}
+              onClick={showExperienceDetail}
+            >
+              <StyledRow1>
+                <StyledRow1Cell>
+                  <StyledCompany>{exp.company}</StyledCompany>
+                  <StyledCountryLong>
+                    {`${exp.isInsite ? "Insite" : "Remotely"} - ${exp.country}`}
+                  </StyledCountryLong>
+                  <StyledCountryShort>{exp.country}</StyledCountryShort>
+                </StyledRow1Cell>
+                <StyledRow1Cell>
+                  {exp.contractorCompany && (
+                    <StyledContractor>
+                      {` (in ${exp.contractorCompany})`}
+                    </StyledContractor>
+                  )}
+                  <StyledDates>
+                    {`${exp.fromMonth} ${exp.fromYear}/${exp.toMonth} ${exp.toYear}`}
+                  </StyledDates>
+                </StyledRow1Cell>
+              </StyledRow1>
+              <StyledRow2>
+                <StyledNinjaIcon icon={faUserNinja} />
+                <span>{exp.role}</span>
+              </StyledRow2>
+              <StyledRow3>{exp.descriptionShort}</StyledRow3>
+              <StyledMore
+                href="/#"
+                data-id={exp.id}
+                onClick={showExperienceDetail}
+              >
+                more
+              </StyledMore>
+            </StyledCard>
+          );
+        })}
+      </StyledGrid>
+    </StyledDesktop>
   );
 };
 
