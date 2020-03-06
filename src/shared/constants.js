@@ -66,6 +66,7 @@ export const THEME = {
     d6: "1.5rem",
     d8: "2rem",
     d10: "2.5rem",
+    d16: "4rem",
     d20: "5rem",
     d24: "6rem",
     d32: "8rem",

@@ -3,7 +3,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect, useDispatch } from "react-redux";
 import { Element } from "react-scroll";
 import PropTypes from "prop-types";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import PageLoader from "../shared/loader/page-loader";
 import NavBar from "./nav-bar";
 import AppModal from "../shared/modal/modal";
@@ -15,8 +15,7 @@ import {
   PAGE_SKILLS,
   PAGE_EXPERIENCE,
   PAGE_CONTACT,
-  PAGES,
-  THEME
+  PAGES
 } from "../shared/constants";
 import PageWrapper from "../shared/page-wrapper";
 import { setFlagInitRoute } from "./ducks";
@@ -88,52 +87,47 @@ const Routes = props => {
   }, []);
 
   return (
-    <ThemeProvider theme={THEME}>
-      <MainWrapper>
-        <React.Suspense>
-          <NavBar isLeft={true} />
+    <MainWrapper>
+      <React.Suspense>
+        <NavBar isLeft={true} />
+      </React.Suspense>
+      <Main>
+        {/* Page Home */}
+        <React.Suspense fallback={<HomeLoader />}>
+          <HomeLazyLoader />
         </React.Suspense>
-        <Main>
-          {/* Page Home */}
-          <React.Suspense fallback={<HomeLoader />}>
-            <HomeLazyLoader />
+        {/* Page About */}
+        <PageWrapper name={PAGE_ABOUT} title="About" />
+        {/* Page Skills */}
+        <SkillsPageWrapper name={PAGE_SKILLS} title="Skills" />
+        {/* Page Experience */}
+        <ExperienceWrap name={PAGE_EXPERIENCE} className="backgroundPattern01">
+          <React.Suspense fallback={<PageLoader />}>
+            <section className="py-4 px-4 sm:px-8 h-full">
+              <div className="mb-4">
+                <h1 className="font-bold sm:text-2xl">Experience</h1>
+              </div>
+              <ExperienceLazyLoader />
+            </section>
           </React.Suspense>
-          {/* Page About */}
-          <PageWrapper name={PAGE_ABOUT} title="About" />
-          {/* Page Skills */}
-          <SkillsPageWrapper name={PAGE_SKILLS} title="Skills" />
-          {/* Page Experience */}
-          <ExperienceWrap
-            name={PAGE_EXPERIENCE}
-            className="backgroundPattern01"
-          >
-            <React.Suspense fallback={<PageLoader />}>
-              <section className="py-4 px-4 sm:px-8 h-full">
-                <div className="mb-4">
-                  <h1 className="font-bold sm:text-2xl">Experience</h1>
-                </div>
-                <ExperienceLazyLoader />
-              </section>
-            </React.Suspense>
-          </ExperienceWrap>
-          {/* Page Contact */}
-          <PageWrapper name={PAGE_CONTACT} title="Contact" withFooter />
-        </Main>
-        <React.Suspense>
-          <Toast />
-          <AppModal />
-          <MobileMenuButton />
-        </React.Suspense>
-        {/* Routes don't load pages, they are used only to update the url */}
-        <Switch>
-          {/* Default route is home */}
-          <Redirect exact from="/" to="/home" />
-          {PAGES.map((page, idx) => (
-            <Route key={idx} path={page.route} children={() => null} />
-          ))}
-        </Switch>
-      </MainWrapper>
-    </ThemeProvider>
+        </ExperienceWrap>
+        {/* Page Contact */}
+        <PageWrapper name={PAGE_CONTACT} title="Contact" withFooter />
+      </Main>
+      <React.Suspense>
+        <Toast />
+        <AppModal />
+        <MobileMenuButton />
+      </React.Suspense>
+      {/* Routes don't load pages, they are used only to update the url */}
+      <Switch>
+        {/* Default route is home */}
+        <Redirect exact from="/" to="/home" />
+        {PAGES.map((page, idx) => (
+          <Route key={idx} path={page.route} children={() => null} />
+        ))}
+      </Switch>
+    </MainWrapper>
   );
 };
 
