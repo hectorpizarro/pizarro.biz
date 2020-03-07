@@ -21,16 +21,16 @@ const StyledGrid = styled.div`
   row-gap: 1rem;
   grid-template-columns: 1fr 1fr;
   max-height: 90vh;
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
 
   @media (min-width: 730px) {
-    font-size: ${props => props.theme.size.d3b};
+    font-size: ${props => props.theme.fontsize.sm};
   }
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
   @media (min-width: 1024px) {
-    font-size: ${props => props.theme.size.d4};
+    font-size: ${props => props.theme.fontsize.base};
   }
 `;
 
@@ -44,12 +44,10 @@ const StyledCard = styled.div`
   position: relative;
   transition-property: background-color, border-color;
   transition-duration: 500ms;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
+  box-shadow: ${props => props.theme.boxShadow};
   &:hover {
     border: 1px solid ${props => props.theme.color.gray600};
-    background-color: #ffffff;
+    background-color: white;
   }
 `;
 
@@ -87,9 +85,9 @@ const StyledRow1Cell = styled.div`
 
 const StyledCompany = styled.span`
   font-weight: 700;
-  font-size: ${props => props.theme.size.d3b};
+  font-size: ${props => props.theme.fontsize.sm};
   @media (min-width: 1024px) {
-    font-size: ${props => props.theme.size.d4};
+    font-size: ${props => props.theme.fontsize.base};
   }
 `;
 
@@ -108,7 +106,7 @@ const StyledCountryShort = styled.div`
 `;
 
 const StyledContractor = styled.div`
-  font-size: ${props => props.theme.size.d3b};
+  font-size: ${props => props.theme.fontsize.sm};
   display: none;
   @media (min-width: 960px) {
     display: block;
@@ -116,11 +114,11 @@ const StyledContractor = styled.div`
 `;
 
 const StyledDates = styled.div`
-  font-size: ${props => props.theme.size.d3b};
+  font-size: ${props => props.theme.fontsize.sm};
 `;
 
 const StyledNinjaIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.size.d5};
+  font-size: ${props => props.theme.fontsize.xl1};
   color: ${props => props.theme.color.gray500};
   margin-right: ${props => props.theme.size.d2};
 `;
@@ -131,7 +129,7 @@ const StyledMore = styled.a`
   bottom: 0;
   margin-right: ${props => props.theme.size.d1};
   margin-bottom: ${props => props.theme.size.d1};
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
   color: ${props => props.theme.color.red500};
 `;
 

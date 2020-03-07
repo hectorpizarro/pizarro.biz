@@ -26,7 +26,7 @@ const StyledMainWrap = styled.div`
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: ${props => props.theme.size.d4};
+  font-size: ${props => props.theme.fontsize.base};
 `;
 
 const StyledMain = styled.main`

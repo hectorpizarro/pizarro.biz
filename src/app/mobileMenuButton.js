@@ -30,7 +30,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledBarsIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.size.d4};
+  font-size: ${props => props.theme.fontsize.base};
 `;
 
 /**

@@ -16,6 +16,12 @@ const fadeInAnimation = keyframes`${fadeIn}`;
  * Background image, initial animation applied on component mount.
  */
 const StyledHome = styled(Element)`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   background-image: url(${BG_HOME});
   background-repeat: no-repeat;
   background-size: cover;
@@ -46,10 +52,7 @@ const Home = () => {
   // Image was loaded and cached, animate and show page
   if (bgImage) {
     return (
-      <StyledHome
-        name={PAGE_HOME}
-        className="flex flex-col h-screen w-full items-center justify-center"
-      >
+      <StyledHome name={PAGE_HOME}>
         <HomeContent />
       </StyledHome>
     );

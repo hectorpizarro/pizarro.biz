@@ -29,7 +29,7 @@ const StyledField = styled(Field)`
 
 const StyledErrorMessage = styled(ErrorMessage)`
   font-weight: 700;
-  font-size: ${props => props.theme.size.d1};
+  font-size: ${props => props.theme.fontsize.xs};
   color: ${props => props.theme.color.red500};
   line-height: 1;
 `;

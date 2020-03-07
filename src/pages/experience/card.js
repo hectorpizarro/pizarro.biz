@@ -12,10 +12,10 @@ import styled from "styled-components";
 const StyledCard = styled.div`
   border: 1px solid black;
   border-radius: ${props => props.theme.size.d1};
-  background-color: #ffffff;
-  font-size: ${props => props.theme.size.d3};
+  background-color: white;
+  font-size: ${props => props.theme.fontsize.xs};
   @media (min-width: 640px) {
-    font-size: ${props => props.theme.size.d4};
+    font-size: ${props => props.theme.fontsize.base};
   }
 `;
 
@@ -66,7 +66,7 @@ const StyledTech = styled.div`
 `;
 
 const StyledTechIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.size.d5};
+  font-size: ${props => props.theme.fontsize.xl1};
   margin-right: ${props => props.theme.size.d2};
   margin-top: ${props => props.theme.size.d1};
   color: ${props => props.theme.color.gray700};
@@ -102,9 +102,9 @@ const StyledRowCell = styled.div`
 
 const StyledCompany = styled.div`
   font-weight: 700;
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
   @media (min-width: 640px) {
-    font-size: ${props => props.theme.size.d5};
+    font-size: ${props => props.theme.fontsize.xl1};
   }
 `;
 
@@ -113,7 +113,7 @@ const StyledContractor = styled.div`
 `;
 
 const StyledExpType = styled.div`
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
   display: none;
   @media (min-width: 640px) {
     display: block;
@@ -130,13 +130,13 @@ const StyledCellSep = styled.div`
 `;
 
 const StyledNinjaIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.size.d5};
+  font-size: ${props => props.theme.fontsize.xl1};
   color: ${props => props.theme.color.gray500};
   margin-right: ${props => props.theme.size.d2};
 `;
 
 const StyledTime = styled.span`
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
   margin-right: ${props => props.theme.size.d3};
   display: none;
   @media (min-width: 640px) {

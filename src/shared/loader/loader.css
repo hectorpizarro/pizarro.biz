@@ -18,7 +18,7 @@
   height: 24px;
 }
 .lds-ellipsis.forButton div {
-  background: #ffffff;
+  background: white;
   top: 6px;
 }
 .lds-ellipsis div:nth-child(1) {

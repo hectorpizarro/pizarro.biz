@@ -5,9 +5,9 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledAbout = styled.div`
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
   @media (min-width: 640px) {
-    font-size: ${props => props.theme.size.d4};
+    font-size: ${props => props.theme.fontsize.base};
   }
 `;
 
@@ -30,12 +30,12 @@ const StyledP = styled.p`
 const StyledSignature = styled.div`
   font-weight: 700;
   text-align: right;
-  font-size: ${props => props.theme.size.d4};
+  font-size: ${props => props.theme.fontsize.base};
   @media (min-width: 640px) {
-    font-size: ${props => props.theme.size.d5};
+    font-size: ${props => props.theme.fontsize.xl1};
   }
   @media (min-width: 1024px) {
-    font-size: ${props => props.theme.size.d6};
+    font-size: ${props => props.theme.fontsize.xl2};
   }
 `;
 

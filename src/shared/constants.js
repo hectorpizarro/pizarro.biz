@@ -62,7 +62,6 @@ export const THEME = {
     d1: "0.25rem",
     d2: "0.5rem",
     d3: "0.75rem",
-    d3b: "0.875rem",
     d4: "1rem",
     d5: "1.25rem",
     d6: "1.5rem",
@@ -75,6 +74,17 @@ export const THEME = {
     d40: "10rem",
     d1xl: "1.25rem",
     d3xl: "1.875rem"
+  },
+  fontsize: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    base: "1rem",
+    lg: "1.125rem",
+    xl1: "1.25rem",
+    xl2: "1.5rem",
+    xl3: "1.875rem",
+    xl4: "2.25rem",
+    xl5: "3rem"
   },
   boxShadow:
     "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"

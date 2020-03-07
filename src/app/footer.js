@@ -37,17 +37,17 @@ const StyledColumnLeft = styled.a`
   transition-duration: 1000ms;
 
   &:hover {
-    color: #ffffff;
+    color: white;
   }
 `;
 
 const StyledColumnRight = styled.div`
-  font-size: ${props => props.theme.size.d3xl};
+  font-size: ${props => props.theme.fontsize.xl3};
   white-space: nowrap;
 `;
 
 const StyledPlaneIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.size.d3xl};
+  font-size: ${props => props.theme.fontsize.xl3};
   margin-right: ${props => props.theme.size.d2};
   display: none;
 
@@ -63,7 +63,7 @@ const StyledSocialLink = styled.a`
   margin-left: ${props => props.theme.size.d4};
 
   &:hover {
-    color: #ffffff;
+    color: white;
   }
 `;
 

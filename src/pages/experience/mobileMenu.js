@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledMobileMenu = styled.ul`
-  font-size: ${props => props.theme.size.d3};
+  font-size: ${props => props.theme.fontsize.xs};
 `;
 
 const StyledLi = styled.li`
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   text-align: left;
   padding: ${props => props.theme.size.d2};
   border: 1px solid ${props => props.theme.color.gray300};
-  background-color: #ffffff;
+  background-color: white;
   border-radius: ${props => props.theme.size.d1};
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 `;
@@ -38,7 +38,7 @@ const StyledRow2 = styled.div`
 
 const StyledCompany = styled.span`
   font-weight: 700;
-  font-size: ${props => props.theme.size.d3b};
+  font-size: ${props => props.theme.fontsize.sm};
 `;
 
 /**
