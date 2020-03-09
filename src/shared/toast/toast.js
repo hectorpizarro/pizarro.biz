@@ -58,7 +58,7 @@ const StyledButton = styled.button`
  * Toast message component. Shown for a small amoun of time at top right.
  * @returns {Object} DIV DOM node
  */
-const Toast = ({ message, isSuccess, fade }) => {
+export const Toast = ({ message, isSuccess, fade }) => {
   const dispatch = useDispatch();
 
   const handleClose = () => dispatch(fadeToast());

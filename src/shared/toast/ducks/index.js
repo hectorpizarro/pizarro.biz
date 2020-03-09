@@ -18,7 +18,7 @@ const toastSlice = createSlice({
       state.isSuccess = false;
       state.fade = false;
     },
-    // IF there is message sets 'fade' to TRUE to trigger fading animation.
+    // If there is message sets 'fade' to TRUE to trigger fading animation.
     fadeToast(state, action) {
       if (state.message !== "") {
         state.fade = true;

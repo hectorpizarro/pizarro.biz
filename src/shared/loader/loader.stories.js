@@ -25,7 +25,7 @@ ForPageOnGray.story = {
   }
 };
 
-export const ForButtonOnWhite = () => <Loader forButton />;
+export const ForButtonOnWhite = () => <Loader forButton inverse />;
 ForButtonOnWhite.story = {
   parameters: {
     backgrounds: [{ name: "white", value: "#ffffff", default: true }]
