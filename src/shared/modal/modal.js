@@ -10,8 +10,13 @@ import {
 } from "../constants";
 import Card from "../../pages/experience/card";
 import NavBar from "../../app/navBar";
+import styled from "styled-components";
 
 Modal.setAppElement("#root"); // Required by react-modal library
+
+const StyledModalHeader = styled.div`
+  padding: ${props => props.theme.size.d2};
+`;
 
 /**
  * Modal component. Only visible if modal id stored in Redux.
@@ -19,6 +24,45 @@ Modal.setAppElement("#root"); // Required by react-modal library
  */
 const AppModal = ({ modalId, modalData, experiences }) => {
   const dispatch = useDispatch();
+
+  const ModalWrap = styled.div`
+    & .mobile-menu-overlay {
+      background-color: rgb(26, 32, 44, 0.5);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & .mobile-menu-content {
+      max-height: 90%;
+      position: absolute;
+      outline: 0;
+      border-radius: ${props => props.theme.size.d1};
+      box-shadow: ${props => props.theme.boxShadow};
+      overflow-y: auto;
+      background-color: ${props =>
+        modalId === MODAL_HEADER_MENU ? props.theme.color.gray100 : "white"};
+      ${props =>
+        modalId === MODAL_HEADER_MENU
+          ? `
+          top: 0;
+          right: 0;
+          `
+          : `
+          margin-left: auto;
+          margin-right: auto;
+          width: 84%;
+          @media (min-width: 768px) {
+            max-width: ${props => props.theme.size.d32};
+          }
+          `}
+    }
+  `;
 
   /**
    * Reset modal id, this closes modal.
@@ -57,9 +101,9 @@ const AppModal = ({ modalId, modalData, experiences }) => {
       // Modal menu at top right
       case MODAL_HEADER_MENU: {
         return (
-          <div className="py-2 px-2">
+          <StyledModalHeader>
             <NavBar isLeft={false} closeModal={closeModal} />
-          </div>
+          </StyledModalHeader>
         );
       }
       // Experience detail card
@@ -72,22 +116,19 @@ const AppModal = ({ modalId, modalData, experiences }) => {
     }
   };
 
-  // Modal shown top right for mobile menu only.
-  const isCentered = modalId !== MODAL_HEADER_MENU;
-
   return (
-    <Modal
-      isOpen={modalId !== null}
-      onRequestClose={closeModal}
-      contentLabel="Modal"
-      overlayClassName="mobile-menu-overlay inset-0 fixed flex items-center justify-center"
-      className={`mobile-menu-content absolute outline-none rounded shadow-lg overflow-y-auto ${
-        isCentered ? "md:max-w-lg mx-auto w-10/12" : "top-0 right-0"
-      } ${modalId === MODAL_HEADER_MENU ? "bg-gray-100" : "bg-white"}`}
-      closeTimeoutMS={MODAL_CLOSE_TIME}
-    >
-      {getContent(modalId, modalData)}
-    </Modal>
+    <ModalWrap>
+      <Modal
+        isOpen={modalId !== null}
+        onRequestClose={closeModal}
+        contentLabel="Modal"
+        overlayClassName="mobile-menu-overlay"
+        className="mobile-menu-content"
+        closeTimeoutMS={MODAL_CLOSE_TIME}
+      >
+        {getContent(modalId, modalData)}
+      </Modal>
+    </ModalWrap>
   );
 };
 

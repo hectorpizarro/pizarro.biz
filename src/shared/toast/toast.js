@@ -1,8 +1,59 @@
 import React from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import "./toast.css";
 import { fadeToast } from "./ducks";
+import styled, { keyframes } from "styled-components";
+
+const animShowToastAlert = keyframes`
+from {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const animHideToastAlert = keyframes`
+from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+`;
+
+const StyledToast = styled.div`
+  pointer-events: none;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  text-align: right;
+  font-weight: 700;
+  top: 0;
+  right: 0px;
+  animation: ${props => (props.fade ? animHideToastAlert : animShowToastAlert)}
+    600ms ease-in both;
+`;
+
+const StyledButton = styled.button`
+  display: inline-flex;
+  pointer-events: auto;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  background-color: ${props =>
+    props.isSuccess ? props.theme.color.blue500 : props.theme.color.red500};
+  padding: ${props => {
+    const { d2, d4 } = props.theme.size;
+    return `${d2} ${d4} ${d2} ${d4}`;
+  }};
+`;
+
 /**
  * Toast message component. Shown for a small amoun of time at top right.
  * @param {Object} props - Props
@@ -19,21 +70,11 @@ const Toast = props => {
   }
 
   return (
-    <div
-      className={`toast pointer-events-none fixed z-10 w-full text-right font-bold ${
-        props.fade ? "fadeMe" : ""
-      }`}
-    >
-      <button
-        className={`inline-flex pointer-events-auto items-center justify-center close cursor-pointer px-4 py-2 text-white ${
-          props.isSuccess ? "bg-blue-500" : "bg-red-500"
-        }`}
-        title="close"
-        onClick={handleClose}
-      >
+    <StyledToast>
+      <StyledButton title="close" onClick={handleClose}>
         {props.message}
-      </button>
-    </div>
+      </StyledButton>
+    </StyledToast>
   );
 };
 

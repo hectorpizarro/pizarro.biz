@@ -20,7 +20,128 @@ const slideInLeftAnimation = keyframes`${slideInLeft}`;
  * Mobile menu has no animation.
  */
 const StyledSection = styled.section`
-  animation: ${props => (props.isLeft ? "2s" : "0s")} ${slideInLeftAnimation};
+  animation: ${props => (props.isLeft ? "1s" : "0s")} ${slideInLeftAnimation};
+  display: ${props => (props.isLeft ? "none" : "flex")};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props =>
+    props.isLeft ? props.theme.color.gray900 : props.theme.color.gray100};
+  color: ${props =>
+    props.isLeft ? props.theme.color.gray400 : props.theme.color.gray500};
+  font-size: ${props => props.theme.fontsize.sm};
+`;
+
+const StyledSectionLeft = styled(StyledSection)`
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  @media (min-width: 640px) {
+    display: flex;
+    width: ${props => props.theme.size.d24};
+    font-size: ${props => props.theme.fontsize.xs};
+  }
+  @media (min-width: 768px) {
+    width: ${props => props.theme.size.d32};
+    font-size: ${props => props.theme.fontsize.sm};
+  }
+  @media (min-width: 1024px) {
+    width: ${props => props.theme.size.d40};
+    font-size: ${props => props.theme.fontsize.base};
+  }
+`;
+
+const StyledFigure = styled.figure`
+  width: ${props =>
+    props.isLeft ? props.theme.size.d20 : props.theme.size.d16};
+  margin-bottom: ${props =>
+    props.isLeft ? props.theme.size.d8 : props.theme.size.d4};
+  @media (min-width: 768px) {
+    width: ${props =>
+      props.isLeft ? props.theme.size.d24 : props.theme.size.d16};
+  }
+  @media (min-width: 1024px) {
+    width: ${props =>
+      props.isLeft ? props.theme.size.d32 : props.theme.size.d16};
+  }
+`;
+
+const StyledImage = styled.img`
+  border: 4px solid ${props => props.theme.color.gray600};
+  border-radius: 9999px;
+`;
+
+const StyledFigCaption = styled.figcaption`
+  display: ${props => (props.isLeft ? "block" : "hidden")};
+  color: white;
+  text-align: center;
+  margin-top: ${props => props.theme.size.d2};
+  white-space: nowrap;
+`;
+
+const StyledNav = styled.nav`
+  width: 100%;
+`;
+
+const StyledUl = styled.ul`
+  list-style-type: none;
+`;
+
+const StyledLi = styled.li`
+  border-width: 8px;
+  border-color: ${props =>
+    props.isLeft ? props.theme.color.gray900 : props.theme.color.gray100};
+`;
+
+const StyledResumeWrap = styled.div`
+  text-align: center;
+  margin-top: ${props => props.theme.size.d10};
+`;
+
+const StyledResumeLink = styled.a`
+  border: 1px solid black;
+  border-radius: ${props => props.theme.size.d1};
+  padding: ${props => props.theme.size.d1};
+  background-color: ${props => props.theme.color.gray200};
+  color: ${props => props.theme.color.gray700};
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+const StyledDownloadIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.fontsize.xl1};
+  margin-right: ${props => props.theme.size.d2};
+`;
+
+const StyledResumeSpan = styled.span`
+  font-size: ${props => props.theme.fontsize.sm};
+`;
+
+const StyledPageLink = styled(Link)`
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  padding-bottom: ${props => props.theme.size.d2};
+  border-bottom: 1px solid
+    ${props =>
+      props["data-isleft"]
+        ? props.theme.color.gray900
+        : props.theme.color.gray100};
+  &:hover {
+    border-bottom: 1px solid ${props => props.theme.color.red500};
+    color: ${props =>
+      props["data-isleft"] ? "white" : props.theme.color.gray900};
+  }
+  &.active {
+    color: ${props =>
+      props["data-isleft"] ? "yellow" : props.theme.color.red500};
+    border-bottom: 1px solid ${props => props.theme.color.red500};
+  }
 `;
 
 /**
@@ -40,25 +161,6 @@ const NavBar = props => {
   };
 
   /**
-   * CSS classes to apply for left bar or mobile menu.
-   */
-  const classes = props.isLeft
-    ? {
-        section:
-          "hidden sm:flex flex-col justify-center items-center bg-gray-900 text-gray-400 overflow-auto fixed top-0 h-full sm:w-24 md:w-32 lg:w-40 sm:text-xs md:text-sm lg:text-base",
-        figure: "w-20 md:w-24 lg:32 mb-8",
-        figCaption: "text-white text-center mt-2 whitespace-no-wrap",
-        li: "border-8 border-gray-900"
-      }
-    : {
-        section:
-          "flex flex-col justify-center items-center bg-gray-100 text-gray-500 text-sm",
-        figure: "w-16 mb-4",
-        figCaption: "hidden",
-        li: "border-8 border-gray-100"
-      };
-
-  /**
    * Applied only after App is first mounted, updates url based on current active page.
    * @param {String} to - Page id
    */
@@ -70,26 +172,23 @@ const NavBar = props => {
   };
 
   return (
-    <StyledSection isLeft={props.isLeft} className={classes.section}>
-      <figure className={classes.figure}>
-        <img
-          src={PHOTO}
-          alt="Hector Pizarro"
-          className="border-4 border-gray-600 rounded-full"
-        />
-        <figcaption className={classes.figCaption}>Hector Pizarro</figcaption>
-      </figure>
-      <nav className="container">
-        <ul className="list-none">
+    <StyledSection
+      as={props.isLeft ? StyledSectionLeft : null}
+      isLeft={props.isLeft}
+    >
+      <StyledFigure isLeft={props.isLeft}>
+        <StyledImage src={PHOTO} alt="Hector Pizarro" />
+        <StyledFigCaption isLeft={props.isLeft}>
+          Hector Pizarro
+        </StyledFigCaption>
+      </StyledFigure>
+      <StyledNav>
+        <StyledUl>
           {PAGES.map(page => (
-            <li key={page.id} className={classes.li}>
-              <Link
-                className={`cursor-pointer block text-center pb-2 border-b transition-colors transition-500 hover:border-red-500 ${
-                  props.isLeft
-                    ? "border-gray-900 hover:text-white"
-                    : "border-gray-100 hover:text-gray-900"
-                }`}
-                activeClass="active text-white border-red-500"
+            <StyledLi key={page.id} isLeft={props.isLeft}>
+              <StyledPageLink
+                data-isleft={props.isLeft}
+                activeClass="active"
                 to={page.id}
                 spy={true}
                 onSetActive={handleSetActive}
@@ -98,21 +197,20 @@ const NavBar = props => {
                 onClick={handleClick}
               >
                 {page.label}
-              </Link>
-            </li>
+              </StyledPageLink>
+            </StyledLi>
           ))}
-        </ul>
-        <div className="text-center mt-10">
-          <a
+        </StyledUl>
+        <StyledResumeWrap>
+          <StyledResumeLink
             href={`${process.env.PUBLIC_URL}/hector-pizarro-resume.pdf`}
             download
-            className="border rounded px-1 py-1 bg-gray-200 hover:bg-white text-gray-700 hover:text-black transition-colors transition-500"
           >
-            <FontAwesomeIcon icon={faFileDownload} className="text-1xl mr-2" />
-            <span className="text-sm">Resume</span>
-          </a>
-        </div>
-      </nav>
+            <StyledDownloadIcon icon={faFileDownload} />
+            <StyledResumeSpan>Resume</StyledResumeSpan>
+          </StyledResumeLink>
+        </StyledResumeWrap>
+      </StyledNav>
     </StyledSection>
   );
 };

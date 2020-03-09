@@ -8,5 +8,9 @@
 - add localization
 - e2e
 - verify all key={}
-- styled-components: move font size to its own theme object
 - browser resize hide anyh modal, experience
+- verify all onClick should be link, button.
+- verify all memo()
+- verify left menu animation
+- comment all code: jsx
+- add Storybook

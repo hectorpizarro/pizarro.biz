@@ -68,7 +68,7 @@ const StyledDownloadIcon = styled(FontAwesomeIcon)`
   margin-right: ${props => props.theme.size.d2};
 `;
 
-const StyledLinkResume = styled.a`
+const StyledLinkResume = styled(StyledLinkLetter)`
   margin-left: ${props => props.theme.size.d6};
 `;
 
@@ -93,7 +93,6 @@ const HomeContent = () => {
         </StyledLinkLetter>
 
         <StyledLinkResume
-          as={StyledLinkLetter}
           href={`${process.env.PUBLIC_URL}/hector-pizarro-resume.pdf`}
           download
         >
