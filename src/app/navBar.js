@@ -149,14 +149,14 @@ const StyledPageLink = styled(Link)`
  * @param {Object} props - Props
  * @returns {Object} HTML DOM section node.
  */
-const NavBar = props => {
+const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
   /**
    * Clicking on any button bar hides modal. Used on mobile menu.
    * @param {Object} event - Click event
    */
   const handleClick = event => {
-    if (!props.isLeft) {
-      props.hideModal();
+    if (!isLeft) {
+      hideModal();
     }
   };
 
@@ -165,29 +165,24 @@ const NavBar = props => {
    * @param {String} to - Page id
    */
   const handleSetActive = to => {
-    if (props.isInitRoute) {
+    if (isInitRoute) {
       const myPage = PAGES.find(page => page.id === to);
-      props.history.push(myPage.route);
+      history.push(myPage.route);
     }
   };
 
   return (
-    <StyledSection
-      as={props.isLeft ? StyledSectionLeft : null}
-      isLeft={props.isLeft}
-    >
-      <StyledFigure isLeft={props.isLeft}>
+    <StyledSection as={isLeft ? StyledSectionLeft : null} isLeft={isLeft}>
+      <StyledFigure isLeft={isLeft}>
         <StyledImage src={PHOTO} alt="Hector Pizarro" />
-        <StyledFigCaption isLeft={props.isLeft}>
-          Hector Pizarro
-        </StyledFigCaption>
+        <StyledFigCaption isLeft={isLeft}>Hector Pizarro</StyledFigCaption>
       </StyledFigure>
       <StyledNav>
         <StyledUl>
           {PAGES.map(page => (
-            <StyledLi key={page.id} isLeft={props.isLeft}>
+            <StyledLi key={page.id} isLeft={isLeft}>
               <StyledPageLink
-                data-isleft={props.isLeft}
+                data-isleft={isLeft}
                 activeClass="active"
                 to={page.id}
                 spy={true}
@@ -220,7 +215,8 @@ NavBar.propTypes = {
   isLeft: PropTypes.bool.isRequired,
   history: PropTypes.object.isRequired, // Provided automatically by withRouter
   // From Redux, flag to update url to current selected page
-  isInitRoute: PropTypes.bool.isRequired
+  isInitRoute: PropTypes.bool.isRequired,
+  hideModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({

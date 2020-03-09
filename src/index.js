@@ -20,12 +20,6 @@ const StyledLoaderWrap = styled.div`
   height: 100vh;
 `;
 
-const StyledLoader = styled(Loader)`
-  color: ${props => props.theme.color.gray500};
-  height: ${props => props.theme.size.d16};
-  width: ${props => props.theme.size.d16};
-`;
-
 /**
  * Component that will load App component lazily.
  */
@@ -37,7 +31,7 @@ ReactDOM.render(
       <React.Suspense
         fallback={
           <StyledLoaderWrap>
-            <StyledLoader />
+            <Loader />
           </StyledLoaderWrap>
         }
       >

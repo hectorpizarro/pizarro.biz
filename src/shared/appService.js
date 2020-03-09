@@ -61,8 +61,10 @@ const getRouteFromId = pageId => {
  * @param {Object} event - Click event
  */
 const noop = event => {
-  event.preventDefault();
-  event.stopPropagation();
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   return false;
 };
 

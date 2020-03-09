@@ -56,23 +56,22 @@ const StyledButton = styled.button`
 
 /**
  * Toast message component. Shown for a small amoun of time at top right.
- * @param {Object} props - Props
  * @returns {Object} DIV DOM node
  */
-const Toast = props => {
+const Toast = ({ message, isSuccess, fade }) => {
   const dispatch = useDispatch();
 
   const handleClose = () => dispatch(fadeToast());
 
   // Don't render if there is no message
-  if (props.message === "") {
+  if (message === "") {
     return null;
   }
 
   return (
-    <StyledToast>
-      <StyledButton title="close" onClick={handleClose}>
-        {props.message}
+    <StyledToast fade={fade}>
+      <StyledButton title="close" onClick={handleClose} isSuccess={isSuccess}>
+        {message}
       </StyledButton>
     </StyledToast>
   );

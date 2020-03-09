@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import PageLoader from "../shared/loader/pageLoader";
@@ -62,15 +62,14 @@ const ExperienceLazyLoader = React.lazy(() =>
 
 /**
  * Routes to load inside App component. This was extracted from App because we want to scroll to the route defined in the url once this component is mounted.
- * @param {Object} props - Props object, expected 'isInitRoute' flag to scroll only once and 'location' provided by withRouter.
  * @returns {Object} - DIV DOM node with defined routes and all pages loaded lazily.
  */
-const Routes = props => {
+const Routes = ({ location }) => {
   const dispatch = useDispatch();
 
   //Execute when component is mounted.
   useEffect(() => {
-    const pageId = AppService.getIdFromRoute(props.location.pathname);
+    const pageId = AppService.getIdFromRoute(location.pathname);
     // Url has a valid route defined, scroll to page
     if (pageId) {
       AppService.setScroll(pageId, 0);
@@ -126,13 +125,7 @@ const Routes = props => {
 
 Routes.propTypes = {
   // Provided by withRouter, contains current url path
-  location: PropTypes.object.isRequired,
-  // Provided by Redux, flag to load url route on component first mount
-  isInitRoute: PropTypes.bool.isRequired
+  location: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  isInitRoute: state.app.initRoute // Flag to scroll content to initial url page
-});
-
-export default connect(mapStateToProps)(withRouter(React.memo(Routes)));
+export default withRouter(React.memo(Routes));

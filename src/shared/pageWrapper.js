@@ -18,12 +18,11 @@ const StyledSection = styled.section`
 /**
  * Wrapper to load the following pages: About, Skills, Contact.
  * Wrapper provides title, lazy loads page component and animates loading.
- * @param {Object} props - Props
  */
-const PageWrapper = props => {
+const PageWrapper = ({ name, title, className, withFooter }) => {
   // Component to load page content lazily.
   let LazyComponent = null;
-  switch (props.name) {
+  switch (name) {
     case PAGE_ABOUT:
       LazyComponent = React.lazy(() => import("../pages/about/about"));
       break;
@@ -40,19 +39,19 @@ const PageWrapper = props => {
 
   return (
     <Element
-      name={props.name}
-      className={`flex flex-col h-screen w-full ${props.className}`}
+      name={name}
+      className={`flex flex-col h-screen w-full ${className}`}
     >
       <React.Suspense fallback={<PageLoader />}>
         <StyledSection className="py-4 px-4 sm:px-8 h-full">
-          {props.title && (
+          {title && (
             <div className="mb-4">
-              <h1 className="font-bold sm:text-2xl">{props.title}</h1>
+              <h1 className="font-bold sm:text-2xl">{title}</h1>
             </div>
           )}
           <LazyComponent />
         </StyledSection>
-        {props.withFooter && <Footer />}
+        {withFooter && <Footer />}
       </React.Suspense>
     </Element>
   );

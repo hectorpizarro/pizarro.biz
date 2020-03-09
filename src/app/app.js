@@ -28,18 +28,17 @@ Axios.defaults.headers.post["Content-Type"] =
 
 /**
  * Main App component, is mounted on index.html.
- * @param {Object} props - Expected modalId from Redux.
  * @returns {Object} - BrowserRouter component that handles routing.
  */
-const App = props => {
+const App = ({ modalId, hideModal }) => {
   /**
    * Closes mobile menu modal on browser resize.
    * @param {Number} width - Screen width
    * @param {Number} height - Screen height
    */
   const handleCloseOnResize = (width, height) => {
-    if (props.modalId === MODAL_HEADER_MENU) {
-      props.hideModal();
+    if (modalId === MODAL_HEADER_MENU) {
+      hideModal();
     }
   };
 

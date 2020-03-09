@@ -3,7 +3,7 @@ import { string as yupString, object as yupObject } from "yup";
 import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
-import Button from "../../shared/button";
+import Button from "../../shared/button/button";
 import { CONTACT_INIT_STATE } from "../../shared/constants";
 import { sendMail } from "../../shared/appService";
 import { doShowToast } from "../../shared/toast/ducks";

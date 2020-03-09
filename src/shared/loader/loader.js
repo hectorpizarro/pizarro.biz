@@ -33,8 +33,9 @@ const StyledLoader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: ${props => (props.forButton ? undefined : props.theme.size.d40)};
+  color: ${props => (props.forButton ? undefined : props.theme.color.gray500)};
+  width: ${props => (props.forButton ? undefined : props.theme.size.d16)};
+  height: ${props => (props.forButton ? undefined : props.theme.size.d16)};
 `;
 
 const StyledEllipsis = styled.div`
@@ -68,31 +69,37 @@ const StyledStep = styled.div`
   height: 11px;
   border-radius: 50%;
   background-color: ${props =>
-    props.forButton ? "white" : props.theme.color.gray500};
+    props.forButton
+      ? props.inverse
+        ? props.theme.color.gray300
+        : "white"
+      : props.theme.color.gray500};
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 `;
 
 /**
  * Loader component. Can also be shown inside buttons.
  */
-const Loader = ({ forButton }) => (
+const Loader = ({ forButton, inverse }) => (
   <StyledLoader forButton={forButton}>
     <StyledEllipsis forButton={forButton}>
-      <StyledStep />
-      <StyledStep />
-      <StyledStep />
-      <StyledStep />
+      <StyledStep forButton={forButton} inverse={inverse} />
+      <StyledStep forButton={forButton} inverse={inverse} />
+      <StyledStep forButton={forButton} inverse={inverse} />
+      <StyledStep forButton={forButton} inverse={inverse} />
     </StyledEllipsis>
   </StyledLoader>
 );
 
 Loader.propTypes = {
   // if TRUE render small version to show inside button
-  forButton: PropTypes.bool
+  forButton: PropTypes.bool,
+  inverse: PropTypes.bool
 };
 
 Loader.defaultProps = {
-  forButton: false //By default show big version
+  forButton: false, //By default show big version
+  inverse: false
 };
 
 export default React.memo(Loader);
