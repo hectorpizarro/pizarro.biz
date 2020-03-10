@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import PageLoader from "../shared/loader/pageLoader";
 import NavBar from "./navBar";
-import AppModal from "../shared/modal/modal";
+import AppModal from "../shared/appModal/appModal";
 import MobileMenuButton from "./mobileMenuButton";
 import AppService from "../shared/appService";
 import Toast from "../shared/toast/toast";

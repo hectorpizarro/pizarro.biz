@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { hideModal } from "./ducks";
 import {
   MODAL_HEADER_MENU,
@@ -10,7 +11,6 @@ import {
 } from "../constants";
 import Card from "../../pages/experience/card";
 import NavBar from "../../app/navBar";
-import styled from "styled-components";
 
 Modal.setAppElement("#root"); // Required by react-modal library
 
@@ -22,7 +22,7 @@ const StyledModalHeader = styled.div`
  * Modal component. Only visible if modal id stored in Redux.
  * @returns {Object} Modal component
  */
-const AppModal = ({ modalId, modalData, experiences }) => {
+export const AppModal = ({ modalId, modalData, experiences }) => {
   const dispatch = useDispatch();
 
   const ModalWrap = styled.div`
@@ -92,41 +92,24 @@ const AppModal = ({ modalId, modalData, experiences }) => {
     // eslint-disable-next-line
   }, []);
 
-  /**
-   * Returns content to show in modal, forwards the dark overlay.
-   * @returns {Object} DIV for mobile menu, Card component for experiences
-   */
-  const getContent = () => {
-    switch (modalId) {
-      // Modal menu at top right
-      case MODAL_HEADER_MENU: {
-        return (
-          <StyledModalHeader>
-            <NavBar isLeft={false} closeModal={closeModal} />
-          </StyledModalHeader>
-        );
-      }
-      // Experience detail card
-      case MODAL_EXPERIENCE:
-        return <Card experience={experiences[modalData]} />;
-
-      // Unknown, modal is empty
-      default:
-        return null;
-    }
-  };
-
   return (
     <ModalWrap>
       <Modal
-        isOpen={modalId !== null}
+        isOpen={[MODAL_HEADER_MENU, MODAL_EXPERIENCE].includes(modalId)}
         onRequestClose={closeModal}
         contentLabel="Modal"
         overlayClassName="mobile-menu-overlay"
         className="mobile-menu-content"
         closeTimeoutMS={MODAL_CLOSE_TIME}
       >
-        {getContent(modalId, modalData)}
+        {modalId === MODAL_HEADER_MENU && (
+          <StyledModalHeader>
+            <NavBar isLeft={false} closeModal={closeModal} />
+          </StyledModalHeader>
+        )}
+        {modalId === MODAL_EXPERIENCE && (
+          <Card experience={experiences[modalData]} />
+        )}
       </Modal>
     </ModalWrap>
   );

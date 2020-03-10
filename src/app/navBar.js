@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PHOTO from "../shared/images/photo_small.jpg";
-import { hideModal } from "../shared/modal/ducks";
+import { hideModal } from "../shared/appModal/ducks";
 import { PAGES } from "../shared/constants";
 
 /**
- * Firt load animation keyframes
+ * First load animation keyframes
  */
 const slideInLeftAnimation = keyframes`${slideInLeft}`;
 /**
@@ -20,23 +20,24 @@ const slideInLeftAnimation = keyframes`${slideInLeft}`;
  * Mobile menu has no animation.
  */
 const StyledSection = styled.section`
-  animation: ${props => (props.isLeft ? "1s" : "0s")} ${slideInLeftAnimation};
-  display: ${props => (props.isLeft ? "none" : "flex")};
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${props =>
-    props.isLeft ? props.theme.color.gray900 : props.theme.color.gray100};
-  color: ${props =>
-    props.isLeft ? props.theme.color.gray400 : props.theme.color.gray500};
+  background-color: ${props => props.theme.color.gray100};
+  color: ${props => props.theme.color.gray500};
   font-size: ${props => props.theme.fontsize.sm};
 `;
 
 const StyledSectionLeft = styled(StyledSection)`
+  animation: 1s ${slideInLeftAnimation};
+  display: none;
   overflow: auto;
   position: fixed;
   top: 0;
   height: 100%;
+  background-color: ${props => props.theme.color.gray900};
+  color: ${props => props.theme.color.gray400};
   @media (min-width: 640px) {
     display: flex;
     width: ${props => props.theme.size.d24};
@@ -53,10 +54,15 @@ const StyledSectionLeft = styled(StyledSection)`
 `;
 
 const StyledFigure = styled.figure`
-  width: ${props =>
-    props.isLeft ? props.theme.size.d20 : props.theme.size.d16};
   margin-bottom: ${props =>
     props.isLeft ? props.theme.size.d8 : props.theme.size.d4};
+`;
+
+const StyledImage = styled.img`
+  width: ${props =>
+    props.isLeft ? props.theme.size.d20 : props.theme.size.d16};
+  border: 4px solid ${props => props.theme.color.gray600};
+  border-radius: 9999px;
   @media (min-width: 768px) {
     width: ${props =>
       props.isLeft ? props.theme.size.d24 : props.theme.size.d16};
@@ -67,13 +73,8 @@ const StyledFigure = styled.figure`
   }
 `;
 
-const StyledImage = styled.img`
-  border: 4px solid ${props => props.theme.color.gray600};
-  border-radius: 9999px;
-`;
-
 const StyledFigCaption = styled.figcaption`
-  display: ${props => (props.isLeft ? "block" : "hidden")};
+  display: ${props => (props.isLeft ? "block" : "none")};
   color: white;
   text-align: center;
   margin-top: ${props => props.theme.size.d2};
@@ -86,6 +87,7 @@ const StyledNav = styled.nav`
 
 const StyledUl = styled.ul`
   list-style-type: none;
+  padding: 0;
 `;
 
 const StyledLi = styled.li`
@@ -100,7 +102,7 @@ const StyledResumeWrap = styled.div`
 `;
 
 const StyledResumeLink = styled.a`
-  border: 1px solid black;
+  border: 1px solid ${props => props.theme.color.gray300};
   border-radius: ${props => props.theme.size.d1};
   padding: ${props => props.theme.size.d1};
   background-color: ${props => props.theme.color.gray200};
@@ -114,7 +116,7 @@ const StyledResumeLink = styled.a`
 `;
 
 const StyledDownloadIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.fontsize.xl1};
+  font-size: ${props => props.theme.fontsize.base};
   margin-right: ${props => props.theme.size.d2};
 `;
 
@@ -149,7 +151,7 @@ const StyledPageLink = styled(Link)`
  * @param {Object} props - Props
  * @returns {Object} HTML DOM section node.
  */
-const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
+export const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
   /**
    * Clicking on any button bar hides modal. Used on mobile menu.
    * @param {Object} event - Click event
@@ -174,7 +176,7 @@ const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
   return (
     <StyledSection as={isLeft ? StyledSectionLeft : null} isLeft={isLeft}>
       <StyledFigure isLeft={isLeft}>
-        <StyledImage src={PHOTO} alt="Hector Pizarro" />
+        <StyledImage isLeft={isLeft} src={PHOTO} alt="Hector Pizarro" />
         <StyledFigCaption isLeft={isLeft}>Hector Pizarro</StyledFigCaption>
       </StyledFigure>
       <StyledNav>
@@ -213,7 +215,7 @@ const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
 NavBar.propTypes = {
   // Flag, show on left column if TRUE, otherwise show as a modal for mobile
   isLeft: PropTypes.bool.isRequired,
-  history: PropTypes.object.isRequired, // Provided automatically by withRouter
+  history: PropTypes.array.isRequired, // Provided automatically by withRouter
   // From Redux, flag to update url to current selected page
   isInitRoute: PropTypes.bool.isRequired,
   hideModal: PropTypes.func.isRequired

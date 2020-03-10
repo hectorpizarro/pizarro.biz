@@ -11,11 +11,27 @@ const addTheme = storyFn => (
 addDecorator(addTheme);
 
 const customViewPorts = {
+  mobileMenu: {
+    name: "mobile menu 100px x 387px",
+    styles: {
+      height: "387px",
+      width: "100px"
+    },
+    type: "mobile"
+  },
   iphone5: {
     name: "iPhone 5 320w x 568h",
     styles: {
       height: "568px",
       width: "320px"
+    },
+    type: "mobile"
+  },
+  width640: {
+    name: "width 640px",
+    styles: {
+      height: "640px",
+      width: "640px"
     },
     type: "mobile"
   },

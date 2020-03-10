@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { showModal } from "../shared/modal/ducks";
+import { showModal } from "../shared/appModal/ducks";
 import { MODAL_HEADER_MENU } from "../shared/constants";
 
 /**
