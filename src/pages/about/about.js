@@ -1,8 +1,8 @@
 /**
  * About page
  */
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledAbout = styled.div`
   font-size: ${props => props.theme.fontsize.xs};

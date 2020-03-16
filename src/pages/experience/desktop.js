@@ -1,12 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import AppService from "../../shared/appService";
-import { showModal } from "../../shared/appModal/ducks";
-import { MODAL_EXPERIENCE } from "../../shared/constants";
+import React from 'react';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserNinja } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import AppService from '../../shared/appService';
+import { showModal } from '../../shared/appModal/ducks';
+import { MODAL_EXPERIENCE } from '../../shared/constants';
 
 const StyledDesktop = styled.div`
   display: none;
@@ -163,7 +163,7 @@ const Desktop = ({ showModal, experiences, experienceIds }) => {
                 <StyledRow1Cell>
                   <StyledCompany>{exp.company}</StyledCompany>
                   <StyledCountryLong>
-                    {`${exp.isInsite ? "Insite" : "Remotely"} - ${exp.country}`}
+                    {`${exp.isInsite ? 'Insite' : 'Remotely'} - ${exp.country}`}
                   </StyledCountryLong>
                   <StyledCountryShort>{exp.country}</StyledCountryShort>
                 </StyledRow1Cell>
