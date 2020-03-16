@@ -56,9 +56,10 @@ const Button = ({ label, type, disabled, inverse, onClick }) => {
     if (type === "submit" && disabled) {
       event.preventDefault();
       event.stopPropagation();
-      return false;
+    } else {
+      onClick(event);
     }
-    onClick(event);
+    return false;
   };
 
   return (

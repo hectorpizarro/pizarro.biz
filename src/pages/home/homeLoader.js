@@ -1,8 +1,8 @@
 import React from "react";
-import { PAGE_HOME } from "../../shared/constants";
 import { Element } from "react-scroll";
-import PageLoader from "../../shared/loader/pageLoader";
 import styled from "styled-components";
+import { PAGE_HOME } from "../../shared/constants";
+import PageLoader from "../../shared/loader/pageLoader";
 
 const StyledHomeLoader = styled(Element)`
   display: flex;

@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 import Axios from "axios";
 
@@ -58,7 +60,6 @@ export const fetchExperiences = () => async dispatch => {
     const response = await Axios.get("/experiences");
     dispatch(storeExperiences(response.data));
   } catch (error) {
-    console.log(`fetchExperiences() error:`, error);
     dispatch(storeError(error.message));
   }
 };

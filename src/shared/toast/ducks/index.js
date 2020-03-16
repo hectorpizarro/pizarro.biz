@@ -1,3 +1,7 @@
+// Disable eslint param reassign, we use Immer for state reassignment.
+// Disable no-unused-vars, we want the actions to always show (state, action)
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 import { TOAST_EXP_TIME } from "../../constants";
 

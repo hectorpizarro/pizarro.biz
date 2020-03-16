@@ -1,6 +1,6 @@
 import React from "react";
-import Loader from "./loader";
 import styled from "styled-components";
+import Loader from "./loader";
 
 const StyledPageLoader = styled.div`
   display: flex;

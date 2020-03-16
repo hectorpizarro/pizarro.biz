@@ -30,15 +30,15 @@ Axios.defaults.headers.post["Content-Type"] =
  * Main App component, is mounted on index.html.
  * @returns {Object} - BrowserRouter component that handles routing.
  */
-const App = ({ modalId, hideModal }) => {
+const App = ({ modalId, propHideModal }) => {
   /**
    * Closes mobile menu modal on browser resize.
    * @param {Number} width - Screen width
    * @param {Number} height - Screen height
    */
-  const handleCloseOnResize = (width, height) => {
+  const handleCloseOnResize = () => {
     if (modalId === MODAL_HEADER_MENU) {
-      hideModal();
+      propHideModal();
     }
   };
 
@@ -61,7 +61,12 @@ const App = ({ modalId, hideModal }) => {
 };
 
 App.propTypes = {
-  modalId: PropTypes.string // Active modal id. Null if no modal visible.
+  modalId: PropTypes.string, // Active modal id. Null if no modal visible.
+  propHideModal: PropTypes.func.isRequired // Function to hide modal
+};
+
+App.defaultProps = {
+  modalId: null
 };
 
 const mapStateToProps = state => ({
@@ -69,7 +74,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  hideModal
+  propHideModal: hideModal
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(React.memo(App));

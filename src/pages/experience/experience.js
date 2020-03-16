@@ -38,7 +38,12 @@ const StyledP = styled.p`
 /**
  * Experience page component.
  */
-const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
+const Experience = ({
+  loadStatus,
+  propEndLoading,
+  loadError,
+  experienceIds
+}) => {
   const dispatch = useDispatch();
 
   // Load experiences data from JSON on component mount.
@@ -55,7 +60,7 @@ const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
           doShowToast("Error loading experiences data, please reload.", false)
         );
       }
-      endLoading();
+      propEndLoading();
     }
   });
 
@@ -85,9 +90,10 @@ const Experience = ({ loadStatus, endLoading, loadError, experienceIds }) => {
 };
 
 Experience.propTypes = {
-  loadStatus: PropTypes.string,
-  loadError: PropTypes.string,
-  experienceIds: PropTypes.array
+  loadStatus: PropTypes.string.isRequired,
+  propEndLoading: PropTypes.func.isRequired,
+  loadError: PropTypes.string.isRequired,
+  experienceIds: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -97,7 +103,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  endLoading
+  propEndLoading: endLoading
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Experience);

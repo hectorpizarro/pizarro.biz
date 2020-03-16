@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Element } from "react-scroll";
 
-export const StyledExperience = styled(Element)`
+export default styled(Element)`
   display: flex;
   flex-direction: column;
   height: 100vh;

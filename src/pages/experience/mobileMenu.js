@@ -65,9 +65,9 @@ const MobileMenu = ({ goToSlide, experienceIds, experiences }) => (
 
             <StyledRow2>
               <div>{exp.role}</div>
-              <div>{`${exp.isInsite ? "Insite" : "Remotely"} - ${
-                exp.country
-              }`}</div>
+              <div>
+                {`${exp.isInsite ? "Insite" : "Remotely"} - ${exp.country}`}
+              </div>
             </StyledRow2>
           </StyledButton>
         </StyledLi>

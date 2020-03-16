@@ -1,8 +1,8 @@
 import React from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { fadeToast } from "./ducks";
 import styled, { keyframes } from "styled-components";
+import { fadeToast } from "./ducks";
 
 const animShowToastAlert = keyframes`
 from {
@@ -58,7 +58,7 @@ const StyledButton = styled.button`
  * Toast message component. Shown for a small amoun of time at top right.
  * @returns {Object} DIV DOM node
  */
-export const Toast = ({ message, isSuccess, fade }) => {
+export const InternalToast = ({ message, isSuccess, fade }) => {
   const dispatch = useDispatch();
 
   const handleClose = () => dispatch(fadeToast());
@@ -77,7 +77,7 @@ export const Toast = ({ message, isSuccess, fade }) => {
   );
 };
 
-Toast.propTypes = {
+InternalToast.propTypes = {
   message: PropTypes.string.isRequired, // Message to show. Hide toast if ""
   // Toggles background color: Blue if TRUE, otherwise red.
   isSuccess: PropTypes.bool.isRequired,
@@ -90,4 +90,4 @@ const mapStateToProps = state => ({
   fade: state.toast.fade
 });
 
-export default connect(mapStateToProps)(Toast);
+export default connect(mapStateToProps)(InternalToast);

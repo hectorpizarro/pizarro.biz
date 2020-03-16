@@ -66,6 +66,7 @@ PageWrapper.propTypes = {
 
 PageWrapper.defaultProps = {
   className: "",
+  title: "",
   withFooter: false
 };
 

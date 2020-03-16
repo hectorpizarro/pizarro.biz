@@ -68,12 +68,12 @@ const StyledStep = styled.div`
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background-color: ${props =>
-    props.forButton
-      ? props.inverse
-        ? props.theme.color.gray300
-        : "white"
-      : props.theme.color.gray500};
+  background-color: ${props => {
+    if (props.forButton) {
+      return props.inverse ? props.theme.color.gray300 : "white";
+    }
+    return props.theme.color.gray500;
+  }};
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 `;
 
@@ -98,7 +98,7 @@ Loader.propTypes = {
 };
 
 Loader.defaultProps = {
-  forButton: false, //By default show big version
+  forButton: false, // By default show big version
   inverse: false
 };
 

@@ -1,12 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserNinja } from '@fortawesome/free-solid-svg-icons';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import AppService from '../../shared/appService';
-import { showModal } from '../../shared/appModal/ducks';
-import { MODAL_EXPERIENCE } from '../../shared/constants';
+import React from "react";
+import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import AppService from "../../shared/appService";
+import { showModal } from "../../shared/appModal/ducks";
+import { MODAL_EXPERIENCE } from "../../shared/constants";
 
 const StyledDesktop = styled.div`
   display: none;
@@ -137,14 +137,14 @@ const StyledMore = styled.a`
  * Content to show if browser is over 640px width.
  * @returns {Object} DIV DOM node.
  */
-const Desktop = ({ showModal, experiences, experienceIds }) => {
+const Desktop = ({ propShowModal, experiences, experienceIds }) => {
   /**
    * Set experience id to Redux and show modal with experience detail.
    * @param {Object} event - Click event
    */
   const showExperienceDetail = event => {
     const expId = AppService.getClickId(event);
-    showModal({ id: MODAL_EXPERIENCE, data: `${expId}` });
+    propShowModal({ id: MODAL_EXPERIENCE, data: `${expId}` });
   };
 
   return (
@@ -163,7 +163,7 @@ const Desktop = ({ showModal, experiences, experienceIds }) => {
                 <StyledRow1Cell>
                   <StyledCompany>{exp.company}</StyledCompany>
                   <StyledCountryLong>
-                    {`${exp.isInsite ? 'Insite' : 'Remotely'} - ${exp.country}`}
+                    {`${exp.isInsite ? "Insite" : "Remotely"} - ${exp.country}`}
                   </StyledCountryLong>
                   <StyledCountryShort>{exp.country}</StyledCountryShort>
                 </StyledRow1Cell>
@@ -199,6 +199,11 @@ const Desktop = ({ showModal, experiences, experienceIds }) => {
 };
 
 Desktop.propTypes = {
+  propShowModal: PropTypes.func.isRequired,
+  experienceIds: PropTypes.array,
+  experiences: PropTypes.object
+};
+Desktop.defaultProps = {
   experienceIds: PropTypes.array,
   experiences: PropTypes.object
 };
@@ -209,7 +214,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  showModal
+  propShowModal: showModal
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Desktop);

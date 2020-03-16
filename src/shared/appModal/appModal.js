@@ -22,7 +22,7 @@ const StyledModalHeader = styled.div`
  * Modal component. Only visible if modal id stored in Redux.
  * @returns {Object} Modal component
  */
-export const AppModal = ({ modalId, modalData, experiences }) => {
+export const InternalAppModal = ({ modalId, modalData, experiences }) => {
   const dispatch = useDispatch();
 
   const ModalWrap = styled.div`
@@ -58,7 +58,7 @@ export const AppModal = ({ modalId, modalData, experiences }) => {
           margin-right: auto;
           width: 84%;
           @media (min-width: 768px) {
-            max-width: ${props => props.theme.size.d32};
+            max-width: ${props.theme.size.d32};
           }
           `}
     }
@@ -115,10 +115,17 @@ export const AppModal = ({ modalId, modalData, experiences }) => {
   );
 };
 
-AppModal.propTypes = {
+InternalAppModal.propTypes = {
   modalId: PropTypes.string, // Modal id, if null no modal visible
   modalData: PropTypes.any, // Modal data, optional
-  experiences: PropTypes.object
+  experiences: PropTypes.object,
+  theme: PropTypes.object.isRequired
+};
+
+InternalAppModal.defaultProps = {
+  modalId: null,
+  modalData: null, // Modal data, optional
+  experiences: null
 };
 
 const mapStateToProps = state => ({
@@ -127,4 +134,4 @@ const mapStateToProps = state => ({
   experiences: state.experiences.byId
 });
 
-export default connect(mapStateToProps)(AppModal);
+export default connect(mapStateToProps)(InternalAppModal);

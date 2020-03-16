@@ -7,7 +7,7 @@ import Button from "../../shared/button/button";
 import { CONTACT_INIT_STATE } from "../../shared/constants";
 import { sendMail } from "../../shared/appService";
 import { doShowToast } from "../../shared/toast/ducks";
-import { StyledForm } from "./styledForm";
+import StyledForm from "./styledForm";
 import FieldRow from "./fieldRow";
 
 /**
@@ -62,8 +62,8 @@ const Contact = () => {
   return (
     <div>
       <p>
-        Let's work together! You can always reach me at my mail or sending me a
-        message here:
+        Let&apos;s work together! You can always reach me at my mail or sending
+        me a message here:
       </p>
       <Formik
         initialValues={{ ...CONTACT_INIT_STATE }}

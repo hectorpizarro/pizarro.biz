@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import app from "./ducks";
-import { NavBar } from "./navBar";
+import { InternalNavBar as NavBar } from "./navBar";
 import AppService from "../shared/appService";
 
 export default {
@@ -22,12 +22,7 @@ const addReduxDecorator = storyFn => {
 };
 
 export const LeftMobile = () => (
-  <NavBar
-    isLeft={true}
-    history={[]}
-    isInitRoute={false}
-    hideModal={AppService.noop}
-  />
+  <NavBar isLeft history={[]} isInitRoute={false} hideModal={AppService.noop} />
 );
 LeftMobile.story = {
   parameters: {
@@ -37,12 +32,7 @@ LeftMobile.story = {
 };
 
 export const Left640 = () => (
-  <NavBar
-    isLeft={true}
-    history={[]}
-    isInitRoute={false}
-    hideModal={AppService.noop}
-  />
+  <NavBar isLeft history={[]} isInitRoute={false} hideModal={AppService.noop} />
 );
 Left640.story = {
   parameters: {
@@ -52,12 +42,7 @@ Left640.story = {
 };
 
 export const LeftIpad = () => (
-  <NavBar
-    isLeft={true}
-    history={[]}
-    isInitRoute={false}
-    hideModal={AppService.noop}
-  />
+  <NavBar isLeft history={[]} isInitRoute={false} hideModal={AppService.noop} />
 );
 LeftIpad.story = {
   parameters: {
@@ -67,12 +52,7 @@ LeftIpad.story = {
 };
 
 export const LeftDesktop = () => (
-  <NavBar
-    isLeft={true}
-    history={[]}
-    isInitRoute={false}
-    hideModal={AppService.noop}
-  />
+  <NavBar isLeft history={[]} isInitRoute={false} hideModal={AppService.noop} />
 );
 LeftDesktop.story = {
   parameters: {

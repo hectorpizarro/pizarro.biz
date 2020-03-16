@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Field, ErrorMessage } from "formik";
+import { PropTypes } from "prop-types";
 
 const StyledLabel = styled.label`
   color: ${props =>
@@ -41,7 +42,7 @@ const FieldRow = ({
   isSubmitting,
   type,
   labelText,
-  component = "input"
+  component
 }) => {
   return (
     <>
@@ -68,6 +69,21 @@ const FieldRow = ({
       />
     </>
   );
+};
+
+FieldRow.propTypes = {
+  errors: PropTypes.array.isRequired,
+  touched: PropTypes.array.isRequired,
+  fieldName: PropTypes.string.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  type: PropTypes.string,
+  labelText: PropTypes.string.isRequired,
+  component: PropTypes.string
+};
+
+FieldRow.defaultProps = {
+  type: "",
+  component: "input"
 };
 
 export default FieldRow;

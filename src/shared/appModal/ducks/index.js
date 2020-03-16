@@ -1,3 +1,5 @@
+// Disable ESLINT for state reassignment, using Immer behind scenes
+/* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
 
 const modalSlice = createSlice({

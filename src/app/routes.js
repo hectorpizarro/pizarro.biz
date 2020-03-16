@@ -19,7 +19,7 @@ import {
 import PageWrapper from "../shared/pageWrapper";
 import { setFlagInitRoute } from "./ducks";
 import HomeLoader from "../pages/home/homeLoader";
-import { StyledExperience } from "./styledExperienceRoute";
+import StyledExperience from "./styledExperience";
 
 const StyledMainWrap = styled.div`
   display: flex;
@@ -67,7 +67,7 @@ const ExperienceLazyLoader = React.lazy(() =>
 const Routes = ({ location }) => {
   const dispatch = useDispatch();
 
-  //Execute when component is mounted.
+  // Execute when component is mounted.
   useEffect(() => {
     const pageId = AppService.getIdFromRoute(location.pathname);
     // Url has a valid route defined, scroll to page
@@ -81,7 +81,7 @@ const Routes = ({ location }) => {
   return (
     <StyledMainWrap>
       <React.Suspense>
-        <NavBar isLeft={true} />
+        <NavBar isLeft />
       </React.Suspense>
       <StyledMain>
         {/* Page Home */}
@@ -115,8 +115,8 @@ const Routes = ({ location }) => {
       <Switch>
         {/* Default route is home */}
         <Redirect exact from="/" to="/home" />
-        {PAGES.map((page, idx) => (
-          <Route key={idx} path={page.route} children={() => null} />
+        {PAGES.map(page => (
+          <Route key={page.id} path={page.route} />
         ))}
       </Switch>
     </StyledMainWrap>

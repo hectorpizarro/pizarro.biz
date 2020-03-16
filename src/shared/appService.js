@@ -2,8 +2,8 @@
  * Methods used on whole app.
  */
 import { scroller } from "react-scroll";
-import { PAGES, MAIL_URL } from "./constants";
 import Axios from "axios";
+import { PAGES, MAIL_URL } from "./constants";
 /**
  * If provided myValue is an integer as string returns Number.
  * @param {(Number|String)} myValue - A value, can be string or number.
@@ -73,7 +73,7 @@ export const sendMail = async values => {
     await Axios.post(MAIL_URL, values);
     return true;
   } catch (error) {
-    console.log("sendMail error:", error);
+    // console.log("sendMail error:", error);
     return false;
   }
 };

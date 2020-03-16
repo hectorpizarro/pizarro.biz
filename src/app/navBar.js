@@ -151,14 +151,18 @@ const StyledPageLink = styled(Link)`
  * @param {Object} props - Props
  * @returns {Object} HTML DOM section node.
  */
-export const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
+export const InternalNavBar = ({
+  isLeft,
+  history,
+  isInitRoute,
+  propHideModal
+}) => {
   /**
    * Clicking on any button bar hides modal. Used on mobile menu.
-   * @param {Object} event - Click event
    */
-  const handleClick = event => {
+  const handleClick = () => {
     if (!isLeft) {
-      hideModal();
+      propHideModal();
     }
   };
 
@@ -187,7 +191,7 @@ export const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
                 data-isleft={isLeft}
                 activeClass="active"
                 to={page.id}
-                spy={true}
+                spy
                 onSetActive={handleSetActive}
                 duration={1000}
                 smooth="easeInOutQuad"
@@ -212,13 +216,13 @@ export const NavBar = ({ isLeft, history, isInitRoute, hideModal }) => {
   );
 };
 
-NavBar.propTypes = {
+InternalNavBar.propTypes = {
   // Flag, show on left column if TRUE, otherwise show as a modal for mobile
   isLeft: PropTypes.bool.isRequired,
   history: PropTypes.array.isRequired, // Provided automatically by withRouter
   // From Redux, flag to update url to current selected page
   isInitRoute: PropTypes.bool.isRequired,
-  hideModal: PropTypes.func.isRequired
+  propHideModal: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -226,7 +230,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  hideModal
+  propHideModal: hideModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NavBar));
+const NavBar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(InternalNavBar));
+
+export default NavBar;

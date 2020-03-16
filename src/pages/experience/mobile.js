@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import Slider from "react-slick";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import MobileMenu from "./mobileMenu";
 import Card from "./card";
 import AppService from "../../shared/appService";
 import { SLIDER_SETTINGS } from "../../shared/constants";
-import styled from "styled-components";
 
 const StyledSliderWrap = styled.div`
   display: block;
@@ -23,7 +23,9 @@ const Mobile = ({ experienceIds, experiences }) => {
    * Store reference to DOM node. Required for slide functionality.
    * @param {Object} ref DOM node
    */
-  const setSliderRef = ref => (sliderRef = ref);
+  const setSliderRef = ref => {
+    sliderRef = ref;
+  };
 
   /**
    * Moves slide to selected section
@@ -35,9 +37,25 @@ const Mobile = ({ experienceIds, experiences }) => {
     sliderRef.slickGoTo(idx + 1);
   };
 
+  const {
+    arrows,
+    dots,
+    infinite,
+    slidesToScroll,
+    slidesToShow,
+    speed
+  } = SLIDER_SETTINGS;
   return (
     <StyledSliderWrap>
-      <Slider ref={setSliderRef} {...SLIDER_SETTINGS}>
+      <Slider
+        ref={setSliderRef}
+        arrows={arrows}
+        dots={dots}
+        infinite={infinite}
+        slidesToScroll={slidesToScroll}
+        slidesToShow={slidesToShow}
+        speed={speed}
+      >
         <MobileMenu goToSlide={goToSlide} />
         {experienceIds.map(experienceId => (
           <Card key={experienceId} experience={experiences[experienceId]} />

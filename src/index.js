@@ -5,11 +5,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import styled, { ThemeProvider } from "styled-components";
 import store from "./store";
 import "./css/index.css"; // deprecated css, remove
 import "./index.css"; // global CSS rules
 import Loader from "./shared/loader/loader";
-import styled, { ThemeProvider } from "styled-components";
 import { THEME } from "./shared/constants";
 
 const StyledLoaderWrap = styled.div`

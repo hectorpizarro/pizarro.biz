@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import toast from "./ducks";
-import { Toast } from "./toast";
+import { InternalToast as Toast } from "./toast";
 
 export default {
   title: "Shared / Toast",

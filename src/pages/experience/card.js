@@ -185,6 +185,7 @@ const Card = ({ experience }) => {
       {/* Body description */}
       <StyledDescription>
         {experience.description.map((parr, idxParr) => (
+          // eslint-disable-next-line react/no-array-index-key
           <StyledDescriptionP key={idxParr}>{parr}</StyledDescriptionP>
         ))}
       </StyledDescription>

@@ -13,7 +13,8 @@ describe("<Skills />", () => {
   afterEach(sinon.restore); // Restore the default sandbox here
 
   it("Renders without crashing", () => {
-    shallow(<Skills />);
+    const node = shallow(<Skills />);
+    expect(node).not.toBeNull();
   });
 
   it("Contains 3 <SlideDown /> components", () => {

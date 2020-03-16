@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Form } from "formik";
 
-export const StyledForm = styled(Form)`
+export default styled(Form)`
   width: 100%;
   padding-top: ${props => props.theme.size.d10};
 
