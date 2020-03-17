@@ -120,4 +120,4 @@ Routes.propTypes = {
   location: PropTypes.object.isRequired
 };
 
-export default withRouter(React.memo(Routes));
+export default withRouter(Routes);

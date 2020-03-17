@@ -7,10 +7,11 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
 import store from "./store";
-import "./css/index.css"; // deprecated css, remove
-import "./index.css"; // global CSS rules
 import Loader from "./shared/loader/loader";
 import { THEME } from "./shared/constants";
+
+import "normalize.css/normalize.css";
+import "./index.css"; // global CSS rules
 
 const StyledLoaderWrap = styled.div`
   display: flex;

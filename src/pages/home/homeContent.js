@@ -104,4 +104,4 @@ const HomeContent = () => {
   );
 };
 
-export default React.memo(HomeContent);
+export default HomeContent;

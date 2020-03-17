@@ -1,16 +1,12 @@
-- replace tailwind with styled-components
-- add title to page wrappper
-- add HTML5 tags
-- add typescript
 - add tests
+- add typescript
+- add HTML5 tags
 - apply modernizr
 - add IE10 version
 - add localization
 - e2e
-- verify all key={}
 - browser resize hide anyh modal, experience
 - verify all onClick should be link, button.
-- verify all memo()
 - verify left menu animation
 - comment all code: jsx
-- add Storybook
+- verify all lazy

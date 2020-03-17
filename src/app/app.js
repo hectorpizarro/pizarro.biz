@@ -77,4 +77,4 @@ const mapDispatchToProps = {
   propHideModal: hideModal
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);
