@@ -5,7 +5,11 @@ import ReactResizeDetector from "react-resize-detector";
 import Axios from "axios";
 import PropTypes from "prop-types";
 import Analytics from "react-router-ga";
-import { MODAL_HEADER_MENU, GOOGLE_ANALYTICS_KEY } from "../shared/constants";
+import {
+  MODAL_HEADER_MENU,
+  MODAL_EXPERIENCE,
+  GOOGLE_ANALYTICS_KEY
+} from "../shared/constants";
 import { hideModal } from "../shared/appModal/ducks";
 import Routes from "./routes";
 
@@ -37,7 +41,7 @@ const App = ({ modalId, propHideModal }) => {
    * @param {Number} height - Screen height
    */
   const handleCloseOnResize = () => {
-    if (modalId === MODAL_HEADER_MENU) {
+    if ([MODAL_HEADER_MENU, MODAL_EXPERIENCE].includes(modalId)) {
       propHideModal();
     }
   };

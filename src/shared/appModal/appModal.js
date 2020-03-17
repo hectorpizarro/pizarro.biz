@@ -18,47 +18,6 @@ const StyledModalHeader = styled.div`
   padding: ${props => props.theme.size.d2};
 `;
 
-const ModalWrap = styled.div`
-  & .mobile-menu-overlay {
-    background-color: rgb(26, 32, 44, 0.5);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  & .mobile-menu-content {
-    max-height: 90%;
-    position: absolute;
-    outline: 0;
-    border-radius: ${props => props.theme.size.d1};
-    box-shadow: ${props => props.theme.boxShadow};
-    overflow-y: auto;
-    background-color: ${props =>
-      props.modalId === MODAL_HEADER_MENU
-        ? props.theme.color.gray100
-        : "white"};
-    ${props =>
-      props.modalId === MODAL_HEADER_MENU
-        ? `
-          top: 0;
-          right: 0;
-          `
-        : `
-          margin-left: auto;
-          margin-right: auto;
-          width: 84%;
-          @media (min-width: 768px) {
-            max-width: ${props.theme.size.d32};
-          }
-          `}
-  }
-`;
-
 /**
  * Modal component. Only visible if modal id stored in Redux.
  * @returns {Object} Modal component
@@ -95,41 +54,38 @@ export const InternalAppModal = ({ modalId, modalData, experiences }) => {
   }, []);
 
   return (
-    <ModalWrap>
-      <Modal
-        isOpen={[MODAL_HEADER_MENU, MODAL_EXPERIENCE].includes(modalId)}
-        onRequestClose={closeModal}
-        contentLabel="Modal"
-        overlayClassName="mobile-menu-overlay"
-        className="mobile-menu-content"
-        closeTimeoutMS={MODAL_CLOSE_TIME}
-        modalId={modalId}
-      >
-        {modalId === MODAL_HEADER_MENU && (
-          <StyledModalHeader>
-            <NavBar isLeft={false} closeModal={closeModal} />
-          </StyledModalHeader>
-        )}
-        {modalId === MODAL_EXPERIENCE && (
-          <Card experience={experiences[modalData]} />
-        )}
-      </Modal>
-    </ModalWrap>
+    <Modal
+      isOpen={[MODAL_HEADER_MENU, MODAL_EXPERIENCE].includes(modalId)}
+      onRequestClose={closeModal}
+      contentLabel="Modal"
+      overlayClassName="modal-overlay"
+      className={`modal-content ${modalId === MODAL_HEADER_MENU &&
+        "modal-content-menu"}`}
+      closeTimeoutMS={MODAL_CLOSE_TIME}
+      modalId={modalId}
+    >
+      {modalId === MODAL_HEADER_MENU && (
+        <StyledModalHeader>
+          <NavBar isLeft={false} closeModal={closeModal} />
+        </StyledModalHeader>
+      )}
+      {modalId === MODAL_EXPERIENCE && (
+        <Card experience={experiences[modalData]} />
+      )}
+    </Modal>
   );
 };
 
 InternalAppModal.propTypes = {
   modalId: PropTypes.string, // Modal id, if null no modal visible
   modalData: PropTypes.any, // Modal data, optional
-  experiences: PropTypes.object,
-  theme: PropTypes.object
+  experiences: PropTypes.object
 };
 
 InternalAppModal.defaultProps = {
   modalId: null,
   modalData: null, // Modal data, optional
-  experiences: null,
-  theme: {}
+  experiences: null
 };
 
 const mapStateToProps = state => ({

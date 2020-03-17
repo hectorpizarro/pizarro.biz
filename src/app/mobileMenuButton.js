@@ -23,6 +23,7 @@ const StyledButton = styled.button`
   padding-left: ${props => props.theme.size.d2};
   padding-right: ${props => props.theme.size.d2};
   box-shadow: ${props => props.theme.boxShadow};
+  cursor: pointer;
 
   @media (min-width: 640px) {
     display: none;
@@ -44,10 +45,14 @@ const MobileMenuButton = () => {
   /**
    * Store modal id on Redux to open mobile menu modal.
    */
-  const openModal = () => dispatch(showModal({ id: MODAL_HEADER_MENU }));
+  const openModal = event => {
+    event.preventDefault();
+    event.stopPropagation();
+    dispatch(showModal({ id: MODAL_HEADER_MENU }));
+  };
 
   return (
-    <StyledButton onClick={openModal} aria-label="Mobile Menu Button">
+    <StyledButton onClick={openModal}>
       <StyledBarsIcon icon={faBars} />
     </StyledButton>
   );

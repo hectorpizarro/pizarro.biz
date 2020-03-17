@@ -10,7 +10,7 @@ import store from "./store";
 import Loader from "./shared/loader/loader";
 import { THEME } from "./shared/constants";
 
-import "normalize.css/normalize.css";
+// import "normalize.css/normalize.css";
 import "./index.css"; // global CSS rules
 
 const StyledLoaderWrap = styled.div`

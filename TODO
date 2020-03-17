@@ -10,3 +10,4 @@
 - verify left menu animation
 - comment all code: jsx
 - verify all lazy
+- switching to normalize.css adds horizontal scrolling
