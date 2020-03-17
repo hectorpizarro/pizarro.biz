@@ -72,8 +72,8 @@ const FieldRow = ({
 };
 
 FieldRow.propTypes = {
-  errors: PropTypes.array.isRequired,
-  touched: PropTypes.array.isRequired,
+  errors: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
   fieldName: PropTypes.string.isRequired,
   isSubmitting: PropTypes.bool.isRequired,
   type: PropTypes.string,

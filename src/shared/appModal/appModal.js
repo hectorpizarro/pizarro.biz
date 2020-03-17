@@ -18,42 +18,37 @@ const StyledModalHeader = styled.div`
   padding: ${props => props.theme.size.d2};
 `;
 
-/**
- * Modal component. Only visible if modal id stored in Redux.
- * @returns {Object} Modal component
- */
-export const InternalAppModal = ({ modalId, modalData, experiences }) => {
-  const dispatch = useDispatch();
+const ModalWrap = styled.div`
+  & .mobile-menu-overlay {
+    background-color: rgb(26, 32, 44, 0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-  const ModalWrap = styled.div`
-    & .mobile-menu-overlay {
-      background-color: rgb(26, 32, 44, 0.5);
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      position: fixed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    & .mobile-menu-content {
-      max-height: 90%;
-      position: absolute;
-      outline: 0;
-      border-radius: ${props => props.theme.size.d1};
-      box-shadow: ${props => props.theme.boxShadow};
-      overflow-y: auto;
-      background-color: ${props =>
-        modalId === MODAL_HEADER_MENU ? props.theme.color.gray100 : "white"};
-      ${props =>
-        modalId === MODAL_HEADER_MENU
-          ? `
+  & .mobile-menu-content {
+    max-height: 90%;
+    position: absolute;
+    outline: 0;
+    border-radius: ${props => props.theme.size.d1};
+    box-shadow: ${props => props.theme.boxShadow};
+    overflow-y: auto;
+    background-color: ${props =>
+      props.modalId === MODAL_HEADER_MENU
+        ? props.theme.color.gray100
+        : "white"};
+    ${props =>
+      props.modalId === MODAL_HEADER_MENU
+        ? `
           top: 0;
           right: 0;
           `
-          : `
+        : `
           margin-left: auto;
           margin-right: auto;
           width: 84%;
@@ -61,8 +56,15 @@ export const InternalAppModal = ({ modalId, modalData, experiences }) => {
             max-width: ${props.theme.size.d32};
           }
           `}
-    }
-  `;
+  }
+`;
+
+/**
+ * Modal component. Only visible if modal id stored in Redux.
+ * @returns {Object} Modal component
+ */
+export const InternalAppModal = ({ modalId, modalData, experiences }) => {
+  const dispatch = useDispatch();
 
   /**
    * Reset modal id, this closes modal.
@@ -101,6 +103,7 @@ export const InternalAppModal = ({ modalId, modalData, experiences }) => {
         overlayClassName="mobile-menu-overlay"
         className="mobile-menu-content"
         closeTimeoutMS={MODAL_CLOSE_TIME}
+        modalId={modalId}
       >
         {modalId === MODAL_HEADER_MENU && (
           <StyledModalHeader>
@@ -119,13 +122,14 @@ InternalAppModal.propTypes = {
   modalId: PropTypes.string, // Modal id, if null no modal visible
   modalData: PropTypes.any, // Modal data, optional
   experiences: PropTypes.object,
-  theme: PropTypes.object.isRequired
+  theme: PropTypes.object
 };
 
 InternalAppModal.defaultProps = {
   modalId: null,
   modalData: null, // Modal data, optional
-  experiences: null
+  experiences: null,
+  theme: {}
 };
 
 const mapStateToProps = state => ({

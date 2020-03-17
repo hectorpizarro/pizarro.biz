@@ -219,7 +219,7 @@ export const InternalNavBar = ({
 InternalNavBar.propTypes = {
   // Flag, show on left column if TRUE, otherwise show as a modal for mobile
   isLeft: PropTypes.bool.isRequired,
-  history: PropTypes.array.isRequired, // Provided automatically by withRouter
+  history: PropTypes.object.isRequired, // Provided automatically by withRouter
   // From Redux, flag to update url to current selected page
   isInitRoute: PropTypes.bool.isRequired,
   propHideModal: PropTypes.func.isRequired

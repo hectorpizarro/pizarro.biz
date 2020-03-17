@@ -1,13 +1,8 @@
 import React from "react";
-// import Enzyme from "enzyme";
 import { shallow } from "enzyme";
 import sinon from "sinon";
-import { SlideDown } from "react-slidedown";
-import Skills from "./skills";
+import Skills, { StyledSlidedown } from "./skills";
 import AppService from "../../shared/appService";
-// import Adapter from "enzyme-adapter-react-16";
-
-// Enzyme.configure({ adapter: new Adapter() });
 
 describe("<Skills />", () => {
   afterEach(sinon.restore); // Restore the default sandbox here
@@ -19,7 +14,7 @@ describe("<Skills />", () => {
 
   it("Contains 3 <SlideDown /> components", () => {
     const wrapper = shallow(<Skills />);
-    const found = wrapper.find(SlideDown);
+    const found = wrapper.find(StyledSlidedown);
     expect(found).toHaveLength(3);
   });
 
@@ -27,7 +22,7 @@ describe("<Skills />", () => {
     const wrapper = shallow(<Skills />);
     const openStates = [];
     wrapper.findWhere(node => {
-      if (node.type() === SlideDown) {
+      if (node.type() === StyledSlidedown) {
         openStates.push(!node.getElement().props.closed);
       }
     });
@@ -42,7 +37,7 @@ describe("<Skills />", () => {
     wrapper.find("[data-id='novice']").simulate("click");
     expect(fake.callCount).toEqual(1);
     wrapper.findWhere(node => {
-      if (node.type() === SlideDown) {
+      if (node.type() === StyledSlidedown) {
         openStates.push(!node.getElement().props.closed);
       }
     });
