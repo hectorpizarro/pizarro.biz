@@ -4,15 +4,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import app from "../../app/app.slice";
-import { THEME, PAGE_ABOUT } from "../../shared/constants";
+import { THEME, PAGE_HOME } from "../../shared/constants";
 import GlobalStyle from "../../globalStyle";
-import {
-  StyledElement,
-  StyledSection,
-  StyledTitle,
-  StyledTitleWrap
-} from "../../shared/pageWrapper/pageWrapper";
-import About from "./about";
+import Home from "./home";
+import { StyledHome } from "../../shared/pageWrapper/pageWrapper";
 
 const addDecorator = storyFn => {
   const rootReducer = combineReducers({ app });
@@ -22,50 +17,43 @@ const addDecorator = storyFn => {
     <Provider store={store}>
       <ThemeProvider theme={THEME}>
         <GlobalStyle />
-        <StyledElement name={PAGE_ABOUT}>
-          <StyledSection>
-            <StyledTitleWrap>
-              <StyledTitle>About</StyledTitle>
-            </StyledTitleWrap>
-            {storyFn()}
-          </StyledSection>
-        </StyledElement>
+        <StyledHome name={PAGE_HOME}>{storyFn()}</StyledHome>
       </ThemeProvider>
     </Provider>
   );
 };
 
 export default {
-  title: "Pages / 2 About",
-  component: About,
+  title: "Pages / 1 Home",
+  component: Home,
   parameters: {
-    notes: "About page, responsive versions available for 640, 768 and 1024."
+    notes: "Home page, responsive versions and animations."
   },
   decorators: [addDecorator]
 };
 
-export const Desktop1024x768 = () => <About />;
+export const Desktop1024x768 = () => <Home />;
 Desktop1024x768.story = {
   parameters: {
     viewport: { defaultViewport: "desktop" }
   }
 };
 
-export const iPad768x1024 = () => <About />;
+export const iPad768x1024 = () => <Home />;
 iPad768x1024.story = {
   parameters: {
     viewport: { defaultViewport: "ipad" }
   }
 };
 
-export const Mobile640x640 = () => <About />;
+export const Mobile640x640 = () => <Home />;
 Mobile640x640.story = {
   parameters: {
     viewport: { defaultViewport: "width640" }
   }
 };
 
-export const Mobile320x568 = () => <About />;
+export const Mobile320x568 = () => <Home />;
 Mobile320x568.story = {
   parameters: {
     viewport: { defaultViewport: "iphone5" }

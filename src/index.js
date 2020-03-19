@@ -7,25 +7,17 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import store from "./store";
-import Loader from "./shared/loader/loader";
-import { THEME, LOADER_APP } from "./shared/constants";
-
+import { THEME } from "./shared/constants";
+import App from "./app/app";
 // import "normalize.css/normalize.css";
 import GlobalStyle from "./globalStyle";
 import "./index.css"; // global CSS rules
-
-/**
- * Component that will load App component lazily.
- */
-const AppLazyLoader = React.lazy(() => import("./app/app"));
 
 ReactDOM.render(
   <Provider store={store}>
     <ThemeProvider theme={THEME}>
       <GlobalStyle />
-      <React.Suspense fallback={<Loader type={LOADER_APP} />}>
-        <AppLazyLoader />
-      </React.Suspense>
+      <App />
     </ThemeProvider>
   </Provider>,
   document.getElementById("root")

@@ -1,32 +1,104 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
-import { Element } from "react-scroll";
-import BG_HOME from "../../shared/images/home.png";
-import HomeContent from "./homeContent";
-import { PAGE_HOME, LOADER_PAGE } from "../../shared/constants";
-import Loader from "../../shared/loader/loader";
+import { zoomIn } from "react-animations";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * Animation keyframes
  */
-const fadeInAnimation = keyframes`${fadeIn}`;
+const animateName = keyframes`
+from {
+  left: -100px;
+  opacity: 0;
+}
+to {
+  left: 0px;
+  opacity: 1;
+}
+`;
+
+const animateTitle = keyframes`
+from {
+  right: -100px;
+  opacity: 0;
+}
+to {
+  right: 0px;
+  opacity: 1;
+}
+`;
+
+// Download buttons row animation keyframes
+const zoomInAnimation = keyframes`${zoomIn}`;
 
 /**
- * Background image, initial animation applied on component mount.
+ * Animation for Name row
  */
-const StyledHome = styled(Element)`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  background-image: url(${BG_HOME});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top right;
-  animation: 2s ${fadeInAnimation};
+const StyledName = styled.div`
+  animation: 1s ${animateName};
+  position: relative;
+  font-size: ${props => props.theme.fontsize.xl2};
+  white-space: nowrap;
+  @media (min-width: 640px) {
+    font-size: ${props => props.theme.fontsize.xl4};
+  }
+`;
+
+/**
+ * Animation for Titles row
+ */
+const StyledTitle = styled.div`
+  animation: 1s ${animateTitle};
+  position: relative;
+  font-size: ${props => props.theme.fontsize.base};
+  margin-top: ${props => props.theme.size.d2};
+  padding-top: ${props => props.theme.size.d2};
+  border-top: 1px solid white;
+  white-space: nowrap;
+  @media (min-width: 640px) {
+    font-size: ${props => props.theme.fontsize.xl2};
+  }
+`;
+
+const StyledRow2 = styled.div`
+  animation: 1s ${zoomInAnimation};
+  margin-top: ${props => props.theme.size.d20};
+  text-align: center;
+  white-space: nowrap;
+`;
+
+const StyledRow1 = styled.div`
+  line-height: 1.625;
+  letter-spacing: 0.025em;
+  color: white;
+  font-weight: 700;
+`;
+
+const StyledLinkLetter = styled.a`
+  border-radius: ${props => props.theme.size.d1};
+  border: 1px solid black;
+  background-color: ${props => props.theme.color.gray200};
+  color: ${props => props.theme.color.gray700};
+  transition-property: background-color, color;
+  transition-duration: 500ms;
+  padding: ${props => {
+    const { d1, d2 } = props.theme.size;
+    return `${d1} ${d2} ${d1} ${d2}`;
+  }};
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+
+const StyledDownloadIcon = styled(FontAwesomeIcon)`
+  font-size: ${props => props.theme.fontsize.base};
+  margin-right: ${props => props.theme.size.d2};
+`;
+
+const StyledLinkResume = styled(StyledLinkLetter)`
+  margin-left: ${props => props.theme.size.d6};
 `;
 
 /**
@@ -34,31 +106,31 @@ const StyledHome = styled(Element)`
  * @returns {Object} Element component as required by react-scroll.
  */
 const Home = () => {
-  /**
-   * Store to state background image src once it's cached and loaded.
-   */
-  const [bgImage, setBgImage] = useState("");
-  // On component mount load and cache background image.
-  useEffect(() => {
-    const img = document.createElement("IMG");
-    // Image loaded, store src to state and delete image object
-    img.addEventListener("load", () => {
-      setBgImage(BG_HOME);
-      img.remove();
-    });
-    img.src = BG_HOME;
-  }, []);
+  return (
+    <>
+      <StyledRow1>
+        <StyledName>HECTOR PIZARRO</StyledName>
+        <StyledTitle>Web Developer - Tech Lead</StyledTitle>
+      </StyledRow1>
+      <StyledRow2>
+        <StyledLinkLetter
+          href={`${process.env.PUBLIC_URL}/hector-pizarro-hyp3r-recommendation-letter.pdf`}
+          download
+        >
+          <StyledDownloadIcon icon={faFileDownload} />
+          <span>Letter</span>
+        </StyledLinkLetter>
 
-  // Image was loaded and cached, animate and show page
-  if (bgImage) {
-    return (
-      <StyledHome name={PAGE_HOME}>
-        <HomeContent />
-      </StyledHome>
-    );
-  }
-  // Waiting for background image load, show loader.
-  return <Loader type={LOADER_PAGE} />;
+        <StyledLinkResume
+          href={`${process.env.PUBLIC_URL}/hector-pizarro-resume.pdf`}
+          download
+        >
+          <StyledDownloadIcon icon={faFileDownload} />
+          <span>Resume</span>
+        </StyledLinkResume>
+      </StyledRow2>
+    </>
+  );
 };
 
 export default Home;

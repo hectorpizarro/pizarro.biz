@@ -14,11 +14,10 @@ import {
   PAGE_EXPERIENCE,
   PAGE_CONTACT,
   PAGES,
-  LOADER_PAGE
+  PAGE_HOME
 } from "../shared/constants";
 import PageWrapper from "../shared/pageWrapper/pageWrapper";
 import { setFlagInitRoute } from "./app.slice";
-import Loader from "../shared/loader/loader";
 
 const StyledMainWrap = styled.div`
   display: flex;
@@ -46,15 +45,6 @@ const StyledMain = styled.main`
   }
 `;
 
-const StyledSkills = styled(PageWrapper)`
-  background-color: ${props => props.theme.color.gray100};
-`;
-
-/**
- * Component to load Home page component lazily.
- */
-const HomeLazyLoader = React.lazy(() => import("../pages/home/home"));
-
 /**
  * Routes to load inside App component. This was extracted from App because we want to scroll to the route defined in the url once this component is mounted.
  * @returns {Object} - DIV DOM node with defined routes and all pages loaded lazily.
@@ -80,13 +70,11 @@ const Routes = ({ location }) => {
       </React.Suspense>
       <StyledMain>
         {/* Page Home */}
-        <React.Suspense fallback={<Loader type={LOADER_PAGE} />}>
-          <HomeLazyLoader />
-        </React.Suspense>
+        <PageWrapper name={PAGE_HOME} />
         {/* Page About */}
         <PageWrapper name={PAGE_ABOUT} title="About" />
         {/* Page Skills */}
-        <StyledSkills name={PAGE_SKILLS} title="Skills" />
+        <PageWrapper name={PAGE_SKILLS} title="Skills" />
         {/* Page Experience */}
         <PageWrapper
           name={PAGE_EXPERIENCE}

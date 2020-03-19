@@ -4,10 +4,14 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: "Lato", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: ${props => props.theme.fontsize.base};
+  }
+
+  /* Apply web font to root, not body ... required by storybook */
+  #root {
+    font-family: "Lato", sans-serif;
   }
 
   /* Remove outline for all buttons */

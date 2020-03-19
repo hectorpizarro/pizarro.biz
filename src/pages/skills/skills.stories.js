@@ -12,7 +12,7 @@ import {
   StyledTitle,
   StyledTitleWrap
 } from "../../shared/pageWrapper/pageWrapper";
-import About from "./about";
+import Skills from "./skills";
 
 const addDecorator = storyFn => {
   const rootReducer = combineReducers({ app });
@@ -25,7 +25,7 @@ const addDecorator = storyFn => {
         <StyledElement name={PAGE_ABOUT}>
           <StyledSection>
             <StyledTitleWrap>
-              <StyledTitle>About</StyledTitle>
+              <StyledTitle>Skills</StyledTitle>
             </StyledTitleWrap>
             {storyFn()}
           </StyledSection>
@@ -36,36 +36,36 @@ const addDecorator = storyFn => {
 };
 
 export default {
-  title: "Pages / 2 About",
-  component: About,
+  title: "Pages / 3 Skills",
+  component: Skills,
   parameters: {
-    notes: "About page, responsive versions available for 640, 768 and 1024."
+    notes: "Skills page, responsive versions available for 640, 768 and 1024."
   },
   decorators: [addDecorator]
 };
 
-export const Desktop1024x768 = () => <About />;
+export const Desktop1024x768 = () => <Skills />;
 Desktop1024x768.story = {
   parameters: {
     viewport: { defaultViewport: "desktop" }
   }
 };
 
-export const iPad768x1024 = () => <About />;
+export const iPad768x1024 = () => <Skills />;
 iPad768x1024.story = {
   parameters: {
     viewport: { defaultViewport: "ipad" }
   }
 };
 
-export const Mobile640x640 = () => <About />;
+export const Mobile640x640 = () => <Skills />;
 Mobile640x640.story = {
   parameters: {
     viewport: { defaultViewport: "width640" }
   }
 };
 
-export const Mobile320x568 = () => <About />;
+export const Mobile320x568 = () => <Skills />;
 Mobile320x568.story = {
   parameters: {
     viewport: { defaultViewport: "iphone5" }
