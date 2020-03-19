@@ -6,6 +6,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-notes/register",
     "@storybook/addon-viewport/register",
-    "@storybook/addon-backgrounds/register"
+    "@storybook/addon-backgrounds/register",
+    "storybook-formik/register"
   ]
 };

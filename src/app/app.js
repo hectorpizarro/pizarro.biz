@@ -11,7 +11,7 @@ import {
   GOOGLE_ANALYTICS_KEY
 } from "../shared/constants";
 import { hideModal } from "../shared/appModal/appModal.slice";
-import Routes from "./routes";
+import Routes from "./app.routes";
 
 /**
  * Axios setup. Set function to transform request data into url encoded string.

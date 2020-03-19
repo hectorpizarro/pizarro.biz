@@ -58,6 +58,7 @@ export const THEME = {
     gray300: "#e2e8f0",
     gray400: "#cbd5e0",
     gray500: "#a0aec0",
+    gray600: "#718096",
     gray700: "#4a5568",
     gray900: "#1a202c",
     red500: "#f56565",

@@ -7,7 +7,7 @@ import { MemoryRouter } from "react-router-dom";
 import { THEME, MODAL_HEADER_MENU, MODAL_EXPERIENCE } from "../constants";
 import GlobalStyle from "../../globalStyle";
 import { InternalAppModal as AppModal } from "./appModal";
-import app from "../../app/ducks";
+import app from "../../app/app.slice";
 
 const addDecorator = storyFn => {
   const rootReducer = combineReducers({ app });

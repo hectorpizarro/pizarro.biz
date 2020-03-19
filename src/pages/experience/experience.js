@@ -13,8 +13,8 @@ import {
   STATUS_IDLE,
   STATUS_LOADED,
   endLoading
-} from "./ducks";
-import { doShowToast } from "../../shared/toast/ducks";
+} from "./experience.slice";
+import { doShowToast } from "../../shared/toast/toast.slice";
 
 // Mount animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;

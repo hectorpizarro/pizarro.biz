@@ -1,14 +1,35 @@
 import React from "react";
 import { string as yupString, object as yupObject } from "yup";
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 
+import styled from "styled-components";
 import Button from "../../shared/button/button";
 import { CONTACT_INIT_STATE } from "../../shared/constants";
 import { sendMail } from "../../shared/appService";
-import { doShowToast } from "../../shared/toast/ducks";
-import StyledForm from "./styledForm";
-import FieldRow from "./fieldRow";
+import { doShowToast } from "../../shared/toast/toast.slice";
+import FieldRow from "./fieldRow/fieldRow";
+
+const StyledContact = styled.div`
+  @media (min-width: 640px) {
+    padding: 0 ${props => props.theme.size.d5};
+  }
+  @media (min-width: 768px) {
+    padding: 0 ${props => props.theme.size.d10};
+  }
+`;
+
+const StyledForm = styled(Form)`
+  width: 100%;
+  padding-top: ${props => props.theme.size.d10};
+`;
+
+const StyledButtonBar = styled.div`
+  text-align: end;
+  & button {
+    margin-left: ${props => props.theme.size.d4};
+  }
+`;
 
 /**
  * Configuration object for Yup schema validator. See:
@@ -60,7 +81,7 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <StyledContact>
       <p>
         Let&apos;s work together! You can always reach me at my mail or sending
         me a message here:
@@ -96,7 +117,7 @@ const Contact = () => {
               isSubmitting={isSubmitting}
               labelText="Message *:"
             />
-            <div className="buttonbar">
+            <StyledButtonBar>
               <Button
                 type="reset"
                 inverse
@@ -104,11 +125,11 @@ const Contact = () => {
                 label="Reset"
               />
               <Button type="submit" disabled={isSubmitting} label="Submit" />
-            </div>
+            </StyledButtonBar>
           </StyledForm>
         )}
       </Formik>
-    </div>
+    </StyledContact>
   );
 };
 

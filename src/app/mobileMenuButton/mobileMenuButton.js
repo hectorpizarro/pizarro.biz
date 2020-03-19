@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 
-import { showModal } from "../shared/appModal/appModal.slice";
-import { MODAL_HEADER_MENU } from "../shared/constants";
+import { showModal } from "../../shared/appModal/appModal.slice";
+import { MODAL_HEADER_MENU } from "../../shared/constants";
 
 /**
  * Styled button
@@ -14,24 +14,20 @@ const StyledButton = styled.button`
   right: ${props => props.theme.size.d5};
   top: ${props => props.theme.size.d5};
   position: fixed;
-  padding: 0;
+  padding: ${props => props.theme.size.d1} ${props => props.theme.size.d2};
   margin: 0;
   display: block;
-  border: 1px solid ${props => props.theme.color.gray400};
+  border: 1px solid ${props => props.theme.color.gray600};
   background-color: ${props => props.theme.color.gray100};
   border-radius: 9999px;
-  padding-left: ${props => props.theme.size.d2};
-  padding-right: ${props => props.theme.size.d2};
   box-shadow: ${props => props.theme.boxShadow};
   cursor: pointer;
+  font-size: ${props => props.theme.fontsize.base};
+  color: ${props => props.theme.color.gray600};
 
   @media (min-width: 640px) {
     display: none;
   }
-`;
-
-const StyledBarsIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.fontsize.base};
 `;
 
 /**
@@ -53,7 +49,7 @@ const MobileMenuButton = () => {
 
   return (
     <StyledButton onClick={openModal}>
-      <StyledBarsIcon icon={faBars} />
+      <FontAwesomeIcon icon={faBars} />
     </StyledButton>
   );
 };

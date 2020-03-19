@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Element } from "react-scroll";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import Footer from "../../app/footer";
+import Footer from "../../app/footer/footer";
 import {
   PAGE_ABOUT,
   PAGE_SKILLS,
@@ -27,11 +27,11 @@ export const StyledElement = styled(Element)`
 export const StyledSection = styled.section`
   animation: 2s ${fadeInAnimation};
   padding: ${props => props.theme.size.d4};
+  height: 100%;
 
   @media (min-width: 640px) {
     padding: ${props =>
       `${props.theme.size.d4}px ${props.theme.size.d8}px ${props.theme.size.d4}px ${props.theme.size.d8}px`};
-    height: 100%;
   }
 `;
 

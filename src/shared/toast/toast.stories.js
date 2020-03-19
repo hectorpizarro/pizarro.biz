@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { ThemeProvider } from "styled-components";
-import toast from "./ducks";
+import toast from "./toast.slice";
 import { InternalToast as Toast } from "./toast";
 import GlobalStyle from "../../globalStyle";
 import { THEME } from "../constants";

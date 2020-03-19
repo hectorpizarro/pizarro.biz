@@ -3,12 +3,12 @@ import { Provider } from "react-redux";
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { ThemeProvider } from "styled-components";
-import app from "./ducks";
+import app from "../app.slice";
 import { InternalNavBar as NavBar } from "./navBar";
-import AppService from "../shared/appService";
-import GlobalStyle from "../globalStyle";
-import { THEME } from "../shared/constants";
-import "../index.css";
+import AppService from "../../shared/appService";
+import GlobalStyle from "../../globalStyle";
+import { THEME } from "../../shared/constants";
+import "../../index.css";
 
 const addDecorator = storyFn => {
   const rootReducer = combineReducers({ app });
@@ -25,11 +25,10 @@ const addDecorator = storyFn => {
 };
 
 export default {
-  title: "Shared / Navigation Bar",
+  title: "App / Navigation Bar",
   component: NavBar,
   parameters: {
-    notes:
-      "Shared component: navigation bar shown on left column and as mobile modal."
+    notes: "Navigation bar shown on left column and as mobile modal."
   },
   decorators: [addDecorator]
 };

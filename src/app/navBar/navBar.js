@@ -7,9 +7,9 @@ import { slideInLeft } from "react-animations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import PHOTO from "../shared/images/photo_small.jpg";
-import { hideModal } from "../shared/appModal/appModal.slice";
-import { PAGES } from "../shared/constants";
+import PHOTO from "../../shared/images/photo_small.jpg";
+import { hideModal } from "../../shared/appModal/appModal.slice";
+import { PAGES } from "../../shared/constants";
 
 /**
  * First load animation keyframes

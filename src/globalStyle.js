@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   /* Remove outline for all buttons */
-  button:focus {
+  textarea:focus, input:focus, button:focus {
     outline: 0;
   }
 

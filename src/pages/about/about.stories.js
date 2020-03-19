@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import app from "../../app/ducks";
+import app from "../../app/app.slice";
 import { THEME, PAGE_ABOUT } from "../../shared/constants";
 import GlobalStyle from "../../globalStyle";
 import {

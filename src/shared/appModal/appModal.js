@@ -9,7 +9,7 @@ import {
   MODAL_EXPERIENCE
 } from "../constants";
 import Card from "../../pages/experience/card";
-import NavBar from "../../app/navBar";
+import NavBar from "../../app/navBar/navBar";
 
 Modal.setAppElement("#root"); // Required by react-modal library
 

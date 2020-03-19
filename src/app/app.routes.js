@@ -3,9 +3,9 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import NavBar from "./navBar";
+import NavBar from "./navBar/navBar";
 import AppModal from "../shared/appModal/appModal";
-import MobileMenuButton from "./mobileMenuButton";
+import MobileMenuButton from "./mobileMenuButton/mobileMenuButton";
 import AppService from "../shared/appService";
 import Toast from "../shared/toast/toast";
 import {
@@ -17,7 +17,7 @@ import {
   LOADER_PAGE
 } from "../shared/constants";
 import PageWrapper from "../shared/pageWrapper/pageWrapper";
-import { setFlagInitRoute } from "./ducks";
+import { setFlagInitRoute } from "./app.slice";
 import Loader from "../shared/loader/loader";
 
 const StyledMainWrap = styled.div`

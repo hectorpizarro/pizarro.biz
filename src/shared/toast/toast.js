@@ -2,7 +2,7 @@ import React from "react";
 import { connect, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
-import { fadeToast } from "./ducks";
+import { fadeToast } from "./toast.slice";
 
 const animShowToastAlert = keyframes`
 from {
