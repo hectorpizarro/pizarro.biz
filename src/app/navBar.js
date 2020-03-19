@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import PHOTO from "../shared/images/photo_small.jpg";
-import { hideModal } from "../shared/appModal/ducks";
+import { hideModal } from "../shared/appModal/appModal.slice";
 import { PAGES } from "../shared/constants";
 
 /**
@@ -27,6 +27,7 @@ const StyledSection = styled.section`
   background-color: ${props => props.theme.color.gray100};
   color: ${props => props.theme.color.gray500};
   font-size: ${props => props.theme.fontsize.sm};
+  padding: ${props => (props.isLeft ? undefined : props.theme.size.d2)};
 `;
 
 const StyledSectionLeft = styled(StyledSection)`
@@ -83,6 +84,7 @@ const StyledFigCaption = styled.figcaption`
 
 const StyledNav = styled.nav`
   width: 100%;
+  margin-bottom: ${props => (props.isLeft ? 0 : props.theme.size.d2)};
 `;
 
 const StyledUl = styled.ul`

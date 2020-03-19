@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { keyframes } from "styled-components";
+import { LOADER_APP, LOADER_PAGE, LOADER_BUTTON } from "../constants";
 
 const ldsEllipsis1 = keyframes`
   0% {
@@ -27,6 +28,22 @@ const ldsEllipsis3 = keyframes`
   100% {
     transform: scale(0);
   }
+`;
+
+const StyledWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledAppWrap = styled(StyledWrap)`
+  flex-direction: column;
+  height: 100vh;
+`;
+
+const StyledPageWrap = styled(StyledWrap)`
+  width: 100%;
+  height: 95vh;
 `;
 
 const StyledLoader = styled.div`
@@ -80,25 +97,38 @@ const StyledStep = styled.div`
 /**
  * Loader component. Can also be shown inside buttons.
  */
-const Loader = ({ forButton, inverse }) => (
-  <StyledLoader forButton={forButton}>
-    <StyledEllipsis forButton={forButton}>
-      <StyledStep forButton={forButton} inverse={inverse} />
-      <StyledStep forButton={forButton} inverse={inverse} />
-      <StyledStep forButton={forButton} inverse={inverse} />
-      <StyledStep forButton={forButton} inverse={inverse} />
-    </StyledEllipsis>
-  </StyledLoader>
-);
+const Loader = ({ type, inverse }) => {
+  let subStyle;
+  let forButton = false;
+  if (type === LOADER_APP) {
+    subStyle = StyledAppWrap;
+  } else if (type === LOADER_PAGE) {
+    subStyle = StyledPageWrap;
+  } else {
+    forButton = true;
+  }
+
+  return (
+    <StyledWrap as={subStyle}>
+      <StyledLoader forButton={forButton}>
+        <StyledEllipsis forButton={forButton}>
+          <StyledStep forButton={forButton} inverse={inverse} />
+          <StyledStep forButton={forButton} inverse={inverse} />
+          <StyledStep forButton={forButton} inverse={inverse} />
+          <StyledStep forButton={forButton} inverse={inverse} />
+        </StyledEllipsis>
+      </StyledLoader>
+    </StyledWrap>
+  );
+};
 
 Loader.propTypes = {
-  // if TRUE render small version to show inside button
-  forButton: PropTypes.bool,
+  type: PropTypes.oneOf([LOADER_APP, LOADER_PAGE, LOADER_BUTTON]),
   inverse: PropTypes.bool
 };
 
 Loader.defaultProps = {
-  forButton: false, // By default show big version
+  type: LOADER_BUTTON,
   inverse: false
 };
 

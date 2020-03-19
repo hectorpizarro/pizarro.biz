@@ -13,18 +13,16 @@ import {
   PAGE_SKILLS,
   PAGE_EXPERIENCE,
   PAGE_CONTACT,
-  PAGES
+  PAGES,
+  LOADER_PAGE
 } from "../shared/constants";
-import PageWrapper from "../shared/pageWrapper";
+import PageWrapper from "../shared/pageWrapper/pageWrapper";
 import { setFlagInitRoute } from "./ducks";
-import HomeLoader from "../pages/home/homeLoader";
+import Loader from "../shared/loader/loader";
 
 const StyledMainWrap = styled.div`
   display: flex;
   height: 100vh;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: ${props => props.theme.fontsize.base};
 `;
 
 const StyledMain = styled.main`
@@ -82,7 +80,7 @@ const Routes = ({ location }) => {
       </React.Suspense>
       <StyledMain>
         {/* Page Home */}
-        <React.Suspense fallback={<HomeLoader />}>
+        <React.Suspense fallback={<Loader type={LOADER_PAGE} />}>
           <HomeLazyLoader />
         </React.Suspense>
         {/* Page About */}
@@ -98,11 +96,9 @@ const Routes = ({ location }) => {
         {/* Page Contact */}
         <PageWrapper name={PAGE_CONTACT} title="Contact" withFooter />
       </StyledMain>
-      <React.Suspense>
-        <Toast />
-        <AppModal />
-        <MobileMenuButton />
-      </React.Suspense>
+      <Toast />
+      <AppModal />
+      <MobileMenuButton />
       {/* Routes don't load pages, they are used only to update the url */}
       <Switch>
         {/* Default route is home */}

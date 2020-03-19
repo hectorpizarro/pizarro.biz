@@ -4,8 +4,8 @@ import { fadeIn } from "react-animations";
 import { Element } from "react-scroll";
 import BG_HOME from "../../shared/images/home.png";
 import HomeContent from "./homeContent";
-import { PAGE_HOME } from "../../shared/constants";
-import HomeLoader from "./homeLoader";
+import { PAGE_HOME, LOADER_PAGE } from "../../shared/constants";
+import Loader from "../../shared/loader/loader";
 
 /**
  * Animation keyframes
@@ -58,7 +58,7 @@ const Home = () => {
     );
   }
   // Waiting for background image load, show loader.
-  return <HomeLoader />;
+  return <Loader type={LOADER_PAGE} />;
 };
 
 export default Home;

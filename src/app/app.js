@@ -10,7 +10,7 @@ import {
   MODAL_EXPERIENCE,
   GOOGLE_ANALYTICS_KEY
 } from "../shared/constants";
-import { hideModal } from "../shared/appModal/ducks";
+import { hideModal } from "../shared/appModal/appModal.slice";
 import Routes from "./routes";
 
 /**

@@ -47,6 +47,10 @@ export const SLIDER_SETTINGS = {
   speed: 500
 };
 
+export const LOADER_APP = "loader app";
+export const LOADER_PAGE = "loader page";
+export const LOADER_BUTTON = "loader button";
+
 export const THEME = {
   color: {
     gray100: "#f7fafc",

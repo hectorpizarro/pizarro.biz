@@ -5,7 +5,7 @@ import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import AppService from "../../shared/appService";
-import { showModal } from "../../shared/appModal/ducks";
+import { showModal } from "../../shared/appModal/appModal.slice";
 import { MODAL_EXPERIENCE } from "../../shared/constants";
 
 const StyledDesktop = styled.div`

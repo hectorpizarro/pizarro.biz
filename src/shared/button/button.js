@@ -70,7 +70,7 @@ const Button = ({ label, type, disabled, inverse, onClick }) => {
       onClick={handleClick}
       as={inverse ? StyledButtonInverse : StyledButtonDefault}
     >
-      {disabled ? <Loader forButton inverse={inverse} /> : label}
+      {disabled ? <Loader inverse={inverse} /> : label}
     </StyledButton>
   );
 };

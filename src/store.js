@@ -6,7 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 // All reducers
 import app from "./app/ducks";
-import modal from "./shared/appModal/ducks";
+import modal from "./shared/appModal/appModal.slice";
 import experiences from "./pages/experience/ducks";
 import toast from "./shared/toast/ducks";
 

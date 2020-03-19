@@ -3,20 +3,28 @@ import PropTypes from "prop-types";
 import { Element } from "react-scroll";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import PageLoader from "./loader/pageLoader";
-import Footer from "../app/footer";
+import Footer from "../../app/footer";
 import {
   PAGE_ABOUT,
   PAGE_SKILLS,
   PAGE_EXPERIENCE,
-  PAGE_CONTACT
-} from "./constants";
+  PAGE_CONTACT,
+  LOADER_PAGE
+} from "../constants";
+import Loader from "../loader/loader";
 
 // Initial animation keyframes
 const fadeInAnimation = keyframes`${fadeIn}`;
 
+export const StyledElement = styled(Element)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+`;
+
 // Styled to animate at component initial mount
-const StyledSection = styled.section`
+export const StyledSection = styled.section`
   animation: 2s ${fadeInAnimation};
   padding: ${props => props.theme.size.d4};
 
@@ -27,18 +35,11 @@ const StyledSection = styled.section`
   }
 `;
 
-const StyledElement = styled(Element)`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-`;
-
-const StyledTitleWrap = styled.div`
+export const StyledTitleWrap = styled.div`
   margin-bottom: ${props => props.theme.size.d4};
 `;
 
-const StyledTitle = styled.h1`
+export const StyledTitle = styled.h1`
   font-weight: 700;
   @media (min-width: 640px) {
     font-size: ${props => props.theme.fontsize.xl2};
@@ -54,18 +55,18 @@ const PageWrapper = ({ name, title, className, withFooter }) => {
   let LazyComponent = null;
   switch (name) {
     case PAGE_ABOUT:
-      LazyComponent = React.lazy(() => import("../pages/about/about"));
+      LazyComponent = React.lazy(() => import("../../pages/about/about"));
       break;
     case PAGE_SKILLS:
-      LazyComponent = React.lazy(() => import("../pages/skills/skills"));
+      LazyComponent = React.lazy(() => import("../../pages/skills/skills"));
       break;
     case PAGE_EXPERIENCE:
       LazyComponent = React.lazy(() =>
-        import("../pages/experience/experience")
+        import("../../pages/experience/experience")
       );
       break;
     case PAGE_CONTACT:
-      LazyComponent = React.lazy(() => import("../pages/contact/contact"));
+      LazyComponent = React.lazy(() => import("../../pages/contact/contact"));
       break;
     default:
       // If page unknown return null to avoid rendering
@@ -74,7 +75,7 @@ const PageWrapper = ({ name, title, className, withFooter }) => {
 
   return (
     <StyledElement name={name} className={className}>
-      <React.Suspense fallback={<PageLoader />}>
+      <React.Suspense fallback={<Loader type={LOADER_PAGE} />}>
         <StyledSection>
           {title && (
             <StyledTitleWrap>

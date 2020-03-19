@@ -2,8 +2,7 @@ import React, { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import Modal from "react-modal";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { hideModal } from "./ducks";
+import { hideModal } from "./appModal.slice";
 import {
   MODAL_HEADER_MENU,
   MODAL_CLOSE_TIME,
@@ -13,10 +12,6 @@ import Card from "../../pages/experience/card";
 import NavBar from "../../app/navBar";
 
 Modal.setAppElement("#root"); // Required by react-modal library
-
-const StyledModalHeader = styled.div`
-  padding: ${props => props.theme.size.d2};
-`;
 
 /**
  * Modal component. Only visible if modal id stored in Redux.
@@ -64,11 +59,7 @@ export const InternalAppModal = ({ modalId, modalData, experiences }) => {
       closeTimeoutMS={MODAL_CLOSE_TIME}
       modalId={modalId}
     >
-      {modalId === MODAL_HEADER_MENU && (
-        <StyledModalHeader>
-          <NavBar isLeft={false} closeModal={closeModal} />
-        </StyledModalHeader>
-      )}
+      {modalId === MODAL_HEADER_MENU && <NavBar isLeft={false} />}
       {modalId === MODAL_EXPERIENCE && (
         <Card experience={experiences[modalData]} />
       )}
