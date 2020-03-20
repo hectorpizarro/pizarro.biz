@@ -1,6 +1,6 @@
 import React from "react";
 import { string as yupString, object as yupObject } from "yup";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 
 import styled from "styled-components";
@@ -19,7 +19,7 @@ const StyledContact = styled.div`
   }
 `;
 
-const StyledForm = styled(Form)`
+const StyledForm = styled.form`
   width: 100%;
   padding-top: ${props => props.theme.size.d10};
 `;
@@ -91,8 +91,8 @@ const Contact = () => {
         validationSchema={schema}
         onSubmit={onSubmit}
       >
-        {({ errors, touched, isSubmitting }) => (
-          <StyledForm>
+        {({ errors, touched, isSubmitting, handleReset, handleSubmit }) => (
+          <StyledForm onReset={handleReset} onSubmit={handleSubmit}>
             <FieldRow
               errors={errors}
               touched={touched}
@@ -123,8 +123,14 @@ const Contact = () => {
                 inverse
                 disabled={isSubmitting}
                 label="Reset"
+                onClick={handleReset}
               />
-              <Button type="submit" disabled={isSubmitting} label="Submit" />
+              <Button
+                type="button"
+                disabled={isSubmitting}
+                label="Submit"
+                onClick={handleSubmit}
+              />
             </StyledButtonBar>
           </StyledForm>
         )}

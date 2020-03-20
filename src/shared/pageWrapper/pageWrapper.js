@@ -90,7 +90,7 @@ const PageWrapper = ({ name, title, className, withFooter }) => {
       });
       img.src = BG_HOME;
     }
-  }, []);
+  }, [name]);
 
   // Component to load page content lazily.
   let LazyComponent = null;

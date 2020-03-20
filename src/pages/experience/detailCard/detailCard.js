@@ -10,6 +10,8 @@ import {
 import styled from "styled-components";
 
 const StyledCard = styled.div`
+  /* Set font family because it will be loaded in React portal inside mobile menu */
+  font-family: "Lato", sans-serif;
   border: 1px solid black;
   border-radius: ${props => props.theme.size.d1};
   background-color: white;
