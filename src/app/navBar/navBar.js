@@ -20,6 +20,8 @@ const slideInLeftAnimation = keyframes`${slideInLeft}`;
  * Mobile menu has no animation.
  */
 const StyledSection = styled.section`
+  /* Set font family because it will be loaded in React portal inside mobile menu */
+  font-family: "Lato", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;

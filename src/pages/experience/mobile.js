@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import MobileMenu from "./mobileMenu";
-import Card from "./card";
+import Card from "./detailCard/detailCard";
 import AppService from "../../shared/appService";
 import { SLIDER_SETTINGS } from "../../shared/constants";
 

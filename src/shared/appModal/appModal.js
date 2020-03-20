@@ -8,7 +8,7 @@ import {
   MODAL_CLOSE_TIME,
   MODAL_EXPERIENCE
 } from "../constants";
-import Card from "../../pages/experience/card";
+import Card from "../../pages/experience/detailCard/detailCard";
 import NavBar from "../../app/navBar/navBar";
 
 Modal.setAppElement("#root"); // Required by react-modal library

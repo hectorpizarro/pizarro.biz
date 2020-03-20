@@ -51,6 +51,7 @@ const StyledDescriptionP = styled.p`
 const StyledTech = styled.div`
   display: grid;
   column-gap: 0.75rem;
+  row-gap: ${props => props.theme.size.d1};
   grid-template-columns: 0.5rem 1fr;
   grid-template-rows: repeat(3 2rem);
   padding: ${props => {
@@ -58,7 +59,7 @@ const StyledTech = styled.div`
     return `${d2} ${d4} ${d2} ${d4}`;
   }};
   @media (min-width: 640px) {
-    column-gap: 0.5rem;
+    column-gap: 1rem;
     grid-template-columns: 0.5rem 3rem 1fr;
     padding-top: ${props => props.theme.size.d4};
     padding-bottom: ${props => props.theme.size.d4};
@@ -66,10 +67,12 @@ const StyledTech = styled.div`
 `;
 
 const StyledTechIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.fontsize.xl1};
-  margin-right: ${props => props.theme.size.d2};
   margin-top: ${props => props.theme.size.d1};
   color: ${props => props.theme.color.gray700};
+  @media (min-width: 640px) {
+    margin-right: ${props => props.theme.size.d2};
+    font-size: ${props => props.theme.fontsize.xl1};
+  }
 `;
 
 const StyledTechLabel = styled.div`
@@ -83,10 +86,10 @@ const StyledTechLabel = styled.div`
 `;
 
 const StyledTechDetail = styled.div`
-  margin-left: ${props => props.theme.size.d2};
+  /* margin-left: ${props => props.theme.size.d2};
   @media (min-width: 640px) {
     margin-left: 0;
-  }
+  } */
 `;
 
 const StyledHeadRow = styled.div`
@@ -130,9 +133,11 @@ const StyledCellSep = styled.div`
 `;
 
 const StyledNinjaIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.fontsize.xl1};
   color: ${props => props.theme.color.gray500};
   margin-right: ${props => props.theme.size.d2};
+  @media (min-width: 640px) {
+    font-size: ${props => props.theme.fontsize.xl1};
+  }
 `;
 
 const StyledTime = styled.span`
@@ -221,4 +226,4 @@ Card.propTypes = {
   experience: PropTypes.object.isRequired // Single experience object from JSON
 };
 
-export default React.memo(Card);
+export default Card;
