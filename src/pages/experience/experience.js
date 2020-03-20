@@ -24,13 +24,14 @@ const StyledWrap = styled.div`
   animation: 2s ${fadeInAnimation};
 `;
 
-const StyledLoader = styled.div`
+const StyledLoading = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
   align-items: center;
   justify-content: center;
 `;
+
 const StyledP = styled.p`
   color: ${props => props.theme.color.gray500};
 `;
@@ -67,9 +68,9 @@ const Experience = ({
   switch (loadStatus) {
     case STATUS_LOADING:
       return (
-        <StyledLoader>
+        <StyledLoading>
           <StyledP>Loading experiences...</StyledP>
-        </StyledLoader>
+        </StyledLoading>
       );
     case STATUS_IDLE: {
       if (experienceIds.length > 0) {
